@@ -1,0 +1,1000 @@
+      "X308",
+      "XF",
+      "XF Sportbrake",
+      "XJ",
+      "XJ 220",
+      "XJ40",
+      "XJR",
+      "XJR 15",
+      "XK",
+      "XK Cabriolet",
+      "XKR",
+      "XKR Cabriolet"
+    ]
+  },
+  {
+    "marque": "Jeep",
+    "models": [
+      "Cherokee",
+      "CJ",
+      "Commander",
+      "Compass",
+      "Grand Cherokee",
+      "JK Wrangler",
+      "KJ Cherokee",
+      "MB",
+      "Patriot",
+      "TJ Wrangler",
+      "WJ Grand Cherokee",
+      "WJ Wrangler",
+      "Wrangler",
+      "XJ Cherokee",
+      "ZJ Grand Cherokee"
+    ]
+  },
+  { "marque": "JMC", "models": ["GL", "N350", "TFR"] },
+  {
+    "marque": "Kia",
+    "models": [
+      "Carens",
+      "Carnival",
+      "Ceed",
+      "Cerato",
+      "Cerato Koup",
+      "Cutback",
+      "K2500",
+      "Magentis",
+      "Mohave",
+      "Opirus",
+      "Optima",
+      "Picanto",
+      "Rio",
+      "Rio 5 portes",
+      "Rio Berline",
+      "Sephia",
+      "Shuma",
+      "Sorento",
+      "Soul",
+      "Sportage",
+      "Sportage restyl\u00e9",
+      "Venga"
+    ]
+  },
+  {
+    "marque": "Lada",
+    "models": ["110", "111", "112", "Kalina", "Niva", "Samara"]
+  },
+  {
+    "marque": "Lamborghini",
+    "models": [
+      "350 GT",
+      "400 GT",
+      "Aventador",
+      "Countach",
+      "Diablo",
+      "Espada",
+      "Gallardo",
+      "Gallardo LP 550 2",
+      "Gallardo LP 560 4",
+      "Gallardo Superleggera",
+      "Islero",
+      "Jalpa",
+      "LM 002",
+      "Miura",
+      "Murcielago",
+      "Murcielago LP 640",
+      "Murcielago LP 670",
+      "Reventon",
+      "Silhouette",
+      "Urraco",
+      "Urus"
+    ]
+  },
+  {
+    "marque": "Lancia",
+    "models": [
+      "Beta",
+      "Dedra",
+      "Delta",
+      "Delta 2",
+      "Delta 3",
+      "Fulvia",
+      "Gamma",
+      "Kappa",
+      "Kappa Coup\u00e9",
+      "Lybra",
+      "Musa",
+      "Phedra",
+      "Rally 037",
+      "Stratos",
+      "Thema",
+      "Thesis",
+      "Ypsilon",
+      "Zeta"
+    ]
+  },
+  {
+    "marque": "Land Rover",
+    "models": [
+      "109 S\u00e9rie III",
+      "110",
+      "90",
+      "Defender",
+      "Discovery",
+      "Discovery III",
+      "Discovery IV",
+      "Freelander",
+      "Freelander 2",
+      "Range Rover",
+      "Range Rover Evoque",
+      "Range Rover L322",
+      "Range Rover P38A",
+      "Range Rover Sport",
+      "Range Sport"
+    ]
+  },
+  { "marque": "Lexus", "models": ["CT", "GS", "IS", "LFA", "LS", "RX", "SC"] },
+  {
+    "marque": "Lifan",
+    "models": [
+      "330",
+      "520",
+      "520 Hatch Back",
+      "530",
+      "620",
+      "630",
+      "720",
+      "Van",
+      "X 60"
+    ]
+  },
+  { "marque": "Mahindra", "models": ["Genio", "Quanto", "Scorpio", "XUV500"] },
+  {
+    "marque": "Maserati",
+    "models": [
+      "222",
+      "3200 GT",
+      "3500 GT",
+      "420",
+      "422",
+      "424",
+      "425",
+      "430",
+      "Biturbo",
+      "Bora",
+      "Coup\u00e9",
+      "Coupe GT",
+      "Ghibli",
+      "Gran Turismo",
+      "GranCabrio",
+      "GranSport",
+      "Indy",
+      "Kyalami",
+      "Merak",
+      "Mistral",
+      "Quattroporte",
+      "Quattroporte III",
+      "Quattroporte IV",
+      "Quattroporte V",
+      "Shamal",
+      "Spyder"
+    ]
+  },
+  {
+    "marque": "Mazda",
+    "models": [
+      "2",
+      "3",
+      "323",
+      "5",
+      "6",
+      "626",
+      "BT 50",
+      "CX5",
+      "CX7",
+      "MX3",
+      "MX5",
+      "MX6",
+      "RX7",
+      "RX8",
+      "Xedos 6",
+      "Xedos 9"
+    ]
+  },
+  { "marque": "McLaren", "models": ["F1", "MP4 12C"] },
+  {
+    "marque": "Mercedes Benz",
+    "models": [
+      "Citan",
+      "CL",
+      "CLA",
+      "CLA Shooting Brake",
+      "Classe A",
+      "Classe B",
+      "Classe C",
+      "Classe C coup\u00e9",
+      "Classe E",
+      "Classe E cabriolet",
+      "Classe E coup\u00e9",
+      "Classe G",
+      "Classe M",
+      "Classe R",
+      "Classe S",
+      "Classe S cabriolet",
+      "Classe S coup\u00e9",
+      "Classe V",
+      "CLC",
+      "CLK",
+      "CLK cabriolet",
+      "CLK GTR",
+      "CLS",
+      "CLS Shooting Brake",
+      "GL",
+      "GLA",
+      "GLC",
+      "GLE",
+      "GLK",
+      "ML",
+      "SL",
+      "SLC",
+      "SLK",
+      "SLR",
+      "SLS"
+    ]
+  },
+  { "marque": "MG", "models": ["3", "350", "5", "550", "6", "750"] },
+  {
+    "marque": "Mini",
+    "models": [
+      "Cabrio",
+      "Clubman",
+      "Clubvan",
+      "Cooper D",
+      "Countryman",
+      "Coup\u00e9",
+      "Moke",
+      "Paceman",
+      "R50",
+      "R52",
+      "R53",
+      "R55",
+      "R56",
+      "R57",
+      "R59",
+      "Roadster"
+    ]
+  },
+  {
+    "marque": "Mitsubishi",
+    "models": [
+      "3000 GT",
+      "ASX",
+      "Colt",
+      "Colt CZC",
+      "Galant",
+      "Grandis",
+      "L200",
+      "Lancer",
+      "Mirage",
+      "Outlander",
+      "Pajero Court",
+      "Pajero Pinin",
+      "Pajero Sport",
+      "Space Runner",
+      "Space Wagon"
+    ]
+  },
+  {
+    "marque": "Nissan",
+    "models": [
+      "100 NX",
+      "200 SX",
+      "240Z",
+      "260Z",
+      "280ZX",
+      "300ZX",
+      "350Z coup\u00e9",
+      "350Z Roadster",
+      "370 Z",
+      "371 Z",
+      "Almera",
+      "Almera Tino",
+      "Bluebird",
+      "Cherry",
+      "Cube",
+      "GTR",
+      "Juke",
+      "Maxima QX",
+      "Micra",
+      "Murano",
+      "Navara",
+      "Note",
+      "NV200 Evalia",
+      "Pathfinder",
+      "Patrol Court",
+      "Patrol Long",
+      "Pickup",
+      "Pixo",
+      "Primera",
+      "Qashqai",
+      "Serena",
+      "Skyline",
+      "Sunny",
+      "Sunny coup\u00e9",
+      "Terrano",
+      "Tiida 4 portes",
+      "Tiida 5 portes",
+      "Urvan",
+      "X Trail"
+    ]
+  },
+  {
+    "marque": "Opel",
+    "models": [
+      "Adam",
+      "Agila",
+      "Ampera",
+      "Antara",
+      "Ascona",
+      "Astra",
+      "Astra 4 portes",
+      "Astra cabriolet",
+      "Astra GTC",
+      "Astra Sports Tourer",
+      "Calibra",
+      "Commodore",
+      "Corsa",
+      "Diplomat",
+      "Frontera Court",
+      "Frontera Long",
+      "GT",
+      "Insignia",
+      "Insignia Sports Tourer",
+      "Kadett",
+      "Manta",
+      "Meriva",
+      "Mokka",
+      "Monza",
+      "Nouvelle Astra",
+      "Omega",
+      "Rekord",
+      "Senator",
+      "Signum",
+      "Sintra",
+      "Speedster",
+      "Tigra",
+      "Tigra TwinTop",
+      "Vectra",
+      "Zafira",
+      "Zafira Tourer"
+    ]
+  },
+  {
+    "marque": "Peugeot",
+    "models": [
+      "1007",
+      "104",
+      "106",
+      "107",
+      "2008",
+      "201",
+      "202",
+      "204",
+      "205",
+      "206",
+      "206 CC",
+      "206 Plus",
+      "206 Sedan",
+      "206 SW",
+      "207",
+      "207 CC",
+      "207 plus",
+      "207 SW",
+      "208",
+      "3008",
+      "301",
+      "304",
+      "305",
+      "306",
+      "307",
+      "307 CC",
+      "308",
+      "308 CC",
+      "309",
+      "4007",
+      "4008",
+      "403",
+      "404",
+      "405",
+      "406",
+      "406 Coup\u00e9",
+      "407",
+      "407 Coup\u00e9",
+      "407 SW",
+      "5008",
+      "504",
+      "504 cabriolet",
+      "504 coup\u00e9",
+      "505",
+      "508",
+      "508 SW",
+      "604",
+      "605",
+      "607",
+      "806",
+      "807",
+      "Bipper",
+      "Expert",
+      "Partner",
+      "Partner VU",
+      "RCZ"
+    ]
+  },
+  {
+    "marque": "Porsche",
+    "models": [
+      "911",
+      "911 Cabriolet",
+      "911 Sport Classic",
+      "944",
+      "968",
+      "Boxster",
+      "Boxster Spyder",
+      "Carrera GT",
+      "Cayenne",
+      "Cayman",
+      "Macan",
+      "Panamera",
+      "Spyder"
+    ]
+  },
+  {
+    "marque": "Renault",
+    "models": [
+      "10",
+      "11",
+      "12",
+      "14",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "25",
+      "30",
+      "4",
+      "4cv",
+      "5",
+      "6",
+      "8",
+      "9",
+      "Avantime",
+      "Captur",
+      "Caravelle",
+      "Clio 1",
+      "Clio 2",
+      "Clio 3",
+      "Clio 3 RS",
+      "Clio 4",
+      "Clio 4 Facelift",
+      "Clio 4 RS",
+      "Clio Campus",
+      "Clio Classique",
+      "Colorale",
+      "Dauphine",
+      "Espace",
+      "Express",
+      "Floride",
+      "Fluence",
+      "Fr\u00e9gate",
+      "Fuego",
+      "Grand Modus",
+      "Grand Scenic",
+      "Kadjar",
+      "Kangoo",
+      "Kangoo Be Bop",
+      "Koleos",
+      "Laguna 1",
+      "Laguna 2",
+      "Laguna 3",
+      "Laguna 3 Estate",
+      "Laguna Coup\u00e9",
+      "Latitude",
+      "Megane 1",
+      "Megane 1 Cabriolet",
+      "Megane 1 Coup\u00e9",
+      "Megane 2",
+      "Megane 2 CC",
+      "Megane 2 Classique",
+      "Megane 2 Coup\u00e9",
+      "Megane 3",
+      "Megane 3 CC",
+      "Megane 3 Coup\u00e9",
+      "Megane 3 Facelift",
+      "Megane 3 RS",
+      "Modus",
+      "Safrane",
+      "Scenic",
+      "Scenic Conquest",
+      "Scenic Court",
+      "Super 5",
+      "Symbol",
+      "Twingo",
+      "Vel Satis",
+      "Wind"
+    ]
+  },
+  {
+    "marque": "Rolls Royce",
+    "models": [
+      "Corniche",
+      "Phantom",
+      "Silver Cloud",
+      "Silver Spirit",
+      "Silver Spur"
+    ]
+  },
+  {
+    "marque": "Rover",
+    "models": [
+      "111",
+      "114",
+      "115",
+      "200",
+      "213",
+      "214",
+      "216",
+      "218",
+      "220",
+      "25",
+      "414",
+      "416",
+      "420",
+      "45",
+      "600",
+      "618",
+      "620",
+      "623",
+      "75",
+      "820",
+      "825",
+      "827",
+      "Estate",
+      "SD1"
+    ]
+  },
+  {
+    "marque": "Saab",
+    "models": [
+      "9 3",
+      "9 3 Cabriolet",
+      "9 3X",
+      "9 4X",
+      "9 5",
+      "900",
+      "900 1994",
+      "9000",
+      "9000 CD",
+      "9000 CS"
+    ]
+  },
+  {
+    "marque": "Saipa",
+    "models": ["132", "151", "Saba", "Saina", "Tiba", "Tiba Hatchback"]
+  },
+  {
+    "marque": "Seat",
+    "models": [
+      "Alhambra",
+      "Altea",
+      "Altea Freetrack",
+      "Altea XL",
+      "ARONA",
+      "Arosa",
+      "ATECA",
+      "Cordoba",
+      "Exeo",
+      "Exeo ST",
+      "Freetrack",
+      "Ibiza",
+      "Leon",
+      "Malaga",
+      "Marbella",
+      "Mii",
+      "Toledo"
+    ]
+  },
+  {
+    "marque": "Skoda",
+    "models": [
+      "105",
+      "130",
+      "Citigo",
+      "Fabia",
+      "Fabia Facelift",
+      "Favorit",
+      "Felicia",
+      "Octavia",
+      "Octavia Combi",
+      "Octavia Combi 4x4",
+      "Octavia Scout",
+      "Rapid",
+      "Rapid Facelift",
+      "Rapid Spaceback",
+      "Roomster",
+      "Superb",
+      "Yeti"
+    ]
+  },
+  {
+    "marque": "Smart",
+    "models": ["ForFour", "ForTwo", "Fortwo Cabrio", "Roadster"]
+  },
+  {
+    "marque": "SsangYong",
+    "models": [
+      "Actyon",
+      "Actyon Sports",
+      "Chairman",
+      "Korando",
+      "Korando sport",
+      "Kyron",
+      "Musso",
+      "Rexton",
+      "Stavic Rodius",
+      "Tivoli"
+    ]
+  },
+  {
+    "marque": "Subaru",
+    "models": [
+      "BRZ",
+      "Forester",
+      "Impreza",
+      "Justy",
+      "Legacy",
+      "Outback",
+      "Trezia",
+      "Tribeca",
+      "XV"
+    ]
+  },
+  {
+    "marque": "Suzuki",
+    "models": [
+      "Alto",
+      "Alto 800",
+      "Alto K10",
+      "Celerio",
+      "Ciaz",
+      "Ertiga",
+      "Grand Vitara",
+      "Ignis",
+      "Jimny",
+      "Maruti 800",
+      "Maruti Zen",
+      "Samurai",
+      "Splash",
+      "Swift",
+      "Swift Dzire",
+      "SX4",
+      "Vitara",
+      "Wagon R",
+      "Wagon R+",
+      "X90"
+    ]
+  },
+  {
+    "marque": "Tata",
+    "models": ["ARIA", "Indica", "Indigo", "Manza", "Vista"]
+  },
+  {
+    "marque": "Toyota",
+    "models": [
+      "Auris",
+      "Avensis",
+      "Avensis SW",
+      "Avenza",
+      "Aygo",
+      "Carina",
+      "Celica",
+      "Corolla",
+      "Corolla GT",
+      "Corolla Verso",
+      "Echo",
+      "Fortuner",
+      "GT 86",
+      "Hilux",
+      "iQ",
+      "Land Cruiser",
+      "Land Cruiser SW",
+      "MR",
+      "Nouvelle Corolla",
+      "Nouvelle Corolla Verso",
+      "PRADO",
+      "Previa",
+      "Prius",
+      "RAV4",
+      "Runner",
+      "Starlet",
+      "Supra",
+      "Urban Cruiser",
+      "Verso",
+      "Verso S",
+      "Yaris",
+      "Yaris Sedan",
+      "Yaris Verso"
+    ]
+  },
+  {
+    "marque": "Volkswagen",
+    "models": [
+      "Amarok",
+      "Bora",
+      "Caddy",
+      "Coccinelle",
+      "Corrado",
+      "Derby",
+      "Eos",
+      "Fox",
+      "Fox Cross",
+      "Gol",
+      "Golf 1",
+      "Golf 2",
+      "Golf 3",
+      "Golf 4",
+      "Golf 5",
+      "Golf 6",
+      "Golf 7",
+      "Golf Cabriolet",
+      "Golf Plus",
+      "Jetta",
+      "K70",
+      "Karmann Ghia",
+      "Lupo",
+      "Multivan",
+      "New Beetle",
+      "New Tiguan",
+      "Passat",
+      "Passat CC",
+      "Passat SW",
+      "Phaeton",
+      "Polo",
+      "Polo 3 Flight",
+      "Polo classique",
+      "Polo Cross",
+      "Polo Sedan",
+      "Scirocco",
+      "Sharan",
+      "Tiguan",
+      "Touareg",
+      "Touran",
+      "Touran Cross",
+      "Transporter",
+      "Up",
+      "Vento"
+    ]
+  },
+  {
+    "marque": "Volvo",
+    "models": [
+      "242",
+      "244",
+      "262",
+      "264",
+      "440",
+      "480",
+      "740",
+      "760",
+      "780",
+      "850",
+      "940",
+      "960",
+      "C30",
+      "C70",
+      "P1800",
+      "S40",
+      "S60",
+      "S80",
+      "V40",
+      "V50",
+      "V60",
+      "V70",
+      "V90",
+      "XC60",
+      "XC70",
+      "XC90"
+    ]
+  },
+  {
+    "marque": "Zotye",
+    "models": [
+      "Cargo",
+      "Hunter",
+      "M 300",
+      "Nomad 1",
+      "Nomad 2",
+      "Z 200",
+      "Z 200 Hatch Back",
+      "Z100",
+      "Z300",
+      "Z500"
+    ]
+  }
+]
+^CProcessed a total of 1478 messages
+[student898_2@bigdataanalytics-worker-3 ~]$ export SPARK_KAFKA_VERSION=0.10
+[student898_2@bigdataanalytics-worker-3 ~]$ pyspark --master local[1] --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.3.2
+SPARK_MAJOR_VERSION is set to 2, using Spark2
+Python 2.7.5 (default, Nov 16 2020, 22:23:17) 
+[GCC 4.8.5 20150623 (Red Hat 4.8.5-44)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+Ivy Default Cache set to: /home/student898_2/.ivy2/cache
+The jars for the packages stored in: /home/student898_2/.ivy2/jars
+:: loading settings :: url = jar:file:/usr/hdp/3.1.4.0-315/spark2/jars/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+org.apache.spark#spark-sql-kafka-0-10_2.11 added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-3852dd30-9ade-4ebf-b509-4055702a7ee7;1.0
+	confs: [default]
+	found org.apache.spark#spark-sql-kafka-0-10_2.11;2.3.2 in central
+	found org.apache.kafka#kafka-clients;0.10.0.1 in central
+	found net.jpountz.lz4#lz4;1.3.0 in central
+	found org.xerial.snappy#snappy-java;1.1.2.6 in central
+	found org.slf4j#slf4j-api;1.7.16 in central
+	found org.spark-project.spark#unused;1.0.0 in central
+:: resolution report :: resolve 342ms :: artifacts dl 6ms
+	:: modules in use:
+	net.jpountz.lz4#lz4;1.3.0 from central in [default]
+	org.apache.kafka#kafka-clients;0.10.0.1 from central in [default]
+	org.apache.spark#spark-sql-kafka-0-10_2.11;2.3.2 from central in [default]
+	org.slf4j#slf4j-api;1.7.16 from central in [default]
+	org.spark-project.spark#unused;1.0.0 from central in [default]
+	org.xerial.snappy#snappy-java;1.1.2.6 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   6   |   0   |   0   |   0   ||   6   |   0   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-3852dd30-9ade-4ebf-b509-4055702a7ee7
+	confs: [default]
+	0 artifacts copied, 6 already retrieved (0kB/6ms)
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /__ / .__/\_,_/_/ /_/\_\   version 2.3.2.3.1.4.0-315
+      /_/
+
+Using Python version 2.7.5 (default, Nov 16 2020 22:23:17)
+SparkSession available as 'spark'.
+>>> from pyspark.sql import functions as F
+>>> from pyspark.sql.types import StructType, StringType
+>>> 
+>>> def console_output(df, freq):
+...     return df.writeStream \
+...         .format("console") \
+...         .trigger(processingTime='%s seconds' % freq ) \
+...         .options(truncate=True) \
+...         .start()
+... 
+>>> kafka_brokers = "bigdataanalytics-worker-3:6667"
+>>> raw_data = spark.read. \
+...     format("kafka"). \
+...     option("kafka.bootstrap.servers", kafka_brokers). \
+...     option("subscribe", "shadrin_data"). \
+...     option("startingOffsets", "earliest"). \
+...     option("endingOffsets", """{"shadrin_data":{"0":20}}"""). \
+...     load()
+>>> out = console_output(raw_data, 10)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 2, in console_output
+  File "/usr/hdp/current/spark2-client/python/pyspark/sql/dataframe.py", line 238, in writeStream
+    return DataStreamWriter(self)
+  File "/usr/hdp/current/spark2-client/python/pyspark/sql/streaming.py", line 684, in __init__
+    self._jwrite = df._jdf.writeStream()
+  File "/usr/hdp/current/spark2-client/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/usr/hdp/current/spark2-client/python/pyspark/sql/utils.py", line 69, in deco
+    raise AnalysisException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.AnalysisException: u"'writeStream' can be called only on streaming Dataset/DataFrame;"
+>>> raw_data = spark.readStream. \
+...     format("kafka"). \
+...     option("kafka.bootstrap.servers", kafka_brokers). \
+...     option("subscribe", "shadrin_data"). \
+...     option("startingOffsets", "earliest"). \
+...     option("maxOffsetsPerTrigger", "5"). \
+...     load()
+>>> out = console_output(raw_data, 10)
+-------------------------------------------                                     
+Batch: 0
+-------------------------------------------
++----+--------------------+------------+---------+------+--------------------+-------------+
+| key|               value|       topic|partition|offset|           timestamp|timestampType|
++----+--------------------+------------+---------+------+--------------------+-------------+
+|null|                [5B]|shadrin_data|        0|     0|2022-01-10 18:38:...|            0|
+|null|          [20 20 7B]|shadrin_data|        0|     1|2022-01-10 18:38:...|            0|
+|null|[20 20 20 20 22 6...|shadrin_data|        0|     2|2022-01-10 18:38:...|            0|
+|null|[20 20 20 20 22 6...|shadrin_data|        0|     3|2022-01-10 18:38:...|            0|
+|null|[20 20 20 20 20 2...|shadrin_data|        0|     4|2022-01-10 18:38:...|            0|
++----+--------------------+------------+---------+------+--------------------+-------------+
+
+-------------------------------------------
+Batch: 1
+-------------------------------------------
++----+--------------------+------------+---------+------+--------------------+-------------+
+| key|               value|       topic|partition|offset|           timestamp|timestampType|
++----+--------------------+------------+---------+------+--------------------+-------------+
+|null|[20 20 20 20 20 2...|shadrin_data|        0|     5|2022-01-10 18:38:...|            0|
+|null|[20 20 20 20 20 2...|shadrin_data|        0|     6|2022-01-10 18:38:...|            0|
+|null|[20 20 20 20 20 2...|shadrin_data|        0|     7|2022-01-10 18:38:...|            0|
+|null|[20 20 20 20 20 2...|shadrin_data|        0|     8|2022-01-10 18:38:...|            0|
+|null|[20 20 20 20 20 2...|shadrin_data|        0|     9|2022-01-10 18:38:...|            0|
++----+--------------------+------------+---------+------+--------------------+-------------+
+
+-------------------------------------------
+Batch: 2
+-------------------------------------------
++----+--------------------+------------+---------+------+--------------------+-------------+
+| key|               value|       topic|partition|offset|           timestamp|timestampType|
++----+--------------------+------------+---------+------+--------------------+-------------+
+|null|[20 20 20 20 20 2...|shadrin_data|        0|    10|2022-01-10 18:38:...|            0|
+|null|[20 20 20 20 20 2...|shadrin_data|        0|    11|2022-01-10 18:38:...|            0|
+|null|[20 20 20 20 20 2...|shadrin_data|        0|    12|2022-01-10 18:38:...|            0|
+|null|[20 20 20 20 20 2...|shadrin_data|        0|    13|2022-01-10 18:38:...|            0|
+|null|[20 20 20 20 20 2...|shadrin_data|        0|    14|2022-01-10 18:38:...|            0|
++----+--------------------+------------+---------+------+--------------------+-------------+
+
+out.stop()
+.>>> .out.stop()
+  File "<stdin>", line 1
+    .out.stop()
+    ^
+SyntaxError: invalid syntax
+>>> out.stop()
+>>> raw_data = spark.read. \
+...     format("kafka"). \
+...     option("kafka.bootstrap.servers", kafka_brokers). \
+...     option("subscribe", "shadrin_data"). \
+...     option("startingOffsets", "earliest"). \
+...     option("endingOffsets", """{"shadrin_data":{"0":20}}"""). \
+...     load()
+>>> out = console_output(raw_data, 10)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 2, in console_output
+  File "/usr/hdp/current/spark2-client/python/pyspark/sql/dataframe.py", line 238, in writeStream
+    return DataStreamWriter(self)
+  File "/usr/hdp/current/spark2-client/python/pyspark/sql/streaming.py", line 684, in __init__
+    self._jwrite = df._jdf.writeStream()
+  File "/usr/hdp/current/spark2-client/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/usr/hdp/current/spark2-client/python/pyspark/sql/utils.py", line 69, in deco
+    raise AnalysisException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.AnalysisException: u"'writeStream' can be called only on streaming Dataset/DataFrame;"
+>>> raw_data.printSchema()
+root
+ |-- key: binary (nullable = true)
+ |-- value: binary (nullable = true)
+ |-- topic: string (nullable = true)
+ |-- partition: integer (nullable = true)
+ |-- offset: long (nullable = true)
+ |-- timestamp: timestamp (nullable = true)
+ |-- timestampType: integer (nullable = true)
+
+>>> schema = StructType() \
+...     .add("sepalLength", FloatType()) \
+...     .add("sepalWidth", FloatType()) \
+...     .add("petalLength", FloatType()) \
+...     .add("petalWidth", FloatType()) \
+...     .add("species", StringType())
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+NameError: name 'FloatType' is not defined
+>>> value_iris = raw_data \
+...     .select(F.from_json(F.col("value").cast("String"), schema).alias("value"), "offset")
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+NameError: name 'schema' is not defined
+>>> 
