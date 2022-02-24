@@ -1,0 +1,743 @@
+----+------+------
+  3 |  Doe |  Big
+
+(1 rows)
+cqlsh:lesson7> insert into shadrin_animals (id, name) values (5, 'Snake');
+cqlsh:lesson7> SELECT * FROM shadrin_animals;
+
+ id | name  | size
+----+-------+------
+  5 | Snake | null
+  3 |   Doe |  Big
+
+(2 rows)
+cqlsh:lesson7> insert into shadrin_animals (id, name, size) values (3, null, null);
+cqlsh:lesson7> SELECT * FROM shadrin_animals;
+
+ id | name  | size
+----+-------+------
+  5 | Snake | null
+  3 |  null | null
+
+(2 rows)
+cqlsh:lesson7> drop table shadrin_animals;
+cqlsh:lesson7> SELECT * FROM shadrin_animals;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="table shadrin_animals does not exist"
+cqlsh:lesson7> use keyspace1;
+cqlsh:keyspace1> SELECT table_name FROM system_schema.tables where keyspace_name = 'keyspace1';
+
+ table_name
+---------------
+ users_unknown
+
+(1 rows)
+cqlsh:keyspace1> SELECT table_name FROM system_schema.tables;
+
+ table_name
+--------------------------------
+                        animals
+                      animals_2
+            network_permissions
+ resource_role_permissons_index
+                   role_members
+               role_permissions
+                          roles
+                    users_known
+                     aggregates
+                        columns
+                dropped_columns
+                      functions
+                        indexes
+                      keyspaces
+                         tables
+                       triggers
+                          types
+                          views
+                        animals
+                      animals_2
+                  users_unknown
+          parent_repair_history
+                 repair_history
+              view_build_status
+                      IndexInfo
+               available_ranges
+            available_ranges_v2
+                        batches
+                    built_views
+             compaction_history
+                          local
+                          paxos
+                    peer_events
+                 peer_events_v2
+                          peers
+                       peers_v2
+            prepared_statements
+                        repairs
+                 size_estimates
+               sstable_activity
+                table_estimates
+             transferred_ranges
+          transferred_ranges_v2
+        view_builds_in_progress
+                         events
+                       sessions
+
+(46 rows)
+cqlsh:keyspace1> SELECT * FROM system_schema.tables;
+
+ keyspace_name      | table_name                     | additional_write_policy | bloom_filter_fp_chance | caching                                       | cdc  | comment                                                                                 | compaction                                                                                                                                                                                 | compression                                                                             | crc_check_chance | dclocal_read_repair_chance | default_time_to_live | extensions | flags        | gc_grace_seconds | id                                   | max_index_interval | memtable_flush_period_in_ms | min_index_interval | read_repair | read_repair_chance | speculative_retry
+--------------------+--------------------------------+-------------------------+------------------------+-----------------------------------------------+------+-----------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+------------------+----------------------------+----------------------+------------+--------------+------------------+--------------------------------------+--------------------+-----------------------------+--------------------+-------------+--------------------+-------------------
+              less7 |                        animals |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                                         |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |           864000 | c61bbfc0-6798-11ec-9871-67a4d31ce654 |               2048 |                           0 |                128 |    BLOCKING |                  0 |               99p
+              less7 |                      animals_2 |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                                         |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |           864000 | 03145a20-679b-11ec-9871-67a4d31ce654 |               2048 |                           0 |                128 |    BLOCKING |                  0 |               99p
+        system_auth |            network_permissions |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                user network permissions |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |          7776000 | d46780c2-2f1c-3db9-b4c1-b8d9fbc0cc23 |               2048 |                           0 |                128 |    BLOCKING |                  0 |               99p
+        system_auth | resource_role_permissons_index |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                index of db roles with permissions granted on a resource |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |          7776000 | 5f2fbdad-91f1-3946-bd25-d5da3a5c35ec |               2048 |                           0 |                128 |    BLOCKING |                  0 |               99p
+        system_auth |                   role_members |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                           role memberships lookup table |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |          7776000 | 0ecdaa87-f8fb-3e60-88d1-74fb36fe5c0d |               2048 |                           0 |                128 |    BLOCKING |                  0 |               99p
+        system_auth |               role_permissions |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                         permissions granted to db roles |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |          7776000 | 3afbe79f-2194-31a7-add7-f5ab90d8ec9c |               2048 |                           0 |                128 |    BLOCKING |                  0 |               99p
+        system_auth |                          roles |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                        role definitions |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |          7776000 | 5bc52802-de25-35ed-aeab-188eecebb090 |               2048 |                           0 |                128 |    BLOCKING |                  0 |               99p
+           projectx |                    users_known |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                                         |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |           864000 | e4248ce0-5aaf-11ec-bc0b-757d447c92ed |               2048 |                           0 |                128 |    BLOCKING |                  0 |               99p
+      system_schema |                     aggregates |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                      user defined aggregate definitions |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |           604800 | 924c5587-2e3a-345b-b10c-12f37c1ba895 |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+      system_schema |                        columns |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                      column definitions |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |           604800 | 24101c25-a2ae-3af7-87c1-b40ee1aca33f |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+      system_schema |                dropped_columns |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                 dropped column registry |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |           604800 | 5e7583b5-f3f4-3af1-9a39-b7e1d6f5f11f |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+      system_schema |                      functions |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                       user defined function definitions |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |           604800 | 96489b79-80be-3e14-a701-66a0b9159450 |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+      system_schema |                        indexes |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                             secondary index definitions |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |           604800 | 0feb57ac-311f-382f-ba6d-9024d305702f |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+      system_schema |                      keyspaces |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                    keyspace definitions |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |           604800 | abac5682-dea6-31c5-b535-b3d6cffd0fb6 |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+      system_schema |                         tables |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                       table definitions |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |           604800 | afddfb9d-bc1e-3068-8056-eed6c302ba09 |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+      system_schema |                       triggers |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                     trigger definitions |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |           604800 | 4df70b66-6b05-3251-95a1-32b54005fd48 |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+      system_schema |                          types |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                           user defined type definitions |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |           604800 | 5a8b1ca8-6602-3f77-a045-9273d308917a |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+      system_schema |                          views |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                        view definitions |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |           604800 | 9786ac1c-dd58-3201-a7cd-ad556410c985 |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+            lesson7 |                        animals |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                                         |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |           864000 | 926edf60-7ae2-11ec-9871-67a4d31ce654 |               2048 |                           0 |                128 |    BLOCKING |                  0 |               99p
+            lesson7 |                      animals_2 |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                                         |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |           864000 | d5ff5200-7ae2-11ec-9871-67a4d31ce654 |               2048 |                           0 |                128 |    BLOCKING |                  0 |               99p
+          keyspace1 |                  users_unknown |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                                         |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |           864000 | 1f3ab3b0-5e78-11ec-bc0b-757d447c92ed |               2048 |                           0 |                128 |    BLOCKING |                  0 |               99p
+ system_distributed |          parent_repair_history |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                          Repair history | {'class': 'org.apache.cassandra.db.compaction.TimeWindowCompactionStrategy', 'compaction_window_size': '1', 'compaction_window_unit': 'DAYS', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |              2592000 |           {} | {'compound'} |           864000 | deabd734-b99d-3b9c-92e5-fd92eb5abf14 |               2048 |                           0 |                128 |    BLOCKING |                  0 |               99p
+ system_distributed |                 repair_history |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                          Repair history | {'class': 'org.apache.cassandra.db.compaction.TimeWindowCompactionStrategy', 'compaction_window_size': '1', 'compaction_window_unit': 'DAYS', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |              2592000 |           {} | {'compound'} |           864000 | 759fffad-624b-3181-80ee-fa9a52d1f627 |               2048 |                           0 |                128 |    BLOCKING |                  0 |               99p
+ system_distributed |              view_build_status |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                          Materialized View build status |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |           864000 | 5582b59f-8e4e-35e1-b913-3acada51eb04 |               2048 |                           0 |                128 |    BLOCKING |                  0 |               99p
+             system |                      IndexInfo |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                    built column indexes |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | 9f5c6374-d485-3229-9a0a-5094af9ad1e3 |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |               available_ranges |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |          available keyspace/ranges during bootstrap/replace that are ready to be served |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | c539fcab-d65a-31d1-8133-d25605643ee3 |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |            available_ranges_v2 |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |          available keyspace/ranges during bootstrap/replace that are ready to be served |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | 4224a088-2ac9-3d0c-889d-fbb5f0facda0 |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |                        batches |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                 batches awaiting replay |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '2'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | 919a4bc5-7a33-3573-b03e-13fc3f68b465 |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |                    built_views |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                             built views |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | 4b3c50a9-ea87-3d76-9101-6dbc9c38494a |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |             compaction_history |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                            week-long compaction history |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |               604800 |           {} | {'compound'} |                0 | b4dbb7b4-dc49-3fb5-b3bf-ce6e434832ca |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |                          local |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                        information about the local node |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | 7ad54392-bcdd-35a6-8417-4e047860b377 |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |                          paxos |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                             in-progress paxos proposals |                                                                     {'class': 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | b7b7f0c2-fd0a-3410-8c05-3ef614bb7c2d |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |                    peer_events |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                 events related to peers |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | 59dfeaea-8db2-3341-91ef-109974d81484 |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |                 peer_events_v2 |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                 events related to peers |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | 0e65065f-e401-38ed-9507-b9213fae8d11 |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |                          peers |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                            information about known peers in the cluster |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | 37f71aca-7dc2-383b-a706-72528af04d4f |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |                       peers_v2 |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                            information about known peers in the cluster |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | c4325fbb-8e5e-3baf-bd07-0f9250ed818e |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |            prepared_statements |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                     prepared statements |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | 18a9c257-6a0c-3841-ba71-8cd529849fef |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |                        repairs |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                                 repairs |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | a3d277d1-cfaf-36f5-a2a7-38d5eea9ad6a |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |                 size_estimates |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null | per-table primary range size estimates, table is deprecated in favor of table_estimates |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | 618f817b-005f-3678-b8a4-53f3930b8e86 |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |               sstable_activity |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                             historic sstable read rates |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | 5a1ff267-ace0-3f12-8563-cfae6103c65e |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |                table_estimates |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                          per-table range size estimates |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | 176c39cd-b93d-33a5-a218-8eb06a56f66e |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |             transferred_ranges |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                    record of transferred ranges for streaming operation |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | 6cad20f7-d4f5-3af2-b6e2-0da33c6c1f83 |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |          transferred_ranges_v2 |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                    record of transferred ranges for streaming operation |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | 1ff78f1a-7df1-3a2a-a998-6f4932270af5 |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+             system |        view_builds_in_progress |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                           views builds current progress |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | 6c22df66-c3bd-3df6-b74d-21179c6a9fe9 |               2048 |                     3600000 |                128 |    BLOCKING |                  0 |               99p
+      system_traces |                         events |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                          tracing events |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | 8826e8e9-e16a-3728-8753-3bc1fc713c25 |               2048 |                           0 |                128 |    BLOCKING |                  0 |               99p
+      system_traces |                       sessions |                     99p |                   0.01 | {'keys': 'ALL', 'rows_per_partition': 'NONE'} | null |                                                                        tracing sessions |                                                                  {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'} | {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'} |                1 |                          0 |                    0 |           {} | {'compound'} |                0 | c5e99f16-8677-3914-b17e-960613512345 |               2048 |                           0 |                128 |    BLOCKING |                  0 |               99p
+
+(46 rows)
+cqlsh:keyspace1> SELECT keyspace_name table_name FROM system_schema.tables;
+SyntaxException: line 1:21 no viable alternative at input 'table_name' (SELECT [keyspace_name] table_name...)
+cqlsh:keyspace1> SELECT keyspace_name, table_name FROM system_schema.tables;
+
+ keyspace_name      | table_name
+--------------------+--------------------------------
+              less7 |                        animals
+              less7 |                      animals_2
+        system_auth |            network_permissions
+        system_auth | resource_role_permissons_index
+        system_auth |                   role_members
+        system_auth |               role_permissions
+        system_auth |                          roles
+           projectx |                    users_known
+      system_schema |                     aggregates
+      system_schema |                        columns
+      system_schema |                dropped_columns
+      system_schema |                      functions
+      system_schema |                        indexes
+      system_schema |                      keyspaces
+      system_schema |                         tables
+      system_schema |                       triggers
+      system_schema |                          types
+      system_schema |                          views
+            lesson7 |                        animals
+            lesson7 |                      animals_2
+          keyspace1 |                  users_unknown
+ system_distributed |          parent_repair_history
+ system_distributed |                 repair_history
+ system_distributed |              view_build_status
+             system |                      IndexInfo
+             system |               available_ranges
+             system |            available_ranges_v2
+             system |                        batches
+             system |                    built_views
+             system |             compaction_history
+             system |                          local
+             system |                          paxos
+             system |                    peer_events
+             system |                 peer_events_v2
+             system |                          peers
+             system |                       peers_v2
+             system |            prepared_statements
+             system |                        repairs
+             system |                 size_estimates
+             system |               sstable_activity
+             system |                table_estimates
+             system |             transferred_ranges
+             system |          transferred_ranges_v2
+             system |        view_builds_in_progress
+      system_traces |                         events
+      system_traces |                       sessions
+
+(46 rows)
+cqlsh:keyspace1> use  keyspace1;
+cqlsh:keyspace1> select * from users_unknown limit 1;
+
+ user_id | age   | c    | gender | ma1  | ma2  | mi1  | mi2  | s1   | s2   | segment
+---------+-------+------+--------+------+------+------+------+------+------+---------
+   35262 | young | null |      M | null | null | null | null | null | null |    null
+
+(1 rows)
+cqlsh:keyspace1> use  keyspace1;
+cqlsh:keyspace1> select * from users_unknown limit 10;
+
+ user_id | age    | c    | gender | ma1  | ma2  | mi1  | mi2  | s1   | s2   | segment
+---------+--------+------+--------+------+------+------+------+------+------+---------
+   35262 |  young | null |      M | null | null | null | null | null | null |    null
+   39433 | midage | null |      F | null | null | null | null | null | null |    null
+   37032 |  young | null |      M | null | null | null | null | null | null |    null
+   48451 | midage | null |      F | null | null | null | null | null | null |    null
+   40239 |  young | null |      F | null | null | null | null | null | null |    null
+   47076 |  young | null |      M | null | null | null | null | null | null |    null
+   41114 |    old | null |      M | null | null | null | null | null | null |    null
+   34323 |  young | null |      F | null | null | null | null | null | null |    null
+   35243 |    old | null |      F | null | null | null | null | null | null |    null
+   43690 | midage | null |      M | null | null | null | null | null | null |    null
+
+(10 rows)
+cqlsh:keyspace1> select gender, count(*) from  users_unknown group by gender;
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Group by is currently only supported on the columns of the PRIMARY KEY, got gender"
+cqlsh:keyspace1> select count(*) from  users_unknown group by user_id;
+
+ count
+-------
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+
+---MORE---
+cqlsh:keyspace1> select count(*) from  users_unknown;
+
+ count
+-------
+ 19625
+
+(1 rows)
+
+Warnings :
+Aggregation query used without partition key
+
+cqlsh:keyspace1> exit
+[student898_2@bigdataanalytics-worker-3 ~]$ hbase shell
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/usr/hdp/3.1.4.0-315/phoenix/phoenix-5.0.0.3.1.4.0-315-server.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/usr/hdp/3.1.4.0-315/hadoop/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+HBase Shell
+Use "help" to get list of supported commands.
+Use "exit" to quit this interactive shell.
+For Reference, please visit: http://hbase.apache.org/2.0/book.html#shell
+Version 2.0.2.3.1.4.0-315, r, Fri Aug 23 05:15:48 UTC 2019
+Took 0.0019 seconds                                                                                                                                   
+hbase(main):001:0> create 'lesson6:shadrin_animals', 'name', 'size'
+
+ERROR: Unknown namespace lesson6!
+
+Creates a table. Pass a table name, and a set of column family
+specifications (at least one), and, optionally, table configuration.
+Column specification can be a simple string (name), or a dictionary
+(dictionaries are described below in main help output), necessarily
+including NAME attribute.
+Examples:
+
+Create a table with namespace=ns1 and table qualifier=t1
+  hbase> create 'ns1:t1', {NAME => 'f1', VERSIONS => 5}
+
+Create a table with namespace=default and table qualifier=t1
+  hbase> create 't1', {NAME => 'f1'}, {NAME => 'f2'}, {NAME => 'f3'}
+  hbase> # The above in shorthand would be the following:
+  hbase> create 't1', 'f1', 'f2', 'f3'
+  hbase> create 't1', {NAME => 'f1', VERSIONS => 1, TTL => 2592000, BLOCKCACHE => true}
+  hbase> create 't1', {NAME => 'f1', CONFIGURATION => {'hbase.hstore.blockingStoreFiles' => '10'}}
+  hbase> create 't1', {NAME => 'f1', IS_MOB => true, MOB_THRESHOLD => 1000000, MOB_COMPACT_PARTITION_POLICY => 'weekly'}
+
+Table configuration options can be put at the end.
+Examples:
+
+  hbase> create 'ns1:t1', 'f1', SPLITS => ['10', '20', '30', '40']
+  hbase> create 't1', 'f1', SPLITS => ['10', '20', '30', '40']
+  hbase> create 't1', 'f1', SPLITS_FILE => 'splits.txt', OWNER => 'johndoe'
+  hbase> create 't1', {NAME => 'f1', VERSIONS => 5}, METADATA => { 'mykey' => 'myvalue' }
+  hbase> # Optionally pre-split the table into NUMREGIONS, using
+  hbase> # SPLITALGO ("HexStringSplit", "UniformSplit" or classname)
+  hbase> create 't1', 'f1', {NUMREGIONS => 15, SPLITALGO => 'HexStringSplit'}
+  hbase> create 't1', 'f1', {NUMREGIONS => 15, SPLITALGO => 'HexStringSplit', REGION_REPLICATION => 2, CONFIGURATION => {'hbase.hregion.scan.loadColumnFamiliesOnDemand' => 'true'}}
+  hbase> create 't1', {NAME => 'f1', DFS_REPLICATION => 1}
+
+You can also keep around a reference to the created table:
+
+  hbase> t1 = create 't1', 'f1'
+
+Which gives you a reference to the table named 't1', on which you can then
+call methods.
+
+Took 1.4553 seconds                                                                                                                                   
+hbase(main):002:0> put 'lesson6:shadrin_animals', '3', 'name', 'Deer'
+
+ERROR: В соединении отказано
+
+Put a cell 'value' at specified table/row/column and optionally
+timestamp coordinates.  To put a cell value into table 'ns1:t1' or 't1'
+at row 'r1' under column 'c1' marked with the time 'ts1', do:
+
+  hbase> put 'ns1:t1', 'r1', 'c1', 'value'
+  hbase> put 't1', 'r1', 'c1', 'value'
+  hbase> put 't1', 'r1', 'c1', 'value', ts1
+  hbase> put 't1', 'r1', 'c1', 'value', {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+  hbase> put 't1', 'r1', 'c1', 'value', ts1, {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+  hbase> put 't1', 'r1', 'c1', 'value', ts1, {VISIBILITY=>'PRIVATE|SECRET'}
+
+The same commands also can be run on a table reference. Suppose you had a reference
+t to table 't1', the corresponding command would be:
+
+  hbase> t.put 'r1', 'c1', 'value', ts1, {ATTRIBUTES=>{'mykey'=>'myvalue'}}
+
+Took 139.4767 seconds                                                                                                                                 
+hbase(main):003:0> [student898_2@bigdataanalytics-worker-3 ~]$ 
+[student898_2@bigdataanalytics-worker-3 ~]$ export SPARK_KAFKA_VERSION=0.10
+[student898_2@bigdataanalytics-worker-3 ~]$ /opt/spark2.4.8/bin/pyspark --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.5,com.datastax.spark:spark-cassandra-connector_2.11:2.4.2
+-bash: /opt/spark2.4.8/bin/pyspark: Нет такого файла или каталога
+[student898_2@bigdataanalytics-worker-3 ~]$ /opt/spark-2.4.8/bin/pyspark --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.5,com.datastax.spark:spark-cassandra-connector_2.11:2.4.2
+Python 2.7.5 (default, Nov 16 2020, 22:23:17) 
+[GCC 4.8.5 20150623 (Red Hat 4.8.5-44)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+Ivy Default Cache set to: /home/student898_2/.ivy2/cache
+The jars for the packages stored in: /home/student898_2/.ivy2/jars
+:: loading settings :: url = jar:file:/opt/spark-2.4.8/jars/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+org.apache.spark#spark-sql-kafka-0-10_2.11 added as a dependency
+com.datastax.spark#spark-cassandra-connector_2.11 added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-25b02040-2da4-4dba-a3ca-3d69e17bf67a;1.0
+	confs: [default]
+	found org.apache.spark#spark-sql-kafka-0-10_2.11;2.4.5 in central
+	found org.apache.kafka#kafka-clients;2.0.0 in central
+	found org.lz4#lz4-java;1.4.0 in central
+	found org.xerial.snappy#snappy-java;1.1.7.3 in central
+	found org.slf4j#slf4j-api;1.7.16 in central
+	found org.spark-project.spark#unused;1.0.0 in central
+	found com.datastax.spark#spark-cassandra-connector_2.11;2.4.2 in central
+	found commons-beanutils#commons-beanutils;1.9.3 in central
+	found commons-collections#commons-collections;3.2.2 in central
+	found com.twitter#jsr166e;1.1.0 in central
+	found org.joda#joda-convert;1.2 in central
+	found io.netty#netty-all;4.0.33.Final in central
+	found joda-time#joda-time;2.3 in central
+	found org.scala-lang#scala-reflect;2.11.7 in central
+downloading https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.4.2/spark-cassandra-connector_2.11-2.4.2.jar ...
+	[SUCCESSFUL ] com.datastax.spark#spark-cassandra-connector_2.11;2.4.2!spark-cassandra-connector_2.11.jar (374ms)
+downloading https://repo1.maven.org/maven2/commons-beanutils/commons-beanutils/1.9.3/commons-beanutils-1.9.3.jar ...
+	[SUCCESSFUL ] commons-beanutils#commons-beanutils;1.9.3!commons-beanutils.jar (50ms)
+downloading https://repo1.maven.org/maven2/com/twitter/jsr166e/1.1.0/jsr166e-1.1.0.jar ...
+	[SUCCESSFUL ] com.twitter#jsr166e;1.1.0!jsr166e.jar (38ms)
+downloading https://repo1.maven.org/maven2/org/joda/joda-convert/1.2/joda-convert-1.2.jar ...
+	[SUCCESSFUL ] org.joda#joda-convert;1.2!joda-convert.jar (38ms)
+downloading https://repo1.maven.org/maven2/io/netty/netty-all/4.0.33.Final/netty-all-4.0.33.Final.jar ...
+	[SUCCESSFUL ] io.netty#netty-all;4.0.33.Final!netty-all.jar (109ms)
+downloading https://repo1.maven.org/maven2/joda-time/joda-time/2.3/joda-time-2.3.jar ...
+	[SUCCESSFUL ] joda-time#joda-time;2.3!joda-time.jar (56ms)
+downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.jar ...
+	[SUCCESSFUL ] org.scala-lang#scala-reflect;2.11.7!scala-reflect.jar (192ms)
+downloading https://repo1.maven.org/maven2/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar ...
+	[SUCCESSFUL ] commons-collections#commons-collections;3.2.2!commons-collections.jar (70ms)
+:: resolution report :: resolve 5663ms :: artifacts dl 940ms
+	:: modules in use:
+	com.datastax.spark#spark-cassandra-connector_2.11;2.4.2 from central in [default]
+	com.twitter#jsr166e;1.1.0 from central in [default]
+	commons-beanutils#commons-beanutils;1.9.3 from central in [default]
+	commons-collections#commons-collections;3.2.2 from central in [default]
+	io.netty#netty-all;4.0.33.Final from central in [default]
+	joda-time#joda-time;2.3 from central in [default]
+	org.apache.kafka#kafka-clients;2.0.0 from central in [default]
+	org.apache.spark#spark-sql-kafka-0-10_2.11;2.4.5 from central in [default]
+	org.joda#joda-convert;1.2 from central in [default]
+	org.lz4#lz4-java;1.4.0 from central in [default]
+	org.scala-lang#scala-reflect;2.11.7 from central in [default]
+	org.slf4j#slf4j-api;1.7.16 from central in [default]
+	org.spark-project.spark#unused;1.0.0 from central in [default]
+	org.xerial.snappy#snappy-java;1.1.7.3 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   14  |   8   |   8   |   0   ||   14  |   8   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-25b02040-2da4-4dba-a3ca-3d69e17bf67a
+	confs: [default]
+	8 artifacts copied, 6 already retrieved (16744kB/42ms)
+22/01/24 10:26:40 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+22/01/24 10:26:41 WARN util.Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /__ / .__/\_,_/_/ /_/\_\   version 2.4.8
+      /_/
+
+Using Python version 2.7.5 (default, Nov 16 2020 22:23:17)
+SparkSession available as 'spark'.
+>>> from pyspark.sql.types import StructType, StringType, IntegerType, TimestampType
+>>> from pyspark.sql import functions as F
+>>> cass_animals_df = spark.read \
+...     .format("org.apache.spark.sql.cassandra") \
+...     .options(table="animals", keyspace="lesson7") \
+...     .load()
+>>> cass_animals_df.printSchema()
+root
+ |-- id: integer (nullable = true)
+ |-- name: string (nullable = true)
+ |-- size: string (nullable = true)
+
+>>> cass_animals_df.show()
++---+----+-----+                                                                
+| id|name| size|
++---+----+-----+
+| 11| Cow|  Big|
+|  3| Bug|Small|
++---+----+-----+
+
+>>> dog_df = spark.sql("""select 11 as id, "Dog" as name, "Big" as size """)
+>>> dog_df.show()
++---+----+----+
+| id|name|size|
++---+----+----+
+| 11| Dog| Big|
++---+----+----+
+
+>>> dog_df.write \
+...     .format("org.apache.spark.sql.cassandra") \
+...     .options(table="animals", keyspace="lesson7") \
+...     .mode("append") \
+...     .save()
+>>> cass_animals_df.show()
++---+----+-----+
+| id|name| size|
++---+----+-----+
+| 11| Dog|  Big|
+|  3| Bug|Small|
++---+----+-----+
+
+>>> cass_big_df = spark.read \
+...     .format("org.apache.spark.sql.cassandra") \
+...     .options(table="users_unknown", keyspace="keyspace1") \
+...     .load()
+>>> cass_big_df.printSchema()
+root
+ |-- user_id: integer (nullable = true)
+ |-- age: string (nullable = true)
+ |-- c: integer (nullable = true)
+ |-- gender: string (nullable = true)
+ |-- ma1: integer (nullable = true)
+ |-- ma2: integer (nullable = true)
+ |-- mi1: integer (nullable = true)
+ |-- mi2: integer (nullable = true)
+ |-- s1: integer (nullable = true)
+ |-- s2: integer (nullable = true)
+ |-- segment: string (nullable = true)
+
+>>> cass_big_df.show(10)
++-------+------+----+------+----+----+----+----+----+----+-------+
+|user_id|   age|   c|gender| ma1| ma2| mi1| mi2|  s1|  s2|segment|
++-------+------+----+------+----+----+----+----+----+----+-------+
+|  39729| young|null|     F|null|null|null|null|null|null|   null|
+|  31468|midage|null|     M|null|null|null|null|null|null|   null|
+|  37970|   old|null|     M|null|null|null|null|null|null|   null|
+|  41876|   old|null|     M|null|null|null|null|null|null|   null|
+|  45293|   old|null|     F|null|null|null|null|null|null|   null|
+|  36928|midage|null|     M|null|null|null|null|null|null|   null|
+|  34100|   old|null|     M|null|null|null|null|null|null|   null|
+|  35078|   old|null|     M|null|null|null|null|null|null|   null|
+|  33025|midage|null|     F|null|null|null|null|null|null|   null|
+|  49029| young|null|     F|null|null|null|null|null|null|   null|
++-------+------+----+------+----+----+----+----+----+----+-------+
+only showing top 10 rows
+
+>>> cass_big_df.filter(F.col("user_id")=="39729").show()
++-------+-----+----+------+----+----+----+----+----+----+-------+
+|user_id|  age|   c|gender| ma1| ma2| mi1| mi2|  s1|  s2|segment|
++-------+-----+----+------+----+----+----+----+----+----+-------+
+|  39729|young|null|     F|null|null|null|null|null|null|   null|
++-------+-----+----+------+----+----+----+----+----+----+-------+
+
+>>> cass_big_df.filter(F.col("gender")=="F").show()
++-------+------+----+------+----+----+----+----+----+----+-------+
+|user_id|   age|   c|gender| ma1| ma2| mi1| mi2|  s1|  s2|segment|
++-------+------+----+------+----+----+----+----+----+----+-------+
+|  39729| young|null|     F|null|null|null|null|null|null|   null|
+|  45293|   old|null|     F|null|null|null|null|null|null|   null|
+|  33025|midage|null|     F|null|null|null|null|null|null|   null|
+|  49029| young|null|     F|null|null|null|null|null|null|   null|
+|  31525|midage|null|     F|null|null|null|null|null|null|   null|
+|  33367|midage|null|     F|null|null|null|null|null|null|   null|
+|  48819| young|null|     F|null|null|null|null|null|null|   null|
+|  33669| young|null|     F|null|null|null|null|null|null|   null|
+|  47507|   old|null|     F|null|null|null|null|null|null|   null|
+|  37185| young|null|     F|null|null|null|null|null|null|   null|
+|  45203|   old|null|     F|null|null|null|null|null|null|   null|
+|  34861|midage|null|     F|null|null|null|null|null|null|   null|
+|  31799|   old|null|     F|null|null|null|null|null|null|   null|
+|  48083|   old|null|     F|null|null|null|null|null|null|   null|
+|  47261|   old|null|     F|null|null|null|null|null|null|   null|
+|  42713|   old|null|     F|null|null|null|null|null|null|   null|
+|  35389|midage|null|     F|null|null|null|null|null|null|   null|
+|  30689|   old|null|     F|null|null|null|null|null|null|   null|
+|  38147|   old|null|     F|null|null|null|null|null|null|   null|
+|  30663| young|null|     F|null|null|null|null|null|null|   null|
++-------+------+----+------+----+----+----+----+----+----+-------+
+only showing top 20 rows
+
+>>> cass_big_df.filter(F.col("gender")=="F").count()
+9804
+>>> cass_big_df.filter(F.col("gender")=="M").count()
+9821
+>>> def explain(self, extended=True):
+...     if extended:
+...         print(self._jdf.queryExecution().toString())
+...     else:
+...         print(self._jdf.queryExecution().simpleString())
+... 
+>>> cass_big_df.filter(F.col("user_id")=="39729").explain()
+== Physical Plan ==
+*(1) Filter isnotnull(user_id#49)
++- *(1) Scan org.apache.spark.sql.cassandra.CassandraSourceRelation@5024b623 [user_id#49,age#50,c#51,gender#52,ma1#53,ma2#54,mi1#55,mi2#56,s1#57,s2#58,segment#59] PushedFilters: [IsNotNull(user_id), *EqualTo(user_id,39729)], ReadSchema: struct<user_id:int,age:string,c:int,gender:string,ma1:int,ma2:int,mi1:int,mi2:int,s1:int,s2:int,s...
+>>> cass_big_df.filter(F.col("gender")=="F").explain()
+== Physical Plan ==
+*(1) Filter (isnotnull(gender#52) && (gender#52 = F))
++- *(1) Scan org.apache.spark.sql.cassandra.CassandraSourceRelation@5024b623 [user_id#49,age#50,c#51,gender#52,ma1#53,ma2#54,mi1#55,mi2#56,s1#57,s2#58,segment#59] PushedFilters: [IsNotNull(gender), EqualTo(gender,F)], ReadSchema: struct<user_id:int,age:string,c:int,gender:string,ma1:int,ma2:int,mi1:int,mi2:int,s1:int,s2:int,s...
+>>> cass_big_df.createOrReplaceTempView("cass_df")
+>>> cass_df = spark.sql("select * from cass_df limit 10").show()
+22/01/24 11:26:50 WARN shortcircuit.DomainSocketFactory: The short-circuit local reads feature cannot be used because libhadoop cannot be loaded.
++-------+------+----+------+----+----+----+----+----+----+-------+
+|user_id|   age|   c|gender| ma1| ma2| mi1| mi2|  s1|  s2|segment|
++-------+------+----+------+----+----+----+----+----+----+-------+
+|  39729| young|null|     F|null|null|null|null|null|null|   null|
+|  31468|midage|null|     M|null|null|null|null|null|null|   null|
+|  37970|   old|null|     M|null|null|null|null|null|null|   null|
+|  41876|   old|null|     M|null|null|null|null|null|null|   null|
+|  45293|   old|null|     F|null|null|null|null|null|null|   null|
+|  36928|midage|null|     M|null|null|null|null|null|null|   null|
+|  34100|   old|null|     M|null|null|null|null|null|null|   null|
+|  35078|   old|null|     M|null|null|null|null|null|null|   null|
+|  33025|midage|null|     F|null|null|null|null|null|null|   null|
+|  49029| young|null|     F|null|null|null|null|null|null|   null|
++-------+------+----+------+----+----+----+----+----+----+-------+
+
+>>> cass_df = spark.sql("select * from cass_df where user_id between 33000 and 34000").show()
++-------+------+----+------+----+----+----+----+----+----+-------+
+|user_id|   age|   c|gender| ma1| ma2| mi1| mi2|  s1|  s2|segment|
++-------+------+----+------+----+----+----+----+----+----+-------+
+|  33025|midage|null|     F|null|null|null|null|null|null|   null|
+|  33367|midage|null|     F|null|null|null|null|null|null|   null|
+|  33669| young|null|     F|null|null|null|null|null|null|   null|
+|  33220|midage|null|     M|null|null|null|null|null|null|   null|
+|  33379|midage|null|     F|null|null|null|null|null|null|   null|
+|  33494|   old|null|     M|null|null|null|null|null|null|   null|
+|  33801| young|null|     F|null|null|null|null|null|null|   null|
+|  33423| young|null|     F|null|null|null|null|null|null|   null|
+|  33444| young|null|     M|null|null|null|null|null|null|   null|
+|  33670|midage|null|     M|null|null|null|null|null|null|   null|
+|  33975| young|null|     F|null|null|null|null|null|null|   null|
+|  33185|   old|null|     F|null|null|null|null|null|null|   null|
+|  33408| young|null|     M|null|null|null|null|null|null|   null|
+|  33475|midage|null|     F|null|null|null|null|null|null|   null|
+|  33445|midage|null|     F|null|null|null|null|null|null|   null|
+|  33065|   old|null|     F|null|null|null|null|null|null|   null|
+|  33003| young|null|     F|null|null|null|null|null|null|   null|
+|  33756| young|null|     M|null|null|null|null|null|null|   null|
+|  33184|midage|null|     M|null|null|null|null|null|null|   null|
+|  33436|midage|null|     M|null|null|null|null|null|null|   null|
++-------+------+----+------+----+----+----+----+----+----+-------+
+only showing top 20 rows
+
+>>> cass_df = spark.sql("select * from cass_df where user_id between 33000 and 34000").explain()
+== Physical Plan ==
+*(1) Filter ((isnotnull(user_id#49) && (user_id#49 >= 33000)) && (user_id#49 <= 34000))
++- *(1) Scan org.apache.spark.sql.cassandra.CassandraSourceRelation@5024b623 [user_id#49,age#50,c#51,gender#52,ma1#53,ma2#54,mi1#55,mi2#56,s1#57,s2#58,segment#59] PushedFilters: [IsNotNull(user_id), GreaterThanOrEqual(user_id,33000), LessThanOrEqual(user_id,34000)], ReadSchema: struct<user_id:int,age:string,c:int,gender:string,ma1:int,ma2:int,mi1:int,mi2:int,s1:int,s2:int,s...
+>>> cass_df = spark.sql("select count(*) from cass_df where user_id between 33000 and 34000").explain()
+== Physical Plan ==
+*(2) HashAggregate(keys=[], functions=[count(1)])
++- Exchange SinglePartition
+   +- *(1) HashAggregate(keys=[], functions=[partial_count(1)])
+      +- *(1) Project
+         +- *(1) Filter ((isnotnull(user_id#49) && (user_id#49 >= 33000)) && (user_id#49 <= 34000))
+            +- *(1) Scan org.apache.spark.sql.cassandra.CassandraSourceRelation@5024b623 [user_id#49] PushedFilters: [IsNotNull(user_id), GreaterThanOrEqual(user_id,33000), LessThanOrEqual(user_id,34000)], ReadSchema: struct<user_id:int>
+>>> cass_df = spark.sql("select count(*) from cass_df where user_id between 33000 and 34000").show()
++--------+
+|count(1)|
++--------+
+|     981|
++--------+
+
+>>> cass_df = spark.sql("select count(*) from cass_df where user_id between 33000 and 34000").explain()
+== Physical Plan ==
+*(2) HashAggregate(keys=[], functions=[count(1)])
++- Exchange SinglePartition
+   +- *(1) HashAggregate(keys=[], functions=[partial_count(1)])
+      +- *(1) Project
+         +- *(1) Filter ((isnotnull(user_id#49) && (user_id#49 >= 33000)) && (user_id#49 <= 34000))
+            +- *(1) Scan org.apache.spark.sql.cassandra.CassandraSourceRelation@5024b623 [user_id#49] PushedFilters: [IsNotNull(user_id), GreaterThanOrEqual(user_id,33000), LessThanOrEqual(user_id,34000)], ReadSchema: struct<user_id:int>
+>>> cass_df = spark.sql("select count(*) from cass_df where user_id > 33000 and user_id < 34000").explain()
+== Physical Plan ==
+*(2) HashAggregate(keys=[], functions=[count(1)])
++- Exchange SinglePartition
+   +- *(1) HashAggregate(keys=[], functions=[partial_count(1)])
+      +- *(1) Project
+         +- *(1) Filter ((isnotnull(user_id#49) && (user_id#49 > 33000)) && (user_id#49 < 34000))
+            +- *(1) Scan org.apache.spark.sql.cassandra.CassandraSourceRelation@5024b623 [user_id#49] PushedFilters: [IsNotNull(user_id), GreaterThan(user_id,33000), LessThan(user_id,34000)], ReadSchema: struct<user_id:int>
+>>> cass_df = spark.sql("select count(*) from cass_df where user_id in (33408, 33475)").show()
+22/01/24 11:51:38 WARN core.RequestHandler: Query '[2 bound values] SELECT count(*) FROM "keyspace1"."users_unknown" WHERE "user_id" IN (?, ?)   ALLOW FILTERING;' generated server side warning(s): Aggregation query used on multiple partition keys (IN restriction)
++--------+
+|count(1)|
++--------+
+|       2|
++--------+
+
+>>> cass_df = spark.sql("select count(*) from cass_df where user_id in (33408, 33475)").explain()
+== Physical Plan ==
+*(2) HashAggregate(keys=[], functions=[count(1)])
++- Exchange SinglePartition
+   +- *(1) HashAggregate(keys=[], functions=[partial_count(1)])
+      +- *(1) Project
+         +- *(1) Scan org.apache.spark.sql.cassandra.CassandraSourceRelation@5024b623 [] PushedFilters: [*In(user_id, [33408,33475])], ReadSchema: struct<>
+>>> cass_df = spark.sql("select * from cass_df where user_id in (33408, 33475)").show()
++-------+------+----+------+----+----+----+----+----+----+-------+
+|user_id|   age|   c|gender| ma1| ma2| mi1| mi2|  s1|  s2|segment|
++-------+------+----+------+----+----+----+----+----+----+-------+
+|  33408| young|null|     M|null|null|null|null|null|null|   null|
+|  33475|midage|null|     F|null|null|null|null|null|null|   null|
++-------+------+----+------+----+----+----+----+----+----+-------+
+
+>>> cass_df = spark.sql("select * from cass_df where user_id in (33408, 33475)").explain()
+== Physical Plan ==
+*(1) Scan org.apache.spark.sql.cassandra.CassandraSourceRelation@5024b623 [user_id#49,age#50,c#51,gender#52,ma1#53,ma2#54,mi1#55,mi2#56,s1#57,s2#58,segment#59] PushedFilters: [*In(user_id, [33408,33475])], ReadSchema: struct<user_id:int,age:string,c:int,gender:string,ma1:int,ma2:int,mi1:int,mi2:int,s1:int,s2:int,s...
+>>> cass_df = spark.sql("select count(*) from cass_df where user_id in (33408, 33475)").explain()
+== Physical Plan ==
+*(2) HashAggregate(keys=[], functions=[count(1)])
++- Exchange SinglePartition
+   +- *(1) HashAggregate(keys=[], functions=[partial_count(1)])
+      +- *(1) Project
+         +- *(1) Scan org.apache.spark.sql.cassandra.CassandraSourceRelation@5024b623 [] PushedFilters: [*In(user_id, [33408,33475])], ReadSchema: struct<>
+>>> exit
+Use exit() or Ctrl-D (i.e. EOF) to exit
+>>> exit()
+[student898_2@bigdataanalytics-worker-3 ~]$ logout
+Connection to 37.139.41.176 closed.
+igor@igor-MS-7808:~$ 
+
