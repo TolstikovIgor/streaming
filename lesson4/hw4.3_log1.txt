@@ -1,0 +1,270 @@
+igor@igor-MS-7808:~$ ssh -i ~/.ssh/id_rsa_student898_2 student898_2@37.139.41.176
+Last login: Sat Jan 22 22:21:23 2022 from 109.252.19.10
+[student898_2@bigdataanalytics-worker-3 ~]$ ls  for_stream
+archive.csv  data.json    drake_data.json  iris.json          product_list2.csv  product_list4.csv
+data.csv     dataset.csv  file1.json       product_list1.csv  product_list3.csv  product_list.csv
+[student898_2@bigdataanalytics-worker-3 ~]$ less for_stream/data.csv
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -ls
+Found 8 items
+drwx------   - student898_2 student898_2          0 2022-01-22 06:00 .Trash
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-20 19:25 .sparkStaging
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-21 20:33 checkpoints
+drwxr-xr-x   - student898_2 student898_2          0 2021-12-15 22:13 for_stream
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-21 21:38 input_csv_for_stream
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-21 22:24 my_parquet_sink
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-21 22:24 tolstykov_les4_file_checkpoint
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-21 22:32 tolstykov_les4_kafka_checkpoint
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -rm -f -r checkpoints
+22/01/22 22:30:51 INFO fs.TrashPolicyDefault: Moved: 'hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/checkpoints' to trash at: hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/.Trash/Current/user/student898_2/checkpoints
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -rm -f -r input_csv_for_stream
+22/01/22 22:31:26 INFO fs.TrashPolicyDefault: Moved: 'hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/input_csv_for_stream' to trash at: hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/.Trash/Current/user/student898_2/input_csv_for_stream
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -rm -f -r my_parquet_sink
+22/01/22 22:31:51 INFO fs.TrashPolicyDefault: Moved: 'hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/my_parquet_sink' to trash at: hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/.Trash/Current/user/student898_2/my_parquet_sink
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -rm -f -r tolstykov_les4_file_checkpoint
+22/01/22 22:32:21 INFO fs.TrashPolicyDefault: Moved: 'hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/tolstykov_les4_file_checkpoint' to trash at: hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/.Trash/Current/user/student898_2/tolstykov_les4_file_checkpoint
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -rm -f -r tolstykov_les4_kafka_checkpoint
+22/01/22 22:32:56 INFO fs.TrashPolicyDefault: Moved: 'hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/tolstykov_les4_kafka_checkpoint' to trash at: hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/.Trash/Current/user/student898_2/tolstykov_les4_kafka_checkpoint
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -ls
+Found 3 items
+drwx------   - student898_2 student898_2          0 2022-01-22 22:30 .Trash
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-20 19:25 .sparkStaging
+drwxr-xr-x   - student898_2 student898_2          0 2021-12-15 22:13 for_stream
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -mkdir input_csv_for_stream
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -ls
+Found 4 items
+drwx------   - student898_2 student898_2          0 2022-01-22 22:30 .Trash
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-20 19:25 .sparkStaging
+drwxr-xr-x   - student898_2 student898_2          0 2021-12-15 22:13 for_stream
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-22 22:34 input_csv_for_stream
+[student898_2@bigdataanalytics-worker-3 ~]$ export SPARK_KAFKA_VERSION=0.10
+[student898_2@bigdataanalytics-worker-3 ~]$ /opt/spark-2.4.8/bin/pyspark --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.5 --driver-memory 512m --master local[1]
+Python 2.7.5 (default, Nov 16 2020, 22:23:17) 
+[GCC 4.8.5 20150623 (Red Hat 4.8.5-44)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+Ivy Default Cache set to: /home/student898_2/.ivy2/cache
+The jars for the packages stored in: /home/student898_2/.ivy2/jars
+:: loading settings :: url = jar:file:/opt/spark-2.4.8/jars/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+org.apache.spark#spark-sql-kafka-0-10_2.11 added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-8b754f09-3f01-4b34-b9f4-ef02449d6383;1.0
+	confs: [default]
+	found org.apache.spark#spark-sql-kafka-0-10_2.11;2.4.5 in central
+	found org.apache.kafka#kafka-clients;2.0.0 in central
+	found org.lz4#lz4-java;1.4.0 in central
+	found org.xerial.snappy#snappy-java;1.1.7.3 in central
+	found org.slf4j#slf4j-api;1.7.16 in central
+	found org.spark-project.spark#unused;1.0.0 in central
+:: resolution report :: resolve 342ms :: artifacts dl 7ms
+	:: modules in use:
+	org.apache.kafka#kafka-clients;2.0.0 from central in [default]
+	org.apache.spark#spark-sql-kafka-0-10_2.11;2.4.5 from central in [default]
+	org.lz4#lz4-java;1.4.0 from central in [default]
+	org.slf4j#slf4j-api;1.7.16 from central in [default]
+	org.spark-project.spark#unused;1.0.0 from central in [default]
+	org.xerial.snappy#snappy-java;1.1.7.3 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   6   |   0   |   0   |   0   ||   6   |   0   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-8b754f09-3f01-4b34-b9f4-ef02449d6383
+	confs: [default]
+	0 artifacts copied, 6 already retrieved (0kB/11ms)
+22/01/22 22:35:15 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+22/01/22 22:35:17 WARN util.Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /__ / .__/\_,_/_/ /_/\_\   version 2.4.8
+      /_/
+
+Using Python version 2.7.5 (default, Nov 16 2020 22:23:17)
+SparkSession available as 'spark'.
+>>> from pyspark.sql import functions as F
+>>> from pyspark.sql.types import StructType, StringType, FloatType
+>>> kafka_brokers = "bigdataanalytics-worker-3:6667"
+>>> raw_data = spark.readStream. \
+...     format("kafka"). \
+...     option("kafka.bootstrap.servers", kafka_brokers). \
+...     option("subscribe", "tolstykov_les4"). \
+...     option("startingOffsets", "earliest"). \
+...     option("maxOffsetsPerTrigger", "5"). \
+...     load()
+>>> schema = StructType() \
+...     .add("time_id", StringType()) \
+...     .add("ping_ms", StringType()) \
+...     .add("temperature_c", StringType()) \
+...     .add("humidity_p", StringType())
+>>> parsed_data = raw_data \
+...     .select(F.from_json(F.col("value").cast("String"), schema).alias("value"), "offset") \
+...     .select("value.*", "offset")
+>>> parsed_data.printSchema()
+root
+ |-- time_id: string (nullable = true)
+ |-- ping_ms: string (nullable = true)
+ |-- temperature_c: string (nullable = true)
+ |-- humidity_p: string (nullable = true)
+ |-- offset: long (nullable = true)
+
+>>> raw_data.printSchema()
+root
+ |-- key: binary (nullable = true)
+ |-- value: binary (nullable = true)
+ |-- topic: string (nullable = true)
+ |-- partition: integer (nullable = true)
+ |-- offset: long (nullable = true)
+ |-- timestamp: timestamp (nullable = true)
+ |-- timestampType: integer (nullable = true)
+
+>>> def console_output(df, freq):
+...     return df.writeStream \
+...         .format("console") \
+...         .trigger(processingTime='%s seconds' % freq) \
+...         .option("truncate",False) \
+...         .start()
+... 
+>>> out = console_output(parsed_data, 5)
+22/01/22 22:49:06 WARN shortcircuit.DomainSocketFactory: The short-circuit local reads feature cannot be used because libhadoop cannot be loaded.
+-------------------------------------------                                     
+Batch: 0
+-------------------------------------------
++-------+-------+-------------+----------+------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|
++-------+-------+-------------+----------+------+
+|null   |null   |null         |null      |0     |
+|null   |null   |null         |null      |1     |
+|null   |null   |null         |null      |2     |
+|null   |null   |null         |null      |3     |
+|null   |null   |null         |null      |4     |
++-------+-------+-------------+----------+------+
+
+22/01/22 22:49:12 WARN streaming.ProcessingTimeExecutor: Current batch is falling behind. The trigger interval is 5000 milliseconds, but spent 5370 milliseconds
+-------------------------------------------
+Batch: 1
+-------------------------------------------
++-------+-------+-------------+----------+------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|
++-------+-------+-------------+----------+------+
+|null   |null   |null         |null      |5     |
+|null   |null   |null         |null      |6     |
+|null   |null   |null         |null      |7     |
+|null   |null   |null         |null      |8     |
+|null   |null   |null         |null      |9     |
++-------+-------+-------------+----------+------+
+
+-------------------------------------------
+Batch: 2
+-------------------------------------------
++-------+-------+-------------+----------+------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|
++-------+-------+-------------+----------+------+
+|null   |null   |null         |null      |10    |
+|null   |null   |null         |null      |11    |
+|null   |null   |null         |null      |12    |
+|null   |null   |null         |null      |13    |
+|null   |null   |null         |null      |14    |
++-------+-------+-------------+----------+------+
+
+>>> -------------------------------------------
+Batch: 3
+-------------------------------------------
++-------+-------+-------------+----------+------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|
++-------+-------+-------------+----------+------+
+|null   |null   |null         |null      |15    |
+|null   |null   |null         |null      |16    |
+|null   |null   |null         |null      |17    |
+|null   |null   |null         |null      |18    |
+|null   |null   |null         |null      |19    |
++-------+-------+-------------+----------+------+
+
+-------------------------------------------
+Batch: 4
+-------------------------------------------
++-------+-------+-------------+----------+------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|
++-------+-------+-------------+----------+------+
+|null   |null   |null         |null      |20    |
+|null   |null   |null         |null      |21    |
+|null   |null   |null         |null      |22    |
+|null   |null   |null         |null      |23    |
+|null   |null   |null         |null      |24    |
++-------+-------+-------------+----------+------+
+
+out.stop()
+>>> out.stop()
+>>> def memory_sink(df, freq):
+...     return df.writeStream.format("memory") \
+...             .queryName("my_memory_sink_table") \
+...             .trigger(processingTime='%s seconds' % freq) \
+...             .start()
+... 
+>>> stream = memory_sink(parsed_data, 10)
+>>> spark.sql("select * from my_memory_sink_table").show()
++-------+-------+-------------+----------+------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|
++-------+-------+-------------+----------+------+
+|   null|   null|         null|      null|     0|
+|   null|   null|         null|      null|     1|
+|   null|   null|         null|      null|     2|
+|   null|   null|         null|      null|     3|
+|   null|   null|         null|      null|     4|
+|   null|   null|         null|      null|     5|
+|   null|   null|         null|      null|     6|
+|   null|   null|         null|      null|     7|
+|   null|   null|         null|      null|     8|
+|   null|   null|         null|      null|     9|
+|   null|   null|         null|      null|    10|
+|   null|   null|         null|      null|    11|
+|   null|   null|         null|      null|    12|
+|   null|   null|         null|      null|    13|
+|   null|   null|         null|      null|    14|
++-------+-------+-------------+----------+------+
+
+>>> spark.sql('select count(*) from my_memory_sink_table').show()
++--------+
+|count(1)|
++--------+
+|      40|
++--------+
+
+>>> spark.sql('select count(*) from my_memory_sink_table').show()
++--------+
+|count(1)|
++--------+
+|      50|
++--------+
+
+>>> def file_sink(df, freq):
+...     return df.writeStream.format("parquet") \
+...             .trigger(processingTime='%s seconds' % freq) \
+...             .option("path", "my_parquet_sink") \
+...             .option("checkpointLocation", "tolstykov_les4_file_checkpoint") \
+...             .start()
+... 
+>>> В первом терминале
+  File "<stdin>", line 1
+    В первом терминале
+    ^
+SyntaxError: invalid syntax
+>>> stream = file_sink(parsed_data, 5)
+>>> stream.stop()
+>>> def kafka_sink(df, freq):
+...     return df.selectExpr("CAST(null AS STRING) as key", "CAST(struct(*) AS STRING) as value") \
+...             .writeStream \
+...             .format("kafka") \
+...             .trigger(processingTime='%s seconds' % freq) \
+...             .option("topic", "tolstykov_les4") \
+...             .option("kafka.bootstrap.servers", kafka_brokers) \
+...             .option("checkpointLocation", "tolstykov_les4_kafka_checkpoint") \
+...             .start()
+... 
+>>> stream = kafka_sink(parsed_data, 5)
+>>> stream.stop()
+>>> exit()
+[student898_2@bigdataanalytics-worker-3 ~]$ logout
+Connection to 37.139.41.176 closed.
+igor@igor-MS-7808:~$ 
