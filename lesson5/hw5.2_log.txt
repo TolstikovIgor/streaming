@@ -1,0 +1,466 @@
+igor@igor-MS-7808:~$ ssh -i ~/.ssh/id_rsa_student898_2 student898_2@37.139.41.176
+Last login: Fri Jan 21 17:32:52 2022 from 109-252-19-10.nat.spd-mgts.ru
+[student898_2@bigdataanalytics-worker-3 ~]$ /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper bigdataanalytics-worker-3:2181 --list
+898_1
+MTG
+__consumer_offsets
+cherneev-test
+cherneev_test
+daryaGre_les2
+incident_event_json
+life_expectancy
+markevich
+oganesyan_les2
+order_items
+orders_json
+s559_6
+shadrin_iris
+shadrin_iris_sink
+student559_12
+student559_8_lesson2
+test-lesson2
+test_lesson2_1
+test_lesson_2_sapr
+tolstykov_les4
+tolstykov_les4_sink
+us_navy
+[student898_2@bigdataanalytics-worker-3 ~]$ /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --topic tolstykov_les4 --from-beginning --bootstrap-server bigdataanalytics-worker-3:6667 --max-messages 15
+/**
+ Export to JSON plugin for PHPMyAdmin
+ @version 4.6.6deb5
+ */
+
+// Database 'cs_project'
+
+// cs_project.data
+
+[{
+    "time_id": "2021-09-30 21:08:02",
+    "ping_ms": "17.28",
+    "temperature_c": "25",
+    "humidity_p": "35"
+}, {
+Processed a total of 15 messages
+[student898_2@bigdataanalytics-worker-3 ~]$ export SPARK_KAFKA_VERSION=0.10
+[student898_2@bigdataanalytics-worker-3 ~]$ /opt/spark-2.4.8/bin/pyspark --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.5 --driver-memory 512m --master local[1]
+Python 2.7.5 (default, Nov 16 2020, 22:23:17) 
+[GCC 4.8.5 20150623 (Red Hat 4.8.5-44)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+Ivy Default Cache set to: /home/student898_2/.ivy2/cache
+The jars for the packages stored in: /home/student898_2/.ivy2/jars
+:: loading settings :: url = jar:file:/opt/spark-2.4.8/jars/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+org.apache.spark#spark-sql-kafka-0-10_2.11 added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-bfa58ca0-4cef-43df-ba48-803e941b6320;1.0
+	confs: [default]
+	found org.apache.spark#spark-sql-kafka-0-10_2.11;2.4.5 in central
+	found org.apache.kafka#kafka-clients;2.0.0 in central
+	found org.lz4#lz4-java;1.4.0 in central
+	found org.xerial.snappy#snappy-java;1.1.7.3 in central
+	found org.slf4j#slf4j-api;1.7.16 in central
+	found org.spark-project.spark#unused;1.0.0 in central
+:: resolution report :: resolve 384ms :: artifacts dl 5ms
+	:: modules in use:
+	org.apache.kafka#kafka-clients;2.0.0 from central in [default]
+	org.apache.spark#spark-sql-kafka-0-10_2.11;2.4.5 from central in [default]
+	org.lz4#lz4-java;1.4.0 from central in [default]
+	org.slf4j#slf4j-api;1.7.16 from central in [default]
+	org.spark-project.spark#unused;1.0.0 from central in [default]
+	org.xerial.snappy#snappy-java;1.1.7.3 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   6   |   0   |   0   |   0   ||   6   |   0   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-bfa58ca0-4cef-43df-ba48-803e941b6320
+	confs: [default]
+	0 artifacts copied, 6 already retrieved (0kB/6ms)
+22/01/21 20:07:31 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+22/01/21 20:07:33 WARN util.Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /__ / .__/\_,_/_/ /_/\_\   version 2.4.8
+      /_/
+
+Using Python version 2.7.5 (default, Nov 16 2020 22:23:17)
+SparkSession available as 'spark'.
+>>> from pyspark.sql import functions as F
+>>> from pyspark.sql.types import StructType, StringType, FloatType
+>>> kafka_brokers = "bigdataanalytics-worker-3:6667"
+>>> raw_data = spark.readStream. \
+...     format("kafka"). \
+...     option("kafka.bootstrap.servers", kafka_brokers). \
+...     option("subscribe", "tolstykov_les4"). \
+...     option("startingOffsets", "earliest"). \
+...     option("maxOffsetsPerTrigger", "6"). \
+...     load()
+>>> 
+>>> schema = StructType() \
+...     .add("time_id", StringType()) \
+...     .add("ping_ms", StringType()) \
+...     .add("temperature_c", StringType()) \
+...     .add("humidity_p", StringType())
+>>> def console_output(df, freq):
+...     return df.writeStream \
+...         .format("console") \
+...         .trigger(processingTime='%s seconds' % freq ) \
+...         .options(truncate=False) \
+...         .start()
+... 
+>>> parsed_data = raw_data \
+...     .select(F.from_json(F.col("value").cast("String"), schema).alias("value"), "offset") \
+...     .select("value.*", "offset")
+>>> out = console_output(raw_data, 10)
+22/01/21 20:20:27 WARN shortcircuit.DomainSocketFactory: The short-circuit local reads feature cannot be used because libhadoop cannot be loaded.
+-------------------------------------------                                     
+Batch: 0
+-------------------------------------------
++----+----------------------------------------------------------------------------------------------------------------+--------------+---------+------+-----------------------+-------------+
+|key |value                                                                                                           |topic         |partition|offset|timestamp              |timestampType|
++----+----------------------------------------------------------------------------------------------------------------+--------------+---------+------+-----------------------+-------------+
+|null|[2F 2A 2A]                                                                                                      |tolstykov_les4|0        |0     |2022-01-17 19:08:37.235|0            |
+|null|[20 45 78 70 6F 72 74 20 74 6F 20 4A 53 4F 4E 20 70 6C 75 67 69 6E 20 66 6F 72 20 50 48 50 4D 79 41 64 6D 69 6E]|tolstykov_les4|0        |1     |2022-01-17 19:08:37.243|0            |
+|null|[20 40 76 65 72 73 69 6F 6E 20 34 2E 36 2E 36 64 65 62 35]                                                      |tolstykov_les4|0        |2     |2022-01-17 19:08:37.243|0            |
+|null|[20 2A 2F]                                                                                                      |tolstykov_les4|0        |3     |2022-01-17 19:08:37.243|0            |
+|null|[]                                                                                                              |tolstykov_les4|0        |4     |2022-01-17 19:08:37.243|0            |
+|null|[2F 2F 20 44 61 74 61 62 61 73 65 20 27 63 73 5F 70 72 6F 6A 65 63 74 27]                                       |tolstykov_les4|0        |5     |2022-01-17 19:08:37.244|0            |
++----+----------------------------------------------------------------------------------------------------------------+--------------+---------+------+-----------------------+-------------+
+
+-------------------------------------------
+Batch: 1
+-------------------------------------------
++----+----------------------------------------------------------------------------------------------------------------+--------------+---------+------+-----------------------+-------------+
+|key |value                                                                                                           |topic         |partition|offset|timestamp              |timestampType|
++----+----------------------------------------------------------------------------------------------------------------+--------------+---------+------+-----------------------+-------------+
+|null|[]                                                                                                              |tolstykov_les4|0        |6     |2022-01-17 19:08:37.244|0            |
+|null|[2F 2F 20 63 73 5F 70 72 6F 6A 65 63 74 2E 64 61 74 61]                                                         |tolstykov_les4|0        |7     |2022-01-17 19:08:37.244|0            |
+|null|[]                                                                                                              |tolstykov_les4|0        |8     |2022-01-17 19:08:37.244|0            |
+|null|[5B 7B]                                                                                                         |tolstykov_les4|0        |9     |2022-01-17 19:08:37.244|0            |
+|null|[20 20 20 20 22 74 69 6D 65 5F 69 64 22 3A 20 22 32 30 32 31 2D 30 39 2D 33 30 20 32 31 3A 30 38 3A 30 32 22 2C]|tolstykov_les4|0        |10    |2022-01-17 19:08:37.244|0            |
+|null|[20 20 20 20 22 70 69 6E 67 5F 6D 73 22 3A 20 22 31 37 2E 32 38 22 2C]                                          |tolstykov_les4|0        |11    |2022-01-17 19:08:37.244|0            |
++----+----------------------------------------------------------------------------------------------------------------+--------------+---------+------+-----------------------+-------------+
+
+-------------------------------------------
+Batch: 2
+-------------------------------------------
++----+----------------------------------------------------------------------------------------------------------------+--------------+---------+------+-----------------------+-------------+
+|key |value                                                                                                           |topic         |partition|offset|timestamp              |timestampType|
++----+----------------------------------------------------------------------------------------------------------------+--------------+---------+------+-----------------------+-------------+
+|null|[20 20 20 20 22 74 65 6D 70 65 72 61 74 75 72 65 5F 63 22 3A 20 22 32 35 22 2C]                                 |tolstykov_les4|0        |12    |2022-01-17 19:08:37.244|0            |
+|null|[20 20 20 20 22 68 75 6D 69 64 69 74 79 5F 70 22 3A 20 22 33 35 22]                                             |tolstykov_les4|0        |13    |2022-01-17 19:08:37.244|0            |
+|null|[7D 2C 20 7B]                                                                                                   |tolstykov_les4|0        |14    |2022-01-17 19:08:37.244|0            |
+|null|[20 20 20 20 22 74 69 6D 65 5F 69 64 22 3A 20 22 32 30 32 31 2D 30 39 2D 33 30 20 32 31 3A 30 39 3A 30 32 22 2C]|tolstykov_les4|0        |15    |2022-01-17 19:08:37.244|0            |
+|null|[20 20 20 20 22 70 69 6E 67 5F 6D 73 22 3A 20 22 31 37 2E 37 33 22 2C]                                          |tolstykov_les4|0        |16    |2022-01-17 19:08:37.244|0            |
+|null|[20 20 20 20 22 74 65 6D 70 65 72 61 74 75 72 65 5F 63 22 3A 20 22 32 33 22 2C]                                 |tolstykov_les4|0        |17    |2022-01-17 19:08:37.244|0            |
++----+----------------------------------------------------------------------------------------------------------------+--------------+---------+------+-----------------------+-------------+
+
+>>> -------------------------------------------
+Batch: 3
+-------------------------------------------
++----+----------------------------------------------------------------------------------------------------------------+--------------+---------+------+-----------------------+-------------+
+|key |value                                                                                                           |topic         |partition|offset|timestamp              |timestampType|
++----+----------------------------------------------------------------------------------------------------------------+--------------+---------+------+-----------------------+-------------+
+|null|[20 20 20 20 22 68 75 6D 69 64 69 74 79 5F 70 22 3A 20 22 34 30 22]                                             |tolstykov_les4|0        |18    |2022-01-17 19:08:37.245|0            |
+|null|[7D 2C 20 7B]                                                                                                   |tolstykov_les4|0        |19    |2022-01-17 19:08:37.245|0            |
+|null|[20 20 20 20 22 74 69 6D 65 5F 69 64 22 3A 20 22 32 30 32 31 2D 30 39 2D 33 30 20 32 31 3A 31 30 3A 30 31 22 2C]|tolstykov_les4|0        |20    |2022-01-17 19:08:37.245|0            |
+|null|[20 20 20 20 22 70 69 6E 67 5F 6D 73 22 3A 20 22 31 38 2E 35 39 22 2C]                                          |tolstykov_les4|0        |21    |2022-01-17 19:08:37.245|0            |
+|null|[20 20 20 20 22 74 65 6D 70 65 72 61 74 75 72 65 5F 63 22 3A 20 22 32 32 22 2C]                                 |tolstykov_les4|0        |22    |2022-01-17 19:08:37.245|0            |
+|null|[20 20 20 20 22 68 75 6D 69 64 69 74 79 5F 70 22 3A 20 22 34 31 22]                                             |tolstykov_les4|0        |23    |2022-01-17 19:08:37.245|0            |
++----+----------------------------------------------------------------------------------------------------------------+--------------+---------+------+-----------------------+-------------+
+
+>>> -------------------------------------------
+Batch: 4
+-------------------------------------------
++----+----------------------------------------------------------------------------------------------------------------+--------------+---------+------+-----------------------+-------------+
+|key |value                                                                                                           |topic         |partition|offset|timestamp              |timestampType|
++----+----------------------------------------------------------------------------------------------------------------+--------------+---------+------+-----------------------+-------------+
+|null|[7D 2C 20 7B]                                                                                                   |tolstykov_les4|0        |24    |2022-01-17 19:08:37.245|0            |
+|null|[20 20 20 20 22 74 69 6D 65 5F 69 64 22 3A 20 22 32 30 32 31 2D 30 39 2D 33 30 20 32 31 3A 31 32 3A 30 32 22 2C]|tolstykov_les4|0        |25    |2022-01-17 19:08:37.245|0            |
+|null|[20 20 20 20 22 70 69 6E 67 5F 6D 73 22 3A 20 22 31 36 2E 37 33 22 2C]                                          |tolstykov_les4|0        |26    |2022-01-17 19:08:37.245|0            |
+|null|[20 20 20 20 22 74 65 6D 70 65 72 61 74 75 72 65 5F 63 22 3A 20 22 32 32 22 2C]                                 |tolstykov_les4|0        |27    |2022-01-17 19:08:37.245|0            |
+|null|[20 20 20 20 22 68 75 6D 69 64 69 74 79 5F 70 22 3A 20 22 34 32 22]                                             |tolstykov_les4|0        |28    |2022-01-17 19:08:37.245|0            |
+|null|[7D 2C 20 7B]                                                                                                   |tolstykov_les4|0        |29    |2022-01-17 19:08:37.245|0            |
++----+----------------------------------------------------------------------------------------------------------------+--------------+---------+------+-----------------------+-------------+
+
+out.stop()
+>>> out.stop()
+>>> extended_data = raw_data \
+...     .select(F.from_json(F.col("value").cast("String"), schema).alias("value"), "offset") \
+...     .select("value.*", "offset") \
+...     .withColumn("receive_time", F.current_timestamp())
+>>> extended_data.printSchema()
+root
+ |-- time_id: string (nullable = true)
+ |-- ping_ms: string (nullable = true)
+ |-- temperature_c: string (nullable = true)
+ |-- humidity_p: string (nullable = true)
+ |-- offset: long (nullable = true)
+ |-- receive_time: timestamp (nullable = false)
+
+>>> def console_output(df, freq):
+...     return df.writeStream \
+...         .format("console") \
+...         .trigger(processingTime='%s seconds' % freq ) \
+...         .option("checkpointLocation", "checkpoints/duplicates_console_chk") \
+...         .options(truncate=False) \
+...         .start()
+... 
+>>> stream = console_output(extended_iris , 5)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'extended_iris' is not defined
+>>> stream = console_output(extended_data , 5)
+>>> -------------------------------------------
+Batch: 0
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |0     |2022-01-21 20:33:22.769|
+|null   |null   |null         |null      |1     |2022-01-21 20:33:22.769|
+|null   |null   |null         |null      |2     |2022-01-21 20:33:22.769|
+|null   |null   |null         |null      |3     |2022-01-21 20:33:22.769|
+|null   |null   |null         |null      |4     |2022-01-21 20:33:22.769|
+|null   |null   |null         |null      |5     |2022-01-21 20:33:22.769|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------
+Batch: 1
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |6     |2022-01-21 20:33:23.183|
+|null   |null   |null         |null      |7     |2022-01-21 20:33:23.183|
+|null   |null   |null         |null      |8     |2022-01-21 20:33:23.183|
+|null   |null   |null         |null      |9     |2022-01-21 20:33:23.183|
+|null   |null   |null         |null      |10    |2022-01-21 20:33:23.183|
+|null   |null   |null         |null      |11    |2022-01-21 20:33:23.183|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------
+Batch: 2
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |12    |2022-01-21 20:33:25.003|
+|null   |null   |null         |null      |13    |2022-01-21 20:33:25.003|
+|null   |null   |null         |null      |14    |2022-01-21 20:33:25.003|
+|null   |null   |null         |null      |15    |2022-01-21 20:33:25.003|
+|null   |null   |null         |null      |16    |2022-01-21 20:33:25.003|
+|null   |null   |null         |null      |17    |2022-01-21 20:33:25.003|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------
+Batch: 3
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |18    |2022-01-21 20:33:30.004|
+|null   |null   |null         |null      |19    |2022-01-21 20:33:30.004|
+|null   |null   |null         |null      |20    |2022-01-21 20:33:30.004|
+|null   |null   |null         |null      |21    |2022-01-21 20:33:30.004|
+|null   |null   |null         |null      |22    |2022-01-21 20:33:30.004|
+|null   |null   |null         |null      |23    |2022-01-21 20:33:30.004|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------
+Batch: 4
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |24    |2022-01-21 20:33:35.003|
+|null   |null   |null         |null      |25    |2022-01-21 20:33:35.003|
+|null   |null   |null         |null      |26    |2022-01-21 20:33:35.003|
+|null   |null   |null         |null      |27    |2022-01-21 20:33:35.003|
+|null   |null   |null         |null      |28    |2022-01-21 20:33:35.003|
+|null   |null   |null         |null      |29    |2022-01-21 20:33:35.003|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------
+Batch: 5
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |30    |2022-01-21 20:33:40.003|
+|null   |null   |null         |null      |31    |2022-01-21 20:33:40.003|
+|null   |null   |null         |null      |32    |2022-01-21 20:33:40.003|
+|null   |null   |null         |null      |33    |2022-01-21 20:33:40.003|
+|null   |null   |null         |null      |34    |2022-01-21 20:33:40.003|
+|null   |null   |null         |null      |35    |2022-01-21 20:33:40.003|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------
+Batch: 6
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |36    |2022-01-21 20:33:45.003|
+|null   |null   |null         |null      |37    |2022-01-21 20:33:45.003|
+|null   |null   |null         |null      |38    |2022-01-21 20:33:45.003|
+|null   |null   |null         |null      |39    |2022-01-21 20:33:45.003|
+|null   |null   |null         |null      |40    |2022-01-21 20:33:45.003|
+|null   |null   |null         |null      |41    |2022-01-21 20:33:45.003|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------
+Batch: 7
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |42    |2022-01-21 20:33:50.003|
+|null   |null   |null         |null      |43    |2022-01-21 20:33:50.003|
+|null   |null   |null         |null      |44    |2022-01-21 20:33:50.003|
+|null   |null   |null         |null      |45    |2022-01-21 20:33:50.003|
+|null   |null   |null         |null      |46    |2022-01-21 20:33:50.003|
+|null   |null   |null         |null      |47    |2022-01-21 20:33:50.003|
++-------+-------+-------------+----------+------+-----------------------+
+
+>>> -------------------------------------------
+Batch: 8
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |48    |2022-01-21 20:33:55.004|
+|null   |null   |null         |null      |49    |2022-01-21 20:33:55.004|
+|null   |null   |null         |null      |50    |2022-01-21 20:33:55.004|
+|null   |null   |null         |null      |51    |2022-01-21 20:33:55.004|
+|null   |null   |null         |null      |52    |2022-01-21 20:33:55.004|
+|null   |null   |null         |null      |53    |2022-01-21 20:33:55.004|
++-------+-------+-------------+----------+------+-----------------------+
+
+>>> -------------------------------------------
+Batch: 9
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |54    |2022-01-21 20:34:00.004|
+|null   |null   |null         |null      |55    |2022-01-21 20:34:00.004|
+|null   |null   |null         |null      |56    |2022-01-21 20:34:00.004|
+|null   |null   |null         |null      |57    |2022-01-21 20:34:00.004|
+|null   |null   |null         |null      |58    |2022-01-21 20:34:00.004|
+|null   |null   |null         |null      |59    |2022-01-21 20:34:00.004|
++-------+-------+-------------+----------+------+-----------------------+
+
+>>> -------------------------------------------
+Batch: 10
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |60    |2022-01-21 20:34:05.003|
+|null   |null   |null         |null      |61    |2022-01-21 20:34:05.003|
+|null   |null   |null         |null      |62    |2022-01-21 20:34:05.003|
+|null   |null   |null         |null      |63    |2022-01-21 20:34:05.003|
+|null   |null   |null         |null      |64    |2022-01-21 20:34:05.003|
+|null   |null   |null         |null      |65    |2022-01-21 20:34:05.003|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------
+Batch: 11
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |66    |2022-01-21 20:34:10.004|
+|null   |null   |null         |null      |67    |2022-01-21 20:34:10.004|
+|null   |null   |null         |null      |68    |2022-01-21 20:34:10.004|
+|null   |null   |null         |null      |69    |2022-01-21 20:34:10.004|
+|null   |null   |null         |null      |70    |2022-01-21 20:34:10.004|
+|null   |null   |null         |null      |71    |2022-01-21 20:34:10.004|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------
+Batch: 12
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |72    |2022-01-21 20:34:15.004|
+|null   |null   |null         |null      |73    |2022-01-21 20:34:15.004|
+|null   |null   |null         |null      |74    |2022-01-21 20:34:15.004|
+|null   |null   |null         |null      |75    |2022-01-21 20:34:15.004|
+|null   |null   |null         |null      |76    |2022-01-21 20:34:15.004|
+|null   |null   |null         |null      |77    |2022-01-21 20:34:15.004|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------
+Batch: 13
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |78    |2022-01-21 20:34:20.003|
+|null   |null   |null         |null      |79    |2022-01-21 20:34:20.003|
+|null   |null   |null         |null      |80    |2022-01-21 20:34:20.003|
+|null   |null   |null         |null      |81    |2022-01-21 20:34:20.003|
+|null   |null   |null         |null      |82    |2022-01-21 20:34:20.003|
+|null   |null   |null         |null      |83    |2022-01-21 20:34:20.003|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------
+Batch: 14
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |84    |2022-01-21 20:34:25.004|
+|null   |null   |null         |null      |85    |2022-01-21 20:34:25.004|
+|null   |null   |null         |null      |86    |2022-01-21 20:34:25.004|
+|null   |null   |null         |null      |87    |2022-01-21 20:34:25.004|
+|null   |null   |null         |null      |88    |2022-01-21 20:34:25.004|
+|null   |null   |null         |null      |89    |2022-01-21 20:34:25.004|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------
+Batch: 15
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |90    |2022-01-21 20:34:30.003|
+|null   |null   |null         |null      |91    |2022-01-21 20:34:30.003|
+|null   |null   |null         |null      |92    |2022-01-21 20:34:30.003|
+|null   |null   |null         |null      |93    |2022-01-21 20:34:30.003|
+|null   |null   |null         |null      |94    |2022-01-21 20:34:30.003|
+|null   |null   |null         |null      |95    |2022-01-21 20:34:30.003|
++-------+-------+-------------+----------+------+-----------------------+
+
+stream.stop()
+>>> stream.stop()
+>>> waterwarked_data = extended_data.withWatermark("receive_time", "30 seconds")
+>>> waterwarked_data.printSchema()
+root
+ |-- time_id: string (nullable = true)
+ |-- ping_ms: string (nullable = true)
+ |-- temperature_c: string (nullable = true)
+ |-- humidity_p: string (nullable = true)
+ |-- offset: long (nullable = true)
+ |-- receive_time: timestamp (nullable = false)
+
+>>> extended_data.printSchema()
+root
+ |-- time_id: string (nullable = true)
+ |-- ping_ms: string (nullable = true)
+ |-- temperature_c: string (nullable = true)
+ |-- humidity_p: string (nullable = true)
+ |-- offset: long (nullable = true)
+ |-- receive_time: timestamp (nullable = false)
+
+>>> stream.stop()
+>>> exit()
+[student898_2@bigdataanalytics-worker-3 ~]$ logout
+Connection to 37.139.41.176 closed.
+igor@igor-MS-7808:~$ 
