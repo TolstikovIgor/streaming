@@ -1,0 +1,328 @@
+igor@igor-MS-7808:~$ ssh -i ~/.ssh/id_rsa_student898_2 student898_2@37.139.41.176
+Last login: Mon Feb  7 14:56:57 2022 from 109-252-19-10.nat.spd-mgts.ru
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -ls
+Found 6 items
+drwx------   - student898_2 student898_2          0 2022-02-05 06:00 .Trash
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-30 10:56 .sparkStaging
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-29 21:38 for_stream
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-29 21:49 input_csv_for_stream
+drwxr-xr-x   - student898_2 student898_2          0 2022-02-05 22:04 my_LR_model8
+drwxr-xr-x   - student898_2 student898_2          0 2022-02-05 19:06 parquet_data
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -rm -f -r parquet_data
+22/02/07 15:00:37 INFO fs.TrashPolicyDefault: Moved: 'hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/parquet_data' to trash at: hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/.Trash/Current/user/student898_2/parquet_data
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -rm -f -r my_LR_model8
+22/02/07 15:00:58 INFO fs.TrashPolicyDefault: Moved: 'hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/my_LR_model8' to trash at: hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/.Trash/Current/user/student898_2/my_LR_model8
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -ls
+Found 4 items
+drwx------   - student898_2 student898_2          0 2022-02-07 15:00 .Trash
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-30 10:56 .sparkStaging
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-29 21:38 for_stream
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-29 21:49 input_csv_for_stream
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -ls parquet_data
+ls: `parquet_data': No such file or directory
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -mkdir parquet_data
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -ls
+Found 5 items
+drwx------   - student898_2 student898_2          0 2022-02-07 15:00 .Trash
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-30 10:56 .sparkStaging
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-29 21:38 for_stream
+drwxr-xr-x   - student898_2 student898_2          0 2022-01-29 21:49 input_csv_for_stream
+drwxr-xr-x   - student898_2 student898_2          0 2022-02-07 15:10 parquet_data
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -ls parquet_data/
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -ls parquet_data
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -ls parquet_data /
+Found 12 items
+drwxrwxrwt   - yarn   hadoop          0 2022-02-05 16:59 /app-logs
+drwxr-xr-x   - hdfs   hdfs            0 2021-12-06 18:45 /apps
+drwxr-xr-x   - yarn   hadoop          0 2021-12-06 17:37 /ats
+drwxr-xr-x   - hdfs   hdfs            0 2021-12-06 18:38 /atsv2
+drwxr-xr-x   - hdfs   hdfs            0 2021-12-06 17:37 /hdp
+drwx------   - livy   hdfs            0 2021-12-06 18:40 /livy2-recovery
+drwxr-xr-x   - mapred hdfs            0 2021-12-06 17:37 /mapred
+drwxrwxrwx   - mapred hadoop          0 2021-12-06 18:37 /mr-history
+drwxrwxrwx   - spark  hadoop          0 2022-02-07 15:12 /spark2-history
+drwxrwxrwx   - hdfs   hdfs            0 2022-02-03 15:42 /tmp
+drwxr-xr-x   - hdfs   hdfs            0 2022-02-07 13:57 /user
+drwxr-xr-x   - hdfs   hdfs            0 2021-12-06 18:39 /warehouse
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -ls parquet_data
+[student898_2@bigdataanalytics-worker-3 ~]$ show tables;
+-bash: show: команда не найдена
+[student898_2@bigdataanalytics-worker-3 ~]$ hdfs dfs -ls parquet_data
+[student898_2@bigdataanalytics-worker-3 ~]$ /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper bigdataanalytics-worker-3:2181 --list
+898_1
+MTG
+__consumer_offsets
+aircraft_20
+alchin_les
+alchin_les2
+alex_test
+cherneev-test
+cherneev_test
+covid_desc
+covid_info_sink
+daryaGre
+daryaGre_les2
+daryaGre_sink
+incident_event_json
+iris
+kafka_topic
+lesson3_student685
+lesson_5_iris
+life_expectancy
+markevich
+my_iris_sink
+oganesyan_covid
+order_items
+orders_json
+s559_6
+sales_unknown
+shadrin_data
+shadrin_iris
+shadrin_iris_559
+shadrin_iris_pikalev
+st_covid_desc
+st_covid_variants
+st_lesson5
+student559-12-ks
+student559_12
+student559_17
+student559_17_iris
+student559_17_sink
+student559_8_bank
+student559_8_lesson2
+student559_8_lesson3
+student559_8_lesson4_iris
+student559_8_lesson5
+test-lesson2
+test_iris_sink
+test_lesson2
+test_lesson2_1
+test_lesson_2_sapr
+test_lesson_3_sapr
+tolstykov_les3
+tolstykov_les4
+tolstykov_les4_sink
+tolstykov_les5
+tolstykov_les8
+us_navy_20
+[student898_2@bigdataanalytics-worker-3 ~]$ /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic tolstykov_les8 --zookeeper bigdataanalytics-worker-3:2181
+Topic tolstykov_les8 is marked for deletion.
+Note: This will have no impact if delete.topic.enable is not set to true.
+[student898_2@bigdataanalytics-worker-3 ~]$ /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic tolstykov_les5 --zookeeper bigdataanalytics-worker-3:2181
+Topic tolstykov_les5 is marked for deletion.
+Note: This will have no impact if delete.topic.enable is not set to true.
+[student898_2@bigdataanalytics-worker-3 ~]$ /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic tolstykov_les4 --zookeeper bigdataanalytics-worker-3:2181
+Topic tolstykov_les4 is marked for deletion.
+Note: This will have no impact if delete.topic.enable is not set to true.
+[student898_2@bigdataanalytics-worker-3 ~]$ /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic tolstykov_les3 --zookeeper bigdataanalytics-worker-3:2181
+Topic tolstykov_les3 is marked for deletion.
+Note: This will have no impact if delete.topic.enable is not set to true.
+[student898_2@bigdataanalytics-worker-3 ~]$ /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic tolstykov_les4_sink --zookeeper bigdataanalytics-worker-3:2181
+Topic tolstykov_les4_sink is marked for deletion.
+Note: This will have no impact if delete.topic.enable is not set to true.
+[student898_2@bigdataanalytics-worker-3 ~]$ /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic sales_unknown --zookeeper bigdataanalytics-worker-3:2181
+Topic sales_unknown is marked for deletion.
+Note: This will have no impact if delete.topic.enable is not set to true.
+[student898_2@bigdataanalytics-worker-3 ~]$ /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --topic sales_unknown --zookeeper bigdataanalytics-worker-3:2181 --partitions 1 --replication-factor 1
+WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues it is best to use either, but not both.
+Created topic "sales_unknown".
+[student898_2@bigdataanalytics-worker-3 ~]$ cqlsh
+Connected to Test Cluster at 127.0.0.1:9042
+[cqlsh 6.0.0 | Cassandra 4.0.1 | CQL spec 3.4.5 | Native protocol v5]
+Use HELP for help.
+cqlsh> select keyspace_name, table_name from system_schema.tables where keyspace_name = 'keyspace1';
+
+ keyspace_name | table_name
+---------------+---------------
+     keyspace1 |    prog_langs
+     keyspace1 | users_unknown
+
+(2 rows)
+cqlsh> select keyspace_name, table_name from system_schema.tables;
+
+ keyspace_name          | table_name
+------------------------+--------------------------------
+             st_lesson7 |                 covid_variants
+             st_lesson7 |                     st_animals
+          test_keyspace |                          birds
+                  less7 |                        animals
+                  less7 |                      animals_2
+               lesson_n |                        animals
+            system_auth |            network_permissions
+            system_auth | resource_role_permissons_index
+            system_auth |                   role_members
+            system_auth |               role_permissions
+            system_auth |                          roles
+               projectx |                    users_known
+          system_schema |                     aggregates
+          system_schema |                        columns
+          system_schema |                dropped_columns
+          system_schema |                      functions
+          system_schema |                        indexes
+          system_schema |                      keyspaces
+          system_schema |                         tables
+          system_schema |                       triggers
+          system_schema |                          types
+          system_schema |                          views
+                 s559_6 |                 s559_6_animals
+                 s559_6 |                          users
+           lesson7_emil |                         people
+                lesson7 |                        animals
+                lesson7 |                      animals_2
+                lesson7 |                        clients
+                lesson7 |                     dg_vgsales
+                lesson7 |                     just_books
+                lesson7 |                oganesyan_table
+                lesson7 |                         sensor
+                lesson7 |                  serge_animals
+                lesson7 |                shadrin_animals
+                lesson7 |               tweets_by_year_2
+              keyspace1 |                     prog_langs
+              keyspace1 |                  users_unknown
+ keyspace_student559_17 |                           iris
+     system_distributed |          parent_repair_history
+     system_distributed |                 repair_history
+     system_distributed |              view_build_status
+             lesson7_12 |                        animals
+             lesson7_12 |                      animals_2
+                 system |                      IndexInfo
+                 system |               available_ranges
+                 system |            available_ranges_v2
+                 system |                        batches
+                 system |                    built_views
+                 system |             compaction_history
+                 system |                          local
+                 system |                          paxos
+                 system |                    peer_events
+                 system |                 peer_events_v2
+                 system |                          peers
+                 system |                       peers_v2
+                 system |            prepared_statements
+                 system |                        repairs
+                 system |                 size_estimates
+                 system |               sstable_activity
+                 system |                table_estimates
+                 system |             transferred_ranges
+                 system |          transferred_ranges_v2
+                 system |        view_builds_in_progress
+        student559_12_2 |                   universities
+          student559_12 |                        example
+          keyspace_test |                shadrin_animals
+          system_traces |                         events
+          system_traces |                       sessions
+             lesson7_20 |                  aircraft_copy
+             lesson7_20 |                  aircraft_rows
+             lesson7_20 |                        animals
+
+(71 rows)
+cqlsh> use keyspace1;
+cqlsh:keyspace1> CREATE TABLE users_unknown( user_id int, gender text, age text, c int, s1 int,  ma1 int, mi1 int, s2 int, ma2 int, mi2 int, segment text, primary key (user_id));
+AlreadyExists: Table 'keyspace1.users_unknown' already exists
+cqlsh:keyspace1> select * from users_unknown;
+
+ user_id | age    | c    | gender | ma1  | ma2  | mi1  | mi2  | s1   | s2   | segment
+---------+--------+------+--------+------+------+------+------+------+------+---------
+   35262 |  young | null |      M | null | null | null | null | null | null |    null
+   39433 | midage | null |      F | null | null | null | null | null | null |    null
+   37032 |  young | null |      M | null | null | null | null | null | null |    null
+   48451 | midage | null |      F | null | null | null | null | null | null |    null
+   40239 |  young | null |      F | null | null | null | null | null | null |    null
+   47076 |  young | null |      M | null | null | null | null | null | null |    null
+   41114 |    old | null |      M | null | null | null | null | null | null |    null
+   34323 |  young | null |      F | null | null | null | null | null | null |    null
+   35243 |    old | null |      F | null | null | null | null | null | null |    null
+   43690 | midage | null |      M | null | null | null | null | null | null |    null
+   46348 | midage | null |      M | null | null | null | null | null | null |    null
+   40244 |    old | null |      M | null | null | null | null | null | null |    null
+   35375 |    old | null |      F | null | null | null | null | null | null |    null
+   49300 | midage | null |      M | null | null | null | null | null | null |    null
+   44654 |    old | null |      M | null | null | null | null | null | null |    null
+   31676 |    old | null |      M | null | null | null | null | null | null |    null
+   43799 |    old | null |      F | null | null | null | null | null | null |    null
+   49859 |    old | null |      F | null | null | null | null | null | null |    null
+   38054 |    old | null |      M | null | null | null | null | null | null |    null
+   45517 | midage | null |      F | null | null | null | null | null | null |    null
+   39782 |    old | null |      M | null | null | null | null | null | null |    null
+   37958 |    old | null |      M | null | null | null | null | null | null |    null
+   32582 |    old | null |      M | null | null | null | null | null | null |    null
+   47714 |    old | null |      M | null | null | null | null | null | null |    null
+   43610 |    old | null |      M | null | null | null | null | null | null |    null
+   37416 |  young | null |      M | null | null | null | null | null | null |    null
+   42005 |    old | null |      F | null | null | null | null | null | null |    null
+   30868 | midage | null |      M | null | null | null | null | null | null |    null
+   39786 |  young | null |      M | null | null | null | null | null | null |    null
+   37982 |    old | null |      M | null | null | null | null | null | null |    null
+   43284 |  young | null |      M | null | null | null | null | null | null |    null
+   32345 |    old | null |      F | null | null | null | null | null | null |    null
+   35175 |  young | null |      F | null | null | null | null | null | null |    null
+   30342 |  young | null |      M | null | null | null | null | null | null |    null
+   48599 |    old | null |      F | null | null | null | null | null | null |    null
+   40969 | midage | null |      F | null | null | null | null | null | null |    null
+   48938 |    old | null |      M | null | null | null | null | null | null |    null
+   47795 |    old | null |      F | null | null | null | null | null | null |    null
+   37681 | midage | null |      F | null | null | null | null | null | null |    null
+   42421 | midage | null |      F | null | null | null | null | null | null |    null
+   47336 |    old | null |      M | null | null | null | null | null | null |    null
+   39463 | midage | null |      F | null | null | null | null | null | null |    null
+   38875 | midage | null |      F | null | null | null | null | null | null |    null
+   41614 | midage | null |      M | null | null | null | null | null | null |    null
+   43800 |  young | null |      M | null | null | null | null | null | null |    null
+   39135 |  young | null |      F | null | null | null | null | null | null |    null
+   37139 |    old | null |      F | null | null | null | null | null | null |    null
+   36131 |    old | null |      F | null | null | null | null | null | null |    null
+   32454 |  young | null |      M | null | null | null | null | null | null |    null
+   48908 |    old | null |      M | null | null | null | null | null | null |    null
+   43420 | midage | null |      M | null | null | null | null | null | null |    null
+   38829 |  young | null |      F | null | null | null | null | null | null |    null
+   30851 |    old | null |      F | null | null | null | null | null | null |    null
+   46989 |  young | null |      F | null | null | null | null | null | null |    null
+   31629 |  young | null |      F | null | null | null | null | null | null |    null
+   38533 | midage | null |      F | null | null | null | null | null | null |    null
+   47060 |    old | null |      M | null | null | null | null | null | null |    null
+   45712 | midage | null |      M | null | null | null | null | null | null |    null
+   40505 |    old | null |      F | null | null | null | null | null | null |    null
+   47492 |    old | null |      M | null | null | null | null | null | null |    null
+   35312 |    old | null |      M | null | null | null | null | null | null |    null
+   37757 |    old | null |      F | null | null | null | null | null | null |    null
+   42093 |  young | null |      F | null | null | null | null | null | null |    null
+   34088 |    old | null |      M | null | null | null | null | null | null |    null
+   45358 | midage | null |      M | null | null | null | null | null | null |    null
+   47114 |    old | null |      M | null | null | null | null | null | null |    null
+   32671 | midage | null |      F | null | null | null | null | null | null |    null
+   49595 |    old | null |      F | null | null | null | null | null | null |    null
+   44983 | midage | null |      F | null | null | null | null | null | null |    null
+   30687 |  young | null |      F | null | null | null | null | null | null |    null
+   30258 |  young | null |      M | null | null | null | null | null | null |    null
+   41939 |    old | null |      F | null | null | null | null | null | null |    null
+   41848 | midage | null |      M | null | null | null | null | null | null |    null
+   32589 |  young | null |      F | null | null | null | null | null | null |    null
+   38978 |    old | null |      M | null | null | null | null | null | null |    null
+   48319 | midage | null |      F | null | null | null | null | null | null |    null
+   36287 |    old | null |      F | null | null | null | null | null | null |    null
+   31359 |  young | null |      F | null | null | null | null | null | null |    null
+   35719 | midage | null |      F | null | null | null | null | null | null |    null
+   42680 |    old | null |      M | null | null | null | null | null | null |    null
+   36710 |    old | null |      M | null | null | null | null | null | null |    null
+   37711 | midage | null |      F | null | null | null | null | null | null |    null
+   37232 |    old | null |      M | null | null | null | null | null | null |    null
+   33517 | midage | null |      F | null | null | null | null | null | null |    null
+   40033 | midage | null |      F | null | null | null | null | null | null |    null
+   35728 | midage | null |      M | null | null | null | null | null | null |    null
+   40442 |    old | null |      M | null | null | null | null | null | null |    null
+   44205 |  young | null |      F | null | null | null | null | null | null |    null
+   48654 |  young | null |      M | null | null | null | null | null | null |    null
+   42118 | midage | null |      M | null | null | null | null | null | null |    null
+   37806 |  young | null |      M | null | null | null | null | null | null |    null
+   31688 |    old | null |      M | null | null | null | null | null | null |    null
+   38721 |  young | null |      F | null | null | null | null | null | null |    null
+   32232 |  young | null |      M | null | null | null | null | null | null |    null
+   35670 |  young | null |      M | null | null | null | null | null | null |    null
+   49515 |  young | null |      F | null | null | null | null | null | null |    null
+   30512 |    old | null |      M | null | null | null | null | null | null |    null
+   48428 |    old | null |      M | null | null | null | null | null | null |    null
+   35028 |  young | null |      M | null | null | null | null | null | null |    null
+   39558 |  young | null |      M | null | null | null | null | null | null |    null
+
+---MORE---
+cqlsh:keyspace1> 
+

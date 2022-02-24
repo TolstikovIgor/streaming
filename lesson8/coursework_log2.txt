@@ -1,0 +1,830 @@
+igor@igor-MS-7808:~$ ssh -i ~/.ssh/id_rsa_student898_2 student898_2@37.139.41.176
+Last login: Mon Feb  7 14:50:38 2022 from 109-252-19-10.nat.spd-mgts.ru
+[student898_2@bigdataanalytics-worker-3 ~]$ /opt/spark-2.4.8/bin/pyspark --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.5,com.datastax.spark:spark-cassandra-connector_2.11:2.4.2
+Python 2.7.5 (default, Nov 16 2020, 22:23:17) 
+[GCC 4.8.5 20150623 (Red Hat 4.8.5-44)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+Ivy Default Cache set to: /home/student898_2/.ivy2/cache
+The jars for the packages stored in: /home/student898_2/.ivy2/jars
+:: loading settings :: url = jar:file:/opt/spark-2.4.8/jars/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+org.apache.spark#spark-sql-kafka-0-10_2.11 added as a dependency
+com.datastax.spark#spark-cassandra-connector_2.11 added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-3acba675-bb93-46fc-a1e7-a7d5874af6a9;1.0
+	confs: [default]
+	found org.apache.spark#spark-sql-kafka-0-10_2.11;2.4.5 in central
+	found org.apache.kafka#kafka-clients;2.0.0 in central
+	found org.lz4#lz4-java;1.4.0 in central
+	found org.xerial.snappy#snappy-java;1.1.7.3 in central
+	found org.slf4j#slf4j-api;1.7.16 in central
+	found org.spark-project.spark#unused;1.0.0 in central
+	found com.datastax.spark#spark-cassandra-connector_2.11;2.4.2 in central
+	found commons-beanutils#commons-beanutils;1.9.3 in central
+	found commons-collections#commons-collections;3.2.2 in central
+	found com.twitter#jsr166e;1.1.0 in central
+	found org.joda#joda-convert;1.2 in central
+	found io.netty#netty-all;4.0.33.Final in central
+	found joda-time#joda-time;2.3 in central
+	found org.scala-lang#scala-reflect;2.11.7 in central
+:: resolution report :: resolve 513ms :: artifacts dl 33ms
+	:: modules in use:
+	com.datastax.spark#spark-cassandra-connector_2.11;2.4.2 from central in [default]
+	com.twitter#jsr166e;1.1.0 from central in [default]
+	commons-beanutils#commons-beanutils;1.9.3 from central in [default]
+	commons-collections#commons-collections;3.2.2 from central in [default]
+	io.netty#netty-all;4.0.33.Final from central in [default]
+	joda-time#joda-time;2.3 from central in [default]
+	org.apache.kafka#kafka-clients;2.0.0 from central in [default]
+	org.apache.spark#spark-sql-kafka-0-10_2.11;2.4.5 from central in [default]
+	org.joda#joda-convert;1.2 from central in [default]
+	org.lz4#lz4-java;1.4.0 from central in [default]
+	org.scala-lang#scala-reflect;2.11.7 from central in [default]
+	org.slf4j#slf4j-api;1.7.16 from central in [default]
+	org.spark-project.spark#unused;1.0.0 from central in [default]
+	org.xerial.snappy#snappy-java;1.1.7.3 from central in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   14  |   0   |   0   |   0   ||   14  |   0   |
+	---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-3acba675-bb93-46fc-a1e7-a7d5874af6a9
+	confs: [default]
+	0 artifacts copied, 14 already retrieved (0kB/11ms)
+22/02/07 14:57:04 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+22/02/07 14:57:05 WARN util.Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /__ / .__/\_,_/_/ /_/\_\   version 2.4.8
+      /_/
+
+Using Python version 2.7.5 (default, Nov 16 2020 22:23:17)
+SparkSession available as 'spark'.
+>>> from pyspark.ml import Pipeline, PipelineModel
+>>> from pyspark.sql import SparkSession, DataFrame
+>>> from pyspark.sql.types import StructType, StringType, IntegerType, TimestampType
+>>> from pyspark.sql import functions as F
+>>> from pyspark.ml.classification import LogisticRegression
+>>> from pyspark.ml.feature import OneHotEncoderEstimator, VectorAssembler, CountVectorizer, StringIndexer, IndexToString
+>>> my_df = spark.createDataFrame( range( 1 , 200000 ), IntegerType())
+>>> items_df = my_df.select(F.col("value").alias("order_id"), \
+...                         F.round( (F.rand()*49999)+1 ).alias("user_id").cast("integer"), \
+...                         F.round( (F.rand()*9)+1).alias("items_count").cast("integer")). \
+...     withColumn("price", (F.col("items_count")* F.round( (F.rand()*999)+1)).cast("integer") ). \
+...     withColumn("order_date", F.from_unixtime(F.unix_timestamp(F.current_date()) + (F.lit(F.col("order_id")*10))))
+>>> items_df.write.format("parquet").option("path", "parquet_data/sales").saveAsTable("sint_sales.sales", mode="overwrite")
+22/02/07 15:03:58 WARN shortcircuit.DomainSocketFactory: The short-circuit local reads feature cannot be used because libhadoop cannot be loaded.
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/opt/spark-2.4.8/python/pyspark/sql/readwriter.py", line 781, in saveAsTable
+    self._jwrite.saveAsTable(name)
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/opt/spark-2.4.8/python/pyspark/sql/utils.py", line 69, in deco
+    raise AnalysisException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.AnalysisException: u'org.apache.hadoop.hive.ql.metadata.HiveException: MetaException(message:java.security.AccessControlException: Permission denied: user=student898_2, access=WRITE, inode="/user/teacher_danilov/parquet_data/sales":teacher_danilov:teacher_danilov:drwxr-xr-x\n\tat org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:399)\n\tat org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:261)\n\tat org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:193)\n\tat org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1857)\n\tat org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1841)\n\tat org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPathAccess(FSDirectory.java:1791)\n\tat org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkAccess(FSNamesystem.java:7804)\n\tat org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.checkAccess(NameNodeRpcServer.java:2217)\n\tat org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.checkAccess(ClientNamenodeProtocolServerSideTranslatorPB.java:1659)\n\tat org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)\n\tat org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:524)\n\tat org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1025)\n\tat org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:876)\n\tat org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:822)\n\tat java.security.AccessController.doPrivileged(Native Method)\n\tat javax.security.auth.Subject.doAs(Subject.java:422)\n\tat org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1730)\n\tat org.apache.hadoop.ipc.Server$Handler.run(Server.java:2682)\n);'
+>>> items_df.show()
+22/02/07 15:05:40 WARN scheduler.TaskSetManager: Stage 0 contains a task of very large size (412 KB). The maximum recommended task size is 100 KB.
++--------+-------+-----------+-----+-------------------+                        
+|order_id|user_id|items_count|price|         order_date|
++--------+-------+-----------+-----+-------------------+
+|       1|   4681|         10| 4760|2022-02-07 00:00:10|
+|       2|   8176|          4| 2424|2022-02-07 00:00:20|
+|       3|  41998|          5| 1860|2022-02-07 00:00:30|
+|       4|   5838|          9|  621|2022-02-07 00:00:40|
+|       5|  42264|          5| 2105|2022-02-07 00:00:50|
+|       6|  35668|          9| 4365|2022-02-07 00:01:00|
+|       7|  25763|          9| 1071|2022-02-07 00:01:10|
+|       8|  27944|          5| 3955|2022-02-07 00:01:20|
+|       9|  37806|          1|  429|2022-02-07 00:01:30|
+|      10|  25500|          8| 6864|2022-02-07 00:01:40|
+|      11|   5005|          8| 3800|2022-02-07 00:01:50|
+|      12|  42143|          5| 4285|2022-02-07 00:02:00|
+|      13|  33600|          2| 1762|2022-02-07 00:02:10|
+|      14|   2437|          6| 5526|2022-02-07 00:02:20|
+|      15|  17743|          6| 5976|2022-02-07 00:02:30|
+|      16|  41504|          3|  903|2022-02-07 00:02:40|
+|      17|  34912|          8|  712|2022-02-07 00:02:50|
+|      18|  25558|          9| 4023|2022-02-07 00:03:00|
+|      19|   9037|          7| 6475|2022-02-07 00:03:10|
+|      20|  26382|          1|   82|2022-02-07 00:03:20|
++--------+-------+-----------+-----+-------------------+
+only showing top 20 rows
+
+>>> items_df=spark.table("sint_sales.sales")
+>>> spark.sql("""create table sint_sales.users
+...     (user_id int,
+...     gender string,
+...     age string,
+...     segment string)
+...     stored as parquet location 'parquet_data/users'""")
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+  File "/opt/spark-2.4.8/python/pyspark/sql/session.py", line 767, in sql
+    return DataFrame(self._jsparkSession.sql(sqlQuery), self._wrapped)
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/opt/spark-2.4.8/python/pyspark/sql/utils.py", line 71, in deco
+    raise AnalysisException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.AnalysisException: u"Table or view 'users' already exists in database 'sint_sales';"
+>>> spark.sql("""insert into sint_sales.users
+...     select user_id, case when pmod( user_id, 2 )=0 then 'M' else 'F' end, 
+...     case when pmod(user_id, 3 )=0 then 'young' when pmod(user_id, 3 )=1 then 'midage' else 'old' end ,
+...     case when s>23 then 'happy' when s>15 then 'neutral' else 'shy' end
+...     from (
+...     select sum(items_count) s, user_id from sint_sales.sales group by user_id ) t""")
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+  File "/opt/spark-2.4.8/python/pyspark/sql/session.py", line 767, in sql
+    return DataFrame(self._jsparkSession.sql(sqlQuery), self._wrapped)
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/opt/spark-2.4.8/python/pyspark/sql/utils.py", line 63, in deco
+    return f(*a, **kw)
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/protocol.py", line 328, in get_return_value
+py4j.protocol.Py4JJavaError: An error occurred while calling o29.sql.
+: org.apache.hadoop.security.AccessControlException: Permission denied: user=student898_2, access=WRITE, inode="/user/teacher_danilov/parquet_data/users":teacher_danilov:teacher_danilov:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:399)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:255)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:193)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1857)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1841)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1800)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:59)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3150)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1126)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:707)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:524)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1025)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:876)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:822)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1730)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2682)
+
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.ipc.RemoteException.instantiateException(RemoteException.java:106)
+	at org.apache.hadoop.ipc.RemoteException.unwrapRemoteException(RemoteException.java:73)
+	at org.apache.hadoop.hdfs.DFSClient.primitiveMkdir(DFSClient.java:3002)
+	at org.apache.hadoop.hdfs.DFSClient.mkdirs(DFSClient.java:2970)
+	at org.apache.hadoop.hdfs.DistributedFileSystem$21.doCall(DistributedFileSystem.java:1047)
+	at org.apache.hadoop.hdfs.DistributedFileSystem$21.doCall(DistributedFileSystem.java:1043)
+	at org.apache.hadoop.fs.FileSystemLinkResolver.resolve(FileSystemLinkResolver.java:81)
+	at org.apache.hadoop.hdfs.DistributedFileSystem.mkdirsInternal(DistributedFileSystem.java:1061)
+	at org.apache.hadoop.hdfs.DistributedFileSystem.mkdirs(DistributedFileSystem.java:1036)
+	at org.apache.hadoop.fs.FileSystem.mkdirs(FileSystem.java:1881)
+	at org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter.setupJob(FileOutputCommitter.java:313)
+	at org.apache.spark.internal.io.HadoopMapReduceCommitProtocol.setupJob(HadoopMapReduceCommitProtocol.scala:162)
+	at org.apache.spark.sql.execution.datasources.FileFormatWriter$.write(FileFormatWriter.scala:143)
+	at org.apache.spark.sql.execution.datasources.InsertIntoHadoopFsRelationCommand.run(InsertIntoHadoopFsRelationCommand.scala:159)
+	at org.apache.spark.sql.execution.command.DataWritingCommandExec.sideEffectResult$lzycompute(commands.scala:104)
+	at org.apache.spark.sql.execution.command.DataWritingCommandExec.sideEffectResult(commands.scala:102)
+	at org.apache.spark.sql.execution.command.DataWritingCommandExec.executeCollect(commands.scala:115)
+	at org.apache.spark.sql.Dataset$$anonfun$6.apply(Dataset.scala:194)
+	at org.apache.spark.sql.Dataset$$anonfun$6.apply(Dataset.scala:194)
+	at org.apache.spark.sql.Dataset$$anonfun$53.apply(Dataset.scala:3369)
+	at org.apache.spark.sql.execution.SQLExecution$$anonfun$withNewExecutionId$1.apply(SQLExecution.scala:80)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:127)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:75)
+	at org.apache.spark.sql.Dataset.org$apache$spark$sql$Dataset$$withAction(Dataset.scala:3368)
+	at org.apache.spark.sql.Dataset.<init>(Dataset.scala:194)
+	at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:79)
+	at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:643)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.GatewayConnection.run(GatewayConnection.java:238)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.security.AccessControlException): Permission denied: user=student898_2, access=WRITE, inode="/user/teacher_danilov/parquet_data/users":teacher_danilov:teacher_danilov:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:399)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:255)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:193)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1857)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1841)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1800)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:59)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3150)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1126)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:707)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:524)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1025)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:876)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:822)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1730)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2682)
+
+	at org.apache.hadoop.ipc.Client.call(Client.java:1475)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1412)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:229)
+	at com.sun.proxy.$Proxy27.mkdirs(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.mkdirs(ClientNamenodeProtocolTranslatorPB.java:558)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:191)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:102)
+	at com.sun.proxy.$Proxy28.mkdirs(Unknown Source)
+	at org.apache.hadoop.hdfs.DFSClient.primitiveMkdir(DFSClient.java:3000)
+	... 35 more
+
+>>> spark.sql("""create table sint_sales.users_known stored as parquet location 'parquet_data/users_known' as 
+...     select * from sint_sales.users where user_id < 30000
+...     """)
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+  File "/opt/spark-2.4.8/python/pyspark/sql/session.py", line 767, in sql
+    return DataFrame(self._jsparkSession.sql(sqlQuery), self._wrapped)
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/opt/spark-2.4.8/python/pyspark/sql/utils.py", line 69, in deco
+    raise AnalysisException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.AnalysisException: u'`sint_sales`.`users_known` already exists.;'
+>>> spark.sql("""create table sint_sales.users_unknown stored as parquet location 'parquet_data/users_unknown' as 
+...     select user_id, gender, age from sint_sales.users where user_id >= 30000
+...     """)
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+  File "/opt/spark-2.4.8/python/pyspark/sql/session.py", line 767, in sql
+    return DataFrame(self._jsparkSession.sql(sqlQuery), self._wrapped)
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/opt/spark-2.4.8/python/pyspark/sql/utils.py", line 69, in deco
+    raise AnalysisException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.AnalysisException: u'`sint_sales`.`users_unknown` already exists.;'
+>>> spark.sql("""create table sint_sales.sales_known stored as parquet location 'parquet_data/sales_known' as
+...     select * from sint_sales.sales where user_id < 30000
+...     """)
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+  File "/opt/spark-2.4.8/python/pyspark/sql/session.py", line 767, in sql
+    return DataFrame(self._jsparkSession.sql(sqlQuery), self._wrapped)
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/opt/spark-2.4.8/python/pyspark/sql/utils.py", line 69, in deco
+    raise AnalysisException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.AnalysisException: u'`sint_sales`.`sales_known` already exists.;'
+>>> spark.sql("""create table sint_sales.sales_unknown stored as parquet location 'parquet_data/sales_unknown' as
+...     select * from sint_sales.sales where user_id >= 30000
+...     """)
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+  File "/opt/spark-2.4.8/python/pyspark/sql/session.py", line 767, in sql
+    return DataFrame(self._jsparkSession.sql(sqlQuery), self._wrapped)
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/opt/spark-2.4.8/python/pyspark/sql/utils.py", line 69, in deco
+    raise AnalysisException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.AnalysisException: u'`sint_sales`.`sales_unknown` already exists.;'
+>>> items_df=spark.table("sint_sales.sales")
+>>> df = spark.sql("""
+...     select count(*) as c, sum(items_count) as s1, max(items_count) as ma1, min(items_count) as mi1,
+...     sum(price) as s2, max(price) as ma2, min(price) as mi2 ,u.gender, u.age, u.user_id, u.segment 
+...     from sint_sales.sales_known s join sint_sales.users_known u 
+...     where s.user_id = u.user_id 
+...     group by u.user_id, u.gender, u.age, u.segment""")
+>>> sales_unknown = spark.table("sint_sales.sales_unknown")
+>>> sales_unknown.show()
++--------+-------+-----------+-----+-------------------+
+|order_id|user_id|items_count|price|         order_date|
++--------+-------+-----------+-----+-------------------+
+|       1|  48936|          4|  260|2022-02-03 00:00:10|
+|       4|  40342|          9| 3483|2022-02-03 00:00:40|
+|       5|  31735|          6| 4920|2022-02-03 00:00:50|
+|      12|  38683|         10| 7580|2022-02-03 00:02:00|
+|      15|  42648|          2|  494|2022-02-03 00:02:30|
+|      17|  40660|          7| 4025|2022-02-03 00:02:50|
+|      23|  33895|          5| 1080|2022-02-03 00:03:50|
+|      30|  42285|          6|  288|2022-02-03 00:05:00|
+|      35|  32977|          6| 1554|2022-02-03 00:05:50|
+|      39|  48692|          6|   36|2022-02-03 00:06:30|
+|      40|  47728|          5| 2530|2022-02-03 00:06:40|
+|      42|  46755|          2|  818|2022-02-03 00:07:00|
+|      44|  33632|          2| 1596|2022-02-03 00:07:20|
+|      46|  40369|          2|  198|2022-02-03 00:07:40|
+|      50|  36538|          7| 4067|2022-02-03 00:08:20|
+|      54|  35436|         10| 4820|2022-02-03 00:09:00|
+|      58|  41768|          6|  204|2022-02-03 00:09:40|
+|      59|  49023|          7| 1526|2022-02-03 00:09:50|
+|      61|  38910|          5| 4665|2022-02-03 00:10:10|
+|      63|  31783|          5| 1620|2022-02-03 00:10:30|
++--------+-------+-----------+-----+-------------------+
+only showing top 20 rows
+
+>>> sales_unknown = spark.read.parquet("/apps/spark/warehouse/sint_sales.db/sales_unknown")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/opt/spark-2.4.8/python/pyspark/sql/readwriter.py", line 316, in parquet
+    return self._df(self._jreader.parquet(_to_seq(self._spark._sc, paths)))
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/opt/spark-2.4.8/python/pyspark/sql/utils.py", line 69, in deco
+    raise AnalysisException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.AnalysisException: u'Path does not exist: hdfs://bigdataanalytics-head-0.mcs.local:8020/apps/spark/warehouse/sint_sales.db/sales_unknown;'
+>>> sales_unknown = spark.read.parquet("parquet_data/sales_unknown")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/opt/spark-2.4.8/python/pyspark/sql/readwriter.py", line 316, in parquet
+    return self._df(self._jreader.parquet(_to_seq(self._spark._sc, paths)))
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/opt/spark-2.4.8/python/pyspark/sql/utils.py", line 69, in deco
+    raise AnalysisException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.AnalysisException: u'Path does not exist: hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/parquet_data/sales_unknown;'
+>>> sales_unknown.show()
++--------+-------+-----------+-----+-------------------+
+|order_id|user_id|items_count|price|         order_date|
++--------+-------+-----------+-----+-------------------+
+|       1|  48936|          4|  260|2022-02-03 00:00:10|
+|       4|  40342|          9| 3483|2022-02-03 00:00:40|
+|       5|  31735|          6| 4920|2022-02-03 00:00:50|
+|      12|  38683|         10| 7580|2022-02-03 00:02:00|
+|      15|  42648|          2|  494|2022-02-03 00:02:30|
+|      17|  40660|          7| 4025|2022-02-03 00:02:50|
+|      23|  33895|          5| 1080|2022-02-03 00:03:50|
+|      30|  42285|          6|  288|2022-02-03 00:05:00|
+|      35|  32977|          6| 1554|2022-02-03 00:05:50|
+|      39|  48692|          6|   36|2022-02-03 00:06:30|
+|      40|  47728|          5| 2530|2022-02-03 00:06:40|
+|      42|  46755|          2|  818|2022-02-03 00:07:00|
+|      44|  33632|          2| 1596|2022-02-03 00:07:20|
+|      46|  40369|          2|  198|2022-02-03 00:07:40|
+|      50|  36538|          7| 4067|2022-02-03 00:08:20|
+|      54|  35436|         10| 4820|2022-02-03 00:09:00|
+|      58|  41768|          6|  204|2022-02-03 00:09:40|
+|      59|  49023|          7| 1526|2022-02-03 00:09:50|
+|      61|  38910|          5| 4665|2022-02-03 00:10:10|
+|      63|  31783|          5| 1620|2022-02-03 00:10:30|
++--------+-------+-----------+-----+-------------------+
+only showing top 20 rows
+
+>>> kafka_brokers = 'bigdataanalytics-worker-3:6667'
+>>> sales_unknown.selectExpr("cast (null as string) as key", "cast (to_json(struct(*)) as string) as value"). \
+...     write.format("kafka"). \
+...     option("kafka.bootstrap.servers", kafka_brokers). \
+...     option("topic", "sales_unknown"). \
+...     save()
+>>> users_unknown = spark.table("sint_sales.users_unknown")
+>>> users_unknown.write \
+...     .format("org.apache.spark.sql.cassandra") \
+...     .options(table="users_unknown", keyspace="keyspace1") \
+...     .mode("append")\
+...     .save()
+>>> spark.read.parquet("parquet_data/sales_known").createOrReplaceTempView("sales_known")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/opt/spark-2.4.8/python/pyspark/sql/readwriter.py", line 316, in parquet
+    return self._df(self._jreader.parquet(_to_seq(self._spark._sc, paths)))
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/opt/spark-2.4.8/python/pyspark/sql/utils.py", line 69, in deco
+    raise AnalysisException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.AnalysisException: u'Path does not exist: hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/parquet_data/sales_known;'
+>>> spark.read.parquet("parquet_data/users_known").createOrReplaceTempView("users_known")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/opt/spark-2.4.8/python/pyspark/sql/readwriter.py", line 316, in parquet
+    return self._df(self._jreader.parquet(_to_seq(self._spark._sc, paths)))
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/opt/spark-2.4.8/python/pyspark/sql/utils.py", line 69, in deco
+    raise AnalysisException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.AnalysisException: u'Path does not exist: hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/parquet_data/users_known;'
+>>> spark.sql("select * from sint_sales.sales_known").show(10, False)
++--------+-------+-----------+-----+-------------------+
+|order_id|user_id|items_count|price|order_date         |
++--------+-------+-----------+-----+-------------------+
+|100353  |233    |5          |1860 |2022-02-14 14:45:30|
+|100355  |29361  |2          |1372 |2022-02-14 14:45:50|
+|100357  |26046  |3          |1380 |2022-02-14 14:46:10|
+|100358  |19783  |4          |2284 |2022-02-14 14:46:20|
+|100359  |25546  |5          |590  |2022-02-14 14:46:30|
+|100360  |25016  |2          |504  |2022-02-14 14:46:40|
+|100361  |5539   |4          |316  |2022-02-14 14:46:50|
+|100363  |11636  |6          |4890 |2022-02-14 14:47:10|
+|100366  |26542  |2          |1920 |2022-02-14 14:47:40|
+|100367  |14151  |10         |440  |2022-02-14 14:47:50|
++--------+-------+-----------+-----+-------------------+
+only showing top 10 rows
+
+>>> spark.sql("select * from sint_sales.users_known").show(10, False)
++-------+------+------+-------+
+|user_id|gender|age   |segment|
++-------+------+------+-------+
+|26893  |F     |midage|shy    |
+|18334  |M     |midage|neutral|
+|2655   |F     |young |shy    |
+|22443  |F     |young |neutral|
+|20195  |F     |old   |neutral|
+|21298  |M     |midage|happy  |
+|27228  |M     |young |shy    |
+|883    |F     |midage|happy  |
+|23362  |M     |midage|neutral|
+|6154   |M     |midage|neutral|
++-------+------+------+-------+
+only showing top 10 rows
+
+>>> users_known = spark.sql("""
+...     select count(*) as c, sum(items_count) as s1, max(items_count) as ma1, min(items_count) as mi1,
+...     sum(price) as s2, max(price) as ma2, min(price) as mi2 ,u.gender, u.age, u.user_id, u.segment 
+...     from sint_sales.sales_known s join sint_sales.users_known u 
+...     where s.user_id = u.user_id 
+...     group by u.user_id, u.gender, u.age, u.segment""")
+>>> df = users_known
+>>> df.show()
++---+---+---+---+-----+----+----+------+------+-------+-------+                 
+|  c| s1|ma1|mi1|   s2| ma2| mi2|gender|   age|user_id|segment|
++---+---+---+---+-----+----+----+------+------+-------+-------+
+|  5| 34| 10|  2|16304|7060| 676|     M|midage|    148|  happy|
+|  1|  7|  7|  7| 4935|4935|4935|     F|midage|    463|    shy|
+|  5| 31| 10|  1|23446|8560| 918|     F| young|    471|  happy|
+|  4| 15|  7|  2| 6461|2842| 171|     M|midage|    496|    shy|
+|  2| 11|  6|  5| 8019|5664|2355|     F|   old|    833|    shy|
+|  3| 11|  7|  1| 4792|2898| 694|     M|   old|   1088|    shy|
+|  9| 59| 10|  3|27227|7083|1197|     M|   old|   1238|  happy|
+|  5| 35|  9|  4|18199|5154|2320|     M|midage|   1342|  happy|
+|  5| 28|  8|  3|13614|5874| 408|     M|   old|   1580|  happy|
+|  2|  9|  5|  4| 2238|1450| 788|     F|midage|   1591|    shy|
+|  4| 17|  8|  2| 8648|5368| 116|     F|midage|   1645|neutral|
+|  5| 41| 10|  6|27161|8442| 420|     F|   old|   1829|  happy|
+|  2| 12| 10|  2| 5220|3920|1300|     F| young|   1959|    shy|
+|  3| 18|  9|  2| 9009|7524| 329|     M|midage|   2122|neutral|
+|  4| 26|  9|  3| 7269|5184| 264|     M|   old|   2366|  happy|
+|  3| 20|  9|  5|15316|6165|4446|     F|midage|   2659|neutral|
+|  6| 21|  7|  1| 5689|1323| 204|     M|midage|   2866|neutral|
+|  1|  9|  9|  9| 4131|4131|4131|     F|midage|   3175|    shy|
+|  8| 43|  9|  2|14454|4585|  30|     F|   old|   3749|  happy|
+|  2|  9|  7|  2| 4930|3080|1850|     M|   old|   3794|    shy|
++---+---+---+---+-----+----+----+------+------+-------+-------+
+only showing top 20 rows
+
+>>> categoricalColumns = ['gender', 'age']
+>>> stages = []
+>>> for categoricalCol in categoricalColumns:
+...     stringIndexer = StringIndexer(inputCol = categoricalCol, outputCol = categoricalCol + 'Index')
+...     encoder = OneHotEncoderEstimator(inputCols=[stringIndexer.getOutputCol()], outputCols=[categoricalCol + "classVec"])
+...     stages += [stringIndexer, encoder]
+... 
+>>> stages
+[StringIndexer_f311599de7bc, OneHotEncoderEstimator_ce0dbf596089, StringIndexer_c4cc4b820dae, OneHotEncoderEstimator_5d16b7b63811]
+>>> label_stringIdx = StringIndexer(inputCol = 'segment', outputCol = 'label')
+>>> stages += [label_stringIdx]
+>>> numericCols = ['c' ,'s1', 'ma1', 'mi1','s2', 'ma2', 'mi2']
+>>> assemblerInputs = [c + "classVec" for c in categoricalColumns] + numericCols
+>>> assembler = VectorAssembler(inputCols=assemblerInputs, outputCol="features")
+>>> stages += [assembler]
+>>> lr = LogisticRegression(featuresCol = 'features', labelCol = 'label', maxIter=10)
+>>> stages += [lr]
+>>> label_stringIdx_fit = label_stringIdx.fit(df)
+>>> indexToStringEstimator = IndexToString().setInputCol("prediction").setOutputCol("category").setLabels(  label_stringIdx_fit.labels)
+>>> stages +=[indexToStringEstimator]
+>>> pipeline = Pipeline().setStages(stages)
+>>> pipelineModel = pipeline.fit(df)
+22/02/07 17:05:54 WARN netlib.BLAS: Failed to load implementation from: com.github.fommil.netlib.NativeSystemBLAS
+22/02/07 17:05:54 WARN netlib.BLAS: Failed to load implementation from: com.github.fommil.netlib.NativeRefBLAS
+>>> pipelineModel.write().overwrite().save("my_LR_model8")
+>>> train, test = df.randomSplit([0.7, 0.3], seed = 2018)
+>>> print("Training Dataset Count: " + str(train.count()))
+Training Dataset Count: 20664                                                   
+>>> print("Test Dataset Count: " + str(test.count()))
+Test Dataset Count: 8810                                                        
+>>> pipelineModel.transform(test).show(100)
++---+---+---+---+-----+----+----+------+------+-------+-------+-----------+--------------+--------+-------------+-----+--------------------+--------------------+--------------------+----------+--------+
+|  c| s1|ma1|mi1|   s2| ma2| mi2|gender|   age|user_id|segment|genderIndex|genderclassVec|ageIndex|  ageclassVec|label|            features|       rawPrediction|         probability|prediction|category|
++---+---+---+---+-----+----+----+------+------+-------+-------+-----------+--------------+--------+-------------+-----+--------------------+--------------------+--------------------+----------+--------+
+|  1|  5|  5|  5|  315| 315| 315|     F| young|  24171|    shy|        0.0| (1,[0],[1.0])|     2.0|    (2,[],[])|  1.0|[1.0,0.0,0.0,1.0,...|[-3.5751458342887...|[0.00127799518498...|       1.0|     shy|
+|  1|  5|  5|  5| 1055|1055|1055|     M|midage|   9376|    shy|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  1.0|[0.0,0.0,1.0,1.0,...|[-3.8868160537901...|[7.38882364438537...|       1.0|     shy|
+|  1|  7|  7|  7| 4935|4935|4935|     F|midage|    463|    shy|        0.0| (1,[0],[1.0])|     1.0|(2,[1],[1.0])|  1.0|[1.0,0.0,1.0,1.0,...|[-7.3545933390288...|[1.36048951709207...|       1.0|     shy|
+|  1|  9|  9|  9| 4131|4131|4131|     F|midage|   3175|    shy|        0.0| (1,[0],[1.0])|     1.0|(2,[1],[1.0])|  1.0|[1.0,0.0,1.0,1.0,...|[-8.0501017821170...|[4.68611483334799...|       1.0|     shy|
+|  2|  6|  4|  2|  598| 440| 158|     M|   old|  29834|    shy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  1.0|[0.0,1.0,0.0,2.0,...|[-1.8007084575483...|[0.02636789545321...|       1.0|     shy|
+|  2|  8|  6|  2| 6630|5802| 828|     M|   old|  29894|    shy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  1.0|[0.0,1.0,0.0,2.0,...|[-1.6254539383697...|[0.04181979137745...|       1.0|     shy|
+|  2| 10|  6|  4| 2780|1968| 812|     M| young|  10362|    shy|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  1.0|[0.0,0.0,0.0,2.0,...|[-1.8157109600946...|[0.03127384502272...|       1.0|     shy|
+|  2| 11|  9|  2| 9094|7488|1606|     M| young|   8592|    shy|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  1.0|[0.0,0.0,0.0,2.0,...|[-1.6580492909172...|[0.03256454050483...|       2.0| neutral|
+|  2| 12|  7|  5| 6858|3715|3143|     M|midage|   5518|    shy|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  1.0|[0.0,0.0,1.0,2.0,...|[-3.6293574851036...|[0.00146472458139...|       1.0|     shy|
+|  2| 12|  7|  5| 7377|3717|3660|     M|midage|   6466|    shy|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  1.0|[0.0,0.0,1.0,2.0,...|[-3.8580802752473...|[9.56566232482099...|       1.0|     shy|
+|  2| 12|  8|  4| 8516|6168|2348|     M|   old|  11858|    shy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  1.0|[0.0,1.0,0.0,2.0,...|[-3.0100576252893...|[0.00511101945832...|       1.0|     shy|
+|  2| 12|  9|  3| 5718|3762|1956|     M| young|  16386|    shy|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  1.0|[0.0,0.0,0.0,2.0,...|[-2.6304406846277...|[0.00957004242423...|       2.0| neutral|
+|  2| 12| 10|  2| 5220|3920|1300|     F| young|   1959|    shy|        0.0| (1,[0],[1.0])|     2.0|    (2,[],[])|  1.0|[1.0,0.0,0.0,2.0,...|[-3.1594041445364...|[0.00431194734957...|       1.0|     shy|
+|  2| 16|  9|  7| 7475|4109|3366|     F| young|   6357|neutral|        0.0| (1,[0],[1.0])|     2.0|    (2,[],[])|  2.0|[1.0,0.0,0.0,2.0,...|[-4.4459399039331...|[4.10985081130210...|       1.0|     shy|
+|  2| 17| 10|  7|10358|9490| 868|     F| young|  18051|neutral|        0.0| (1,[0],[1.0])|     2.0|    (2,[],[])|  2.0|[1.0,0.0,0.0,2.0,...|[-2.6067313764340...|[0.00954732128536...|       2.0| neutral|
+|  3|  6|  2|  2| 1694| 766| 348|     M|midage|  28024|    shy|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  1.0|[0.0,0.0,1.0,3.0,...|[-0.5323362564146...|[0.16489861908119...|       1.0|     shy|
+|  3| 11|  7|  1| 4792|2898| 694|     M|   old|   1088|    shy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  1.0|[0.0,1.0,0.0,3.0,...|[-1.2597182470322...|[0.07016664789031...|       2.0| neutral|
+|  3| 12|  5|  3| 5955|4955| 144|     M|   old|  28124|    shy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  1.0|[0.0,1.0,0.0,3.0,...|[-0.3164366007190...|[0.23372700321463...|       2.0| neutral|
+|  3| 14|  6|  3| 9009|4125|1956|     M| young|   3918|    shy|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  1.0|[0.0,0.0,0.0,3.0,...|[-0.2534263848789...|[0.23938405627337...|       2.0| neutral|
+|  3| 18|  9|  2| 9009|7524| 329|     M|midage|   2122|neutral|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  2.0|[0.0,0.0,1.0,3.0,...|[-0.3044606859808...|[0.17542256723203...|       2.0| neutral|
+|  3| 21| 10|  3|13683|7224| 459|     M| young|  28170|neutral|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  2.0|[0.0,0.0,0.0,3.0,...|[0.90217244892945...|[0.41957255942372...|       2.0| neutral|
+|  3| 22| 10|  3|14391|8037| 534|     F| young|  22521|neutral|        0.0| (1,[0],[1.0])|     2.0|    (2,[],[])|  2.0|[1.0,0.0,0.0,3.0,...|[0.39617389760559...|[0.31614575123408...|       2.0| neutral|
+|  3| 24| 10|  6| 6230|3360| 606|     M|   old|  20924|  happy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  0.0|[0.0,1.0,0.0,3.0,...|[-1.7073981069625...|[0.03672693167131...|       2.0| neutral|
+|  4| 20|  7|  1|10055|6321| 140|     F| young|   4101|neutral|        0.0| (1,[0],[1.0])|     2.0|    (2,[],[])|  2.0|[1.0,0.0,0.0,4.0,...|[1.64530918399663...|[0.75672438859109...|       0.0|   happy|
+|  4| 23|  9|  3|11592|5736| 432|     F|   old|   7253|neutral|        0.0| (1,[0],[1.0])|     0.0|(2,[0],[1.0])|  2.0|[1.0,1.0,0.0,4.0,...|[0.04891579596599...|[0.30821608453986...|       2.0| neutral|
+|  4| 25|  8|  3|13867|6928| 321|     M| young|  23364|  happy|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  0.0|[0.0,0.0,0.0,4.0,...|[2.68602248718710...|[0.89006526687960...|       0.0|   happy|
+|  4| 26|  9|  3| 7269|5184| 264|     M|   old|   2366|  happy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  0.0|[0.0,1.0,0.0,4.0,...|[0.50858529278232...|[0.41425933787263...|       2.0| neutral|
+|  4| 30| 10|  2|17983|7520|1472|     M| young|  18498|  happy|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  0.0|[0.0,0.0,0.0,4.0,...|[2.86334026527437...|[0.88614228857939...|       0.0|   happy|
+|  5| 14|  6|  1| 5281|1488|  93|     M|   old|  26708|    shy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  1.0|[0.0,1.0,0.0,5.0,...|[0.68177867785921...|[0.55598022615091...|       0.0|   happy|
+|  5| 21|  9|  1|10782|3105| 641|     M| young|   9900|neutral|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  2.0|[0.0,0.0,0.0,5.0,...|[1.86908894719425...|[0.76769844912001...|       0.0|   happy|
+|  5| 28|  8|  3|13614|5874| 408|     M|   old|   1580|  happy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  0.0|[0.0,1.0,0.0,5.0,...|[2.55928629257992...|[0.90536802408521...|       0.0|   happy|
+|  5| 28| 10|  2|15402|9840|  24|     M|   old|   7982|  happy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  0.0|[0.0,1.0,0.0,5.0,...|[2.62409276753712...|[0.85304842576664...|       0.0|   happy|
+|  5| 30|  9|  2|10927|3168| 632|     F|midage|   3997|  happy|        0.0| (1,[0],[1.0])|     1.0|(2,[1],[1.0])|  0.0|[1.0,0.0,1.0,5.0,...|[1.40584528340273...|[0.74096061996682...|       0.0|   happy|
+|  5| 41| 10|  6|27161|8442| 420|     F|   old|   1829|  happy|        0.0| (1,[0],[1.0])|     0.0|(2,[0],[1.0])|  0.0|[1.0,1.0,0.0,5.0,...|[4.41585496494633...|[0.98756167406073...|       0.0|   happy|
+|  5| 43| 10|  8|24220|7440| 176|     F|   old|  13289|  happy|        0.0| (1,[0],[1.0])|     0.0|(2,[0],[1.0])|  0.0|[1.0,1.0,0.0,5.0,...|[3.77335623742219...|[0.97668023708322...|       0.0|   happy|
+|  6| 21|  7|  1| 5689|1323| 204|     M|midage|   2866|neutral|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  2.0|[0.0,0.0,1.0,6.0,...|[1.64123828478050...|[0.80521674288551...|       0.0|   happy|
+|  6| 26|  7|  2|17810|4930| 972|     M|midage|  15790|  happy|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  0.0|[0.0,0.0,1.0,6.0,...|[3.74639717612045...|[0.97933129913021...|       0.0|   happy|
+|  6| 28| 10|  1|14947|3770| 772|     M|midage|  12046|  happy|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  0.0|[0.0,0.0,1.0,6.0,...|[2.71697158029283...|[0.90728674966155...|       0.0|   happy|
+|  6| 29| 10|  1|18727|8010| 169|     M|midage|  29194|  happy|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  0.0|[0.0,0.0,1.0,6.0,...|[3.92321263680805...|[0.96723785268707...|       0.0|   happy|
+|  6| 32|  9|  2|26654|8109| 730|     M|midage|  13840|  happy|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  0.0|[0.0,0.0,1.0,6.0,...|[5.51250232287197...|[0.99575385767760...|       0.0|   happy|
+|  6| 33|  9|  3|14440|8325|  66|     M|   old|  18800|  happy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  0.0|[0.0,1.0,0.0,6.0,...|[3.56160783429080...|[0.95934921206052...|       0.0|   happy|
+|  7| 46|  9|  4|30156|7032|1084|     F|   old|  11033|  happy|        0.0| (1,[0],[1.0])|     0.0|(2,[0],[1.0])|  0.0|[1.0,1.0,0.0,7.0,...|[6.81985605736602...|[0.99941931724717...|       0.0|   happy|
+|  8| 31|  6|  2|14904|5178| 142|     M| young|  18024|  happy|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  0.0|[0.0,0.0,0.0,8.0,...|[6.21742868473109...|[0.99872056895516...|       0.0|   happy|
+|  8| 43|  9|  2|14454|4585|  30|     F|   old|   3749|  happy|        0.0| (1,[0],[1.0])|     0.0|(2,[0],[1.0])|  0.0|[1.0,1.0,0.0,8.0,...|[5.14559556838368...|[0.99601731753583...|       0.0|   happy|
+|  8| 51|  8|  3|28387|6769| 224|     M|   old|   7754|  happy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  0.0|[0.0,1.0,0.0,8.0,...|[9.43954541946889...|[0.99996915005417...|       0.0|   happy|
+|  9| 59| 10|  3|27227|7083|1197|     M|   old|   1238|  happy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  0.0|[0.0,1.0,0.0,9.0,...|[9.27137282023859...|[0.99995433775677...|       0.0|   happy|
+|  1|  3|  3|  3| 1101|1101|1101|     M|midage|  11500|    shy|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  1.0|[0.0,0.0,1.0,1.0,...|[-2.8599232639296...|[0.00384055396486...|       1.0|     shy|
+|  1|  4|  4|  4|   32|  32|  32|     F|   old|  10703|    shy|        0.0| (1,[0],[1.0])|     0.0|(2,[0],[1.0])|  1.0|[1.0,1.0,0.0,1.0,...|[-3.7002196533490...|[7.54123346848857...|       1.0|     shy|
+|  2|  6|  3|  3| 2376|1236|1140|     F|midage|   3475|    shy|        0.0| (1,[0],[1.0])|     1.0|(2,[1],[1.0])|  1.0|[1.0,0.0,1.0,2.0,...|[-2.6302383026809...|[0.00469748435440...|       1.0|     shy|
+|  2|  6|  3|  3| 3915|2832|1083|     F|midage|  18595|    shy|        0.0| (1,[0],[1.0])|     1.0|(2,[1],[1.0])|  1.0|[1.0,0.0,1.0,2.0,...|[-2.3116495983923...|[0.00907030315233...|       1.0|     shy|
+|  2|  7|  5|  2| 1783| 948| 835|     M|   old|    392|    shy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  1.0|[0.0,1.0,0.0,2.0,...|[-2.2640053002124...|[0.01311812990508...|       1.0|     shy|
+|  2|  9|  5|  4| 3814|1944|1870|     M| young|   1896|    shy|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  1.0|[0.0,0.0,0.0,2.0,...|[-2.0322633043603...|[0.02094626165225...|       1.0|     shy|
+|  2| 11|  8|  3| 3337|2025|1312|     M| young|   8928|    shy|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  1.0|[0.0,0.0,0.0,2.0,...|[-2.4076463269582...|[0.01325924229477...|       1.0|     shy|
+|  2| 11|  9|  2| 4051|2277|1774|     M| young|  29058|    shy|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  1.0|[0.0,0.0,0.0,2.0,...|[-2.6902298437016...|[0.00875623088771...|       1.0|     shy|
+|  2| 12|  7|  5| 9399|6349|3050|     M|   old|  19886|    shy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  1.0|[0.0,1.0,0.0,2.0,...|[-3.1636780850683...|[0.00362328858371...|       1.0|     shy|
+|  2| 12|  8|  4|  680| 536| 144|     M|midage|  20596|    shy|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  1.0|[0.0,0.0,1.0,2.0,...|[-3.0089090092748...|[0.00465098998860...|       1.0|     shy|
+|  2| 12|  9|  3| 1905| 990| 915|     F|midage|  26767|    shy|        0.0| (1,[0],[1.0])|     1.0|(2,[1],[1.0])|  1.0|[1.0,0.0,1.0,2.0,...|[-4.1157950780210...|[6.62562980365051...|       1.0|     shy|
+|  2| 13| 10|  3| 3541|2391|1150|     M| young|  16500|    shy|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  1.0|[0.0,0.0,0.0,2.0,...|[-2.7819423567713...|[0.00761891993379...|       2.0| neutral|
+|  2| 15|  8|  7| 8346|6680|1666|     F|midage|  22555|    shy|        0.0| (1,[0],[1.0])|     1.0|(2,[1],[1.0])|  1.0|[1.0,0.0,1.0,2.0,...|[-3.6761037933357...|[0.00149132002149...|       1.0|     shy|
+|  2| 15| 10|  5| 8340|4760|3580|     M|midage|   1990|    shy|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  1.0|[0.0,0.0,1.0,2.0,...|[-4.4009590615530...|[5.26511511652451...|       1.0|     shy|
+|  3|  6|  3|  1| 2066|1116| 384|     F|   old|  19325|    shy|        0.0| (1,[0],[1.0])|     0.0|(2,[0],[1.0])|  1.0|[1.0,1.0,0.0,3.0,...|[-1.3947742218381...|[0.04239449740119...|       1.0|     shy|
+|  3|  7|  3|  2| 4961|2757| 206|     M|midage|  15538|    shy|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  1.0|[0.0,0.0,1.0,3.0,...|[-0.1079550781614...|[0.29732982310157...|       1.0|     shy|
+|  3| 14|  6|  4| 4526|2504| 390|     M| young|  23706|    shy|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  1.0|[0.0,0.0,0.0,3.0,...|[-0.3547673557547...|[0.21716015338746...|       2.0| neutral|
+|  3| 15|  9|  2| 6467|4995|  48|     M|   old|  24728|    shy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  1.0|[0.0,1.0,0.0,3.0,...|[-1.0597242986056...|[0.08152136454778...|       2.0| neutral|
+|  3| 19|  9|  3| 5891|2943| 267|     F|midage|   4219|neutral|        0.0| (1,[0],[1.0])|     1.0|(2,[1],[1.0])|  2.0|[1.0,0.0,1.0,3.0,...|[-1.7047012282565...|[0.03719338154383...|       1.0|     shy|
+|  3| 21|  9|  4|15351|6512|3088|     F|midage|  21715|neutral|        0.0| (1,[0],[1.0])|     1.0|(2,[1],[1.0])|  2.0|[1.0,0.0,1.0,3.0,...|[-1.7509100369021...|[0.03479799043547...|       1.0|     shy|
+|  3| 25| 10|  6|19845|8640|3402|     F|   old|  14075|  happy|        0.0| (1,[0],[1.0])|     0.0|(2,[0],[1.0])|  0.0|[1.0,1.0,0.0,3.0,...|[-1.5809393781002...|[0.04414519903084...|       2.0| neutral|
+|  4| 13|  6|  1| 6798|2088| 972|     F| young|   6393|    shy|        0.0| (1,[0],[1.0])|     2.0|    (2,[],[])|  1.0|[1.0,0.0,0.0,4.0,...|[-0.0250648739947...|[0.31877687190391...|       2.0| neutral|
+|  4| 17|  7|  2|13042|6727| 216|     F| young|   2235|neutral|        0.0| (1,[0],[1.0])|     2.0|    (2,[],[])|  2.0|[1.0,0.0,0.0,4.0,...|[1.46196187899089...|[0.71289601209002...|       0.0|   happy|
+|  4| 19|  6|  3|11207|4940|1260|     M|midage|   5614|neutral|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  2.0|[0.0,0.0,1.0,4.0,...|[0.88138362652282...|[0.60739287389623...|       0.0|   happy|
+|  4| 19|  7|  3|11498|4885| 724|     M|   old|  13622|neutral|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  2.0|[0.0,1.0,0.0,4.0,...|[0.81501208909920...|[0.56385707324969...|       0.0|   happy|
+|  4| 19|  8|  1|16212|7648| 444|     M|midage|  11710|neutral|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  2.0|[0.0,0.0,1.0,4.0,...|[2.04598823990918...|[0.80561256440268...|       0.0|   happy|
+|  4| 22|  9|  1|17802|8856| 381|     F| young|  26787|neutral|        0.0| (1,[0],[1.0])|     2.0|    (2,[],[])|  2.0|[1.0,0.0,0.0,4.0,...|[2.37521925218234...|[0.83417589395880...|       0.0|   happy|
+|  4| 22|  9|  3| 7465|2544| 168|     M| young|  19878|neutral|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  2.0|[0.0,0.0,0.0,4.0,...|[0.82236313361699...|[0.49536862903510...|       0.0|   happy|
+|  4| 23|  9|  2|12638|4900|1736|     F|   old|    737|neutral|        0.0| (1,[0],[1.0])|     0.0|(2,[0],[1.0])|  2.0|[1.0,1.0,0.0,4.0,...|[-0.3129255966054...|[0.22428366811957...|       2.0| neutral|
+|  4| 24|  8|  5|11448|4755|1296|     F|   old|   1127|  happy|        0.0| (1,[0],[1.0])|     0.0|(2,[0],[1.0])|  0.0|[1.0,1.0,0.0,4.0,...|[-0.5273513793177...|[0.18384696664773...|       2.0| neutral|
+|  5| 18|  6|  1|11349|4665|  66|     F|midage|  15967|neutral|        0.0| (1,[0],[1.0])|     1.0|(2,[1],[1.0])|  2.0|[1.0,0.0,1.0,5.0,...|[1.66910495400055...|[0.82158640911482...|       0.0|   happy|
+|  5| 20|  7|  2|11987|6447| 492|     M|   old|  18218|neutral|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  2.0|[0.0,1.0,0.0,5.0,...|[1.80431614455075...|[0.80019145886573...|       0.0|   happy|
+|  5| 20|  8|  1|11650|4464| 758|     M|midage|  29950|neutral|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  2.0|[0.0,0.0,1.0,5.0,...|[1.50289180128834...|[0.72905790928115...|       0.0|   happy|
+|  5| 21|  8|  2|14351|7760|1140|     M| young|  10230|neutral|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  2.0|[0.0,0.0,0.0,5.0,...|[2.34579704339334...|[0.83955544038668...|       0.0|   happy|
+|  5| 26|  7|  3| 9466|3262| 805|     F|   old|  26699|  happy|        0.0| (1,[0],[1.0])|     0.0|(2,[0],[1.0])|  0.0|[1.0,1.0,0.0,5.0,...|[0.95733975503960...|[0.65687786824195...|       0.0|   happy|
+|  5| 27|  9|  2|15761|4635|1032|     M|   old|  12626|  happy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  0.0|[0.0,1.0,0.0,5.0,...|[2.28779883042223...|[0.86871762482820...|       0.0|   happy|
+|  5| 39| 10|  5|24685|6416|3157|     M|   old|  15254|  happy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  0.0|[0.0,1.0,0.0,5.0,...|[2.98651811753248...|[0.93927492989797...|       0.0|   happy|
+|  6| 23|  9|  1|10334|3830| 621|     M| young|  10914|neutral|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  2.0|[0.0,0.0,0.0,6.0,...|[2.42263291606766...|[0.86117017066314...|       0.0|   happy|
+|  6| 26|  9|  1| 9715|3696| 664|     M| young|  23136|  happy|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  0.0|[0.0,0.0,0.0,6.0,...|[2.68804088348362...|[0.89668765358582...|       0.0|   happy|
+|  6| 31|  9|  3| 7849|2754|  57|     M| young|  19614|  happy|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  0.0|[0.0,0.0,0.0,6.0,...|[2.86550978617197...|[0.92201379132276...|       0.0|   happy|
+|  6| 33|  8|  4|11790|4440| 352|     M| young|  26544|  happy|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  0.0|[0.0,0.0,0.0,6.0,...|[3.78611347727652...|[0.97434823182925...|       0.0|   happy|
+|  6| 33|  9|  1|15163|6273| 201|     M| young|  19962|  happy|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  0.0|[0.0,0.0,0.0,6.0,...|[4.90014830782162...|[0.98988265564205...|       0.0|   happy|
+|  6| 35|  9|  2|22243|8325|1678|     F|midage|  23455|  happy|        0.0| (1,[0],[1.0])|     1.0|(2,[1],[1.0])|  0.0|[1.0,0.0,1.0,6.0,...|[3.81905741565369...|[0.97698443275921...|       0.0|   happy|
+|  7| 27|  7|  1|17948|5406| 736|     F| young|  18201|  happy|        0.0| (1,[0],[1.0])|     2.0|    (2,[],[])|  0.0|[1.0,0.0,0.0,7.0,...|[4.65746922601806...|[0.99247080540321...|       0.0|   happy|
+|  7| 39| 10|  1|20548|4581| 639|     F|   old|   2387|  happy|        0.0| (1,[0],[1.0])|     0.0|(2,[0],[1.0])|  0.0|[1.0,1.0,0.0,7.0,...|[4.84192147614511...|[0.99339040825841...|       0.0|   happy|
+|  7| 46|  9|  2|24292|8532|  10|     F|   old|   6623|  happy|        0.0| (1,[0],[1.0])|     0.0|(2,[0],[1.0])|  0.0|[1.0,1.0,0.0,7.0,...|[6.98636954930926...|[0.99939503459372...|       0.0|   happy|
+|  1|  2|  2|  2| 1106|1106|1106|     F|midage|  13483|    shy|        0.0| (1,[0],[1.0])|     1.0|(2,[1],[1.0])|  1.0|[1.0,0.0,1.0,1.0,...|[-3.0631135231251...|[0.00199817996609...|       1.0|     shy|
+|  1|  4|  4|  4|  220| 220| 220|     M|   old|   8222|    shy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  1.0|[0.0,1.0,0.0,1.0,...|[-3.0579040268635...|[0.00290280910221...|       1.0|     shy|
+|  1|  9|  9|  9| 5319|5319|5319|     M|   old|  19526|    shy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  1.0|[0.0,1.0,0.0,1.0,...|[-7.9046056374910...|[7.52637291955536...|       1.0|     shy|
+|  1| 10| 10| 10|  590| 590| 590|     M|   old|  12998|    shy|        1.0|     (1,[],[])|     0.0|(2,[0],[1.0])|  1.0|[0.0,1.0,0.0,1.0,...|[-6.3606711143343...|[1.36257844969011...|       1.0|     shy|
+|  1| 10| 10| 10| 1160|1160|1160|     F|   old|  28871|    shy|        0.0| (1,[0],[1.0])|     0.0|(2,[0],[1.0])|  1.0|[1.0,1.0,0.0,1.0,...|[-7.3343710875920...|[1.87341788136591...|       1.0|     shy|
+|  1| 10| 10| 10| 3520|3520|3520|     M| young|  25686|    shy|        1.0|     (1,[],[])|     2.0|    (2,[],[])|  1.0|[0.0,0.0,0.0,1.0,...|[-6.8693178210961...|[6.81058345757876...|       1.0|     shy|
+|  2|  6|  5|  1| 4274|3485| 789|     M|midage|  18382|    shy|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  1.0|[0.0,0.0,1.0,2.0,...|[-1.5852118891073...|[0.04300498528545...|       1.0|     shy|
+|  2| 11|  7|  4| 7968|4396|3572|     M|midage|  10708|    shy|        1.0|     (1,[],[])|     1.0|(2,[1],[1.0])|  1.0|[0.0,0.0,1.0,2.0,...|[-3.5617975260296...|[0.00171031121225...|       1.0|     shy|
++---+---+---+---+-----+----+----+------+------+-------+-------+-----------+--------------+--------+-------------+-----+--------------------+--------------------+--------------------+----------+--------+
+only showing top 100 rows
+
+>>> pipelineModel.transform(test).select("segment", "label", "probability", "prediction", "category").show(1)
++-------+-----+--------------------+----------+--------+
+|segment|label|         probability|prediction|category|
++-------+-----+--------------------+----------+--------+
+|    shy|  1.0|[0.00127799518498...|       1.0|     shy|
++-------+-----+--------------------+----------+--------+
+only showing top 1 row
+
+>>> pipelineModel.transform(test).select("segment", "label", "probability", "prediction", "category").show(10)
++-------+-----+--------------------+----------+--------+
+|segment|label|         probability|prediction|category|
++-------+-----+--------------------+----------+--------+
+|    shy|  1.0|[0.00127799518498...|       1.0|     shy|
+|    shy|  1.0|[7.38882364438537...|       1.0|     shy|
+|    shy|  1.0|[1.36048951709207...|       1.0|     shy|
+|    shy|  1.0|[4.68611483334799...|       1.0|     shy|
+|    shy|  1.0|[0.02636789545321...|       1.0|     shy|
+|    shy|  1.0|[0.04181979137745...|       1.0|     shy|
+|    shy|  1.0|[0.03127384502272...|       1.0|     shy|
+|    shy|  1.0|[0.03256454050483...|       2.0| neutral|
+|    shy|  1.0|[0.00146472458139...|       1.0|     shy|
+|    shy|  1.0|[9.56566232482099...|       1.0|     shy|
++-------+-----+--------------------+----------+--------+
+only showing top 10 rows
+
+>>> stages
+[StringIndexer_f311599de7bc, OneHotEncoderEstimator_ce0dbf596089, StringIndexer_c4cc4b820dae, OneHotEncoderEstimator_5d16b7b63811, StringIndexer_2b4dc7f3854f, VectorAssembler_d0b3b62dae72, LogisticRegression_63f5c641f4af, IndexToString_578d3318e1da]
+>>> pipeline = Pipeline(stages = stages)
+>>> pipelineModel = pipeline.fit(df)
+>>> df = pipelineModel.transform(df)
+>>> cols = df.columns
+>>> selectedCols = ['label', 'features'] + cols
+>>> df = df.select(selectedCols)
+>>> df.printSchema()
+root
+ |-- label: double (nullable = false)
+ |-- features: vector (nullable = true)
+ |-- c: long (nullable = false)
+ |-- s1: long (nullable = true)
+ |-- ma1: integer (nullable = true)
+ |-- mi1: integer (nullable = true)
+ |-- s2: long (nullable = true)
+ |-- ma2: integer (nullable = true)
+ |-- mi2: integer (nullable = true)
+ |-- gender: string (nullable = true)
+ |-- age: string (nullable = true)
+ |-- user_id: integer (nullable = true)
+ |-- segment: string (nullable = true)
+ |-- genderIndex: double (nullable = false)
+ |-- genderclassVec: vector (nullable = true)
+ |-- ageIndex: double (nullable = false)
+ |-- ageclassVec: vector (nullable = true)
+ |-- label: double (nullable = false)
+ |-- features: vector (nullable = true)
+ |-- rawPrediction: vector (nullable = true)
+ |-- probability: vector (nullable = true)
+ |-- prediction: double (nullable = false)
+ |-- category: string (nullable = true)
+
+>>> train, test = df.randomSplit([0.7, 0.3], seed = 2018)
+>>> print("Training Dataset Count: " + str(train.count()))
+Training Dataset Count: 20664                                                   
+>>> print("Test Dataset Count: " + str(test.count()))
+Test Dataset Count: 8810                                                        
+>>> from pyspark.ml.classification import LogisticRegression
+>>> lr = LogisticRegression(featuresCol = 'features', labelCol = 'label', maxIter=10)
+>>> lrModel = lr.fit(train)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/opt/spark-2.4.8/python/pyspark/ml/base.py", line 132, in fit
+    return self._fit(dataset)
+  File "/opt/spark-2.4.8/python/pyspark/ml/wrapper.py", line 295, in _fit
+    java_model = self._fit_java(dataset)
+  File "/opt/spark-2.4.8/python/pyspark/ml/wrapper.py", line 292, in _fit_java
+    return self._java_obj.fit(dataset._jdf)
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/opt/spark-2.4.8/python/pyspark/sql/utils.py", line 79, in deco
+    raise IllegalArgumentException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.IllegalArgumentException: u'requirement failed: Column prediction already exists.'
+>>> lr = LogisticRegression(featuresCol = 'features', labelCol = 'label', maxIter=10)
+>>> stages += [lr]
+>>> label_stringIdx_fit = label_stringIdx.fit(users_known)
+>>> indexToStringEstimator = IndexToString().setInputCol("prediction").setOutputCol("category").setLabels(  label_stringIdx_fit.labels)
+>>> stages +=[indexToStringEstimator]
+>>> pipeline = Pipeline().setStages(stages)
+>>> pipelineModel = pipeline.fit(users_known)
+Traceback (most recent call last):                                              
+  File "<stdin>", line 1, in <module>
+  File "/opt/spark-2.4.8/python/pyspark/ml/base.py", line 132, in fit
+    return self._fit(dataset)
+  File "/opt/spark-2.4.8/python/pyspark/ml/pipeline.py", line 109, in _fit
+    model = stage.fit(dataset)
+  File "/opt/spark-2.4.8/python/pyspark/ml/base.py", line 132, in fit
+    return self._fit(dataset)
+  File "/opt/spark-2.4.8/python/pyspark/ml/wrapper.py", line 295, in _fit
+    java_model = self._fit_java(dataset)
+  File "/opt/spark-2.4.8/python/pyspark/ml/wrapper.py", line 292, in _fit_java
+    return self._java_obj.fit(dataset._jdf)
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/opt/spark-2.4.8/python/pyspark/sql/utils.py", line 79, in deco
+    raise IllegalArgumentException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.IllegalArgumentException: u'requirement failed: Column prediction already exists.'
+>>> pipelineModel.write().overwrite().save("my_LR_model8")
+>>> pipelineModel.transform(test).select("segment", "category").show(100)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/opt/spark-2.4.8/python/pyspark/ml/base.py", line 173, in transform
+    return self._transform(dataset)
+  File "/opt/spark-2.4.8/python/pyspark/ml/pipeline.py", line 262, in _transform
+    dataset = t.transform(dataset)
+  File "/opt/spark-2.4.8/python/pyspark/ml/base.py", line 173, in transform
+    return self._transform(dataset)
+  File "/opt/spark-2.4.8/python/pyspark/ml/wrapper.py", line 312, in _transform
+    return DataFrame(self._java_obj.transform(dataset._jdf), dataset.sql_ctx)
+  File "/opt/spark-2.4.8/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/opt/spark-2.4.8/python/pyspark/sql/utils.py", line 79, in deco
+    raise IllegalArgumentException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.IllegalArgumentException: u'requirement failed: Output column genderIndex already exists.'
+>>> pipelineModel.transform(users_known).select("segment", "category").show(100)
++-------+--------+
+|segment|category|
++-------+--------+
+|  happy|   happy|
+|    shy|     shy|
+|  happy|   happy|
+|    shy| neutral|
+|    shy|     shy|
+|    shy| neutral|
+|  happy|   happy|
+|  happy|   happy|
+|  happy|   happy|
+|    shy|     shy|
+|neutral| neutral|
+|  happy|   happy|
+|    shy|     shy|
+|neutral| neutral|
+|  happy| neutral|
+|neutral|     shy|
+|neutral|   happy|
+|    shy|     shy|
+|  happy|   happy|
+|    shy|     shy|
+|    shy| neutral|
+|  happy|   happy|
+|neutral|   happy|
+|    shy|     shy|
+|    shy|     shy|
+|    shy|     shy|
+|    shy|   happy|
+|neutral| neutral|
+|  happy| neutral|
+|    shy|     shy|
+|neutral|     shy|
+|  happy|   happy|
+|neutral|     shy|
+|  happy|   happy|
+|    shy|     shy|
+|    shy|     shy|
+|neutral|   happy|
+|  happy|   happy|
+|neutral| neutral|
+|    shy|     shy|
+|neutral| neutral|
+|  happy|   happy|
+|  happy|   happy|
+|  happy|   happy|
+|  happy|   happy|
+|  happy|   happy|
+|  happy| neutral|
+|  happy|   happy|
+|    shy| neutral|
+|    shy| neutral|
+|    shy|     shy|
+|  happy|   happy|
+|  happy|   happy|
+|neutral|   happy|
+|neutral|   happy|
+|    shy|     shy|
+|    shy|     shy|
+|  happy|   happy|
+|  happy|   happy|
+|  happy|   happy|
+|  happy|   happy|
+|    shy|     shy|
+|  happy|   happy|
+|  happy|   happy|
+|    shy|     shy|
+|  happy|   happy|
+|  happy|   happy|
+|    shy|     shy|
+|    shy|     shy|
+|    shy|     shy|
+|  happy|   happy|
+|  happy|   happy|
+|  happy|   happy|
+|  happy|   happy|
+|    shy| neutral|
+|    shy|     shy|
+|    shy| neutral|
+|    shy| neutral|
+|neutral|     shy|
+|    shy| neutral|
+|  happy|   happy|
+|  happy| neutral|
+|    shy|     shy|
+|  happy|   happy|
+|    shy| neutral|
+|  happy|   happy|
+|    shy|     shy|
+|neutral| neutral|
+|    shy|     shy|
+|    shy|     shy|
+|  happy|   happy|
+|    shy|     shy|
+|  happy|   happy|
+|neutral| neutral|
+|  happy|   happy|
+|neutral| neutral|
+|  happy|   happy|
+|    shy|     shy|
+|    shy|     shy|
+|neutral| neutral|
++-------+--------+
+only showing top 100 rows
+
+>>> 
+
