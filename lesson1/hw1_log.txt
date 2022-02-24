@@ -1,0 +1,474 @@
+igor@igor-MS-7808:~$ ssh -i ~/.ssh/id_rsa_student898_2 student898_2@37.139.41.176
+Last login: Wed Dec 15 22:41:24 2021 from 109.252.20.121
+[student898_2@bigdataanalytics-worker-3 ~]$ from pyspark.sql import functions as F
+-bash: from: команда не найдена
+[student898_2@bigdataanalytics-worker-3 ~]$ pyspark
+SPARK_MAJOR_VERSION is set to 2, using Spark2
+Python 2.7.5 (default, Nov 16 2020, 22:23:17) 
+[GCC 4.8.5 20150623 (Red Hat 4.8.5-44)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /__ / .__/\_,_/_/ /_/\_\   version 2.3.2.3.1.4.0-315
+      /_/
+
+Using Python version 2.7.5 (default, Nov 16 2020 22:23:17)
+SparkSession available as 'spark'.
+>>> from pyspark.sql import functions as F
+>>> raw_rate = spark \
+...     .readStream \
+...     .format("rate") \
+...     .load()
+>>> raw_rate.printSchema()
+root
+ |-- timestamp: timestamp (nullable = true)
+ |-- value: long (nullable = true)
+
+>>> raw_rate.isStreaming
+True
+>>> stream = raw_rate \
+...     .writeStream \
+...     .trigger(processingTime='30 seconds') \
+...     .format("console") \
+...     .options(truncate=False) \
+...     .start()
+>>> -------------------------------------------
+Batch: 0
+-------------------------------------------
++---------+-----+
+|timestamp|value|
++---------+-----+
++---------+-----+
+
+-------------------------------------------                                     
+Batch: 1
+-------------------------------------------
++-----------------------+-----+
+|timestamp              |value|
++-----------------------+-----+
+|2021-12-16 17:26:11.007|0    |
+|2021-12-16 17:26:12.007|1    |
+|2021-12-16 17:26:13.007|2    |
+|2021-12-16 17:26:14.007|3    |
+|2021-12-16 17:26:15.007|4    |
+|2021-12-16 17:26:16.007|5    |
+|2021-12-16 17:26:17.007|6    |
+|2021-12-16 17:26:18.007|7    |
+|2021-12-16 17:26:19.007|8    |
+|2021-12-16 17:26:20.007|9    |
+|2021-12-16 17:26:21.007|10   |
+|2021-12-16 17:26:22.007|11   |
+|2021-12-16 17:26:23.007|12   |
+|2021-12-16 17:26:24.007|13   |
+|2021-12-16 17:26:25.007|14   |
+|2021-12-16 17:26:26.007|15   |
+|2021-12-16 17:26:27.007|16   |
+|2021-12-16 17:26:28.007|17   |
++-----------------------+-----+
+
+stream.stop()
+>>> stream.explain()
+== Physical Plan ==
+WriteToDataSourceV2 org.apache.spark.sql.execution.streaming.sources.MicroBatchWriter@45ba80
++- Scan ExistingRDD[timestamp#25,value#26L]
+>>> stream.lastProgress
+{u'stateOperators': [], u'name': None, u'timestamp': u'2021-12-16T17:26:30.000Z', u'processedRowsPerSecond': 4.964147821290679, u'inputRowsPerSecond': 0.9525321479599937, u'numInputRows': 18, u'batchId': 1, u'sources': [{u'description': u'RateSource[rowsPerSecond=1, rampUpTimeSeconds=0, numPartitions=2]', u'endOffset': 18, u'processedRowsPerSecond': 4.964147821290679, u'inputRowsPerSecond': 0.9525321479599937, u'numInputRows': 18, u'startOffset': 0}], u'durationMs': {u'queryPlanning': 9, u'getOffset': 0, u'addBatch': 3476, u'getBatch': 26, u'walCommit': 113, u'triggerExecution': 3626}, u'runId': u'9d161b70-eba2-4dd4-826e-669c42b11f00', u'id': u'55ce6ce2-6bd0-4c58-9570-ed9e1902a7be', u'sink': {u'description': u'org.apache.spark.sql.execution.streaming.ConsoleSinkProvider@174bd968'}}
+>>> stream.status
+{u'message': u'Stopped', u'isTriggerActive': False, u'isDataAvailable': False}
+>>> def console_output(df, freq):
+...     return df.writeStream \
+...         .format("console") \
+...         .trigger(processingTime='%s seconds' % freq ) \
+...         .options(truncate=False) \
+...         .start()
+... 
+>>> filtered_rate = raw_rate \
+...     .filter( F.col("value") % F.lit("2") == 0 )
+>>> out = console_output(filtered_rate, 5)
+>>> -------------------------------------------
+Batch: 0
+-------------------------------------------
++---------+-----+
+|timestamp|value|
++---------+-----+
++---------+-----+
+
+-------------------------------------------
+Batch: 1
+-------------------------------------------
++-----------------------+-----+
+|timestamp              |value|
++-----------------------+-----+
+|2021-12-16 17:29:11.441|0    |
+|2021-12-16 17:29:13.441|2    |
++-----------------------+-----+
+
+-------------------------------------------
+Batch: 2
+-------------------------------------------
++-----------------------+-----+
+|timestamp              |value|
++-----------------------+-----+
+|2021-12-16 17:29:15.441|4    |
+|2021-12-16 17:29:17.441|6    |
++-----------------------+-----+
+
+-------------------------------------------
+Batch: 3
+-------------------------------------------
++-----------------------+-----+
+|timestamp              |value|
++-----------------------+-----+
+|2021-12-16 17:29:19.441|8    |
+|2021-12-16 17:29:21.441|10   |
+|2021-12-16 17:29:23.441|12   |
++-----------------------+-----+
+
+-------------------------------------------
+Batch: 4
+-------------------------------------------
++-----------------------+-----+
+|timestamp              |value|
++-----------------------+-----+
+|2021-12-16 17:29:25.441|14   |
+|2021-12-16 17:29:27.441|16   |
++-----------------------+-----+
+
+out.stop()-------------------------------------------
+Batch: 5
+-------------------------------------------
++-----------------------+-----+
+|timestamp              |value|
++-----------------------+-----+
+|2021-12-16 17:29:29.441|18   |
+|2021-12-16 17:29:31.441|20   |
+|2021-12-16 17:29:33.441|22   |
++-----------------------+-----+
+
+
+>>> out.stop()
+>>> extra_rate = filtered_rate \
+...     .withColumn("my_value",
+...                 F.when((F.col("value") % F.lit(10) == 0), F.lit("jubilee"))
+...                     .otherwise(F.lit("not yet")))
+>>> out = console_output(extra_rate, 5)
+>>> -------------------------------------------
+Batch: 0
+-------------------------------------------
++---------+-----+--------+
+|timestamp|value|my_value|
++---------+-----+--------+
++---------+-----+--------+
+
+-------------------------------------------
+Batch: 1
+-------------------------------------------
++-----------------------+-----+--------+
+|timestamp              |value|my_value|
++-----------------------+-----+--------+
+|2021-12-16 17:30:57.204|0    |jubilee |
++-----------------------+-----+--------+
+
+-------------------------------------------
+Batch: 2
+-------------------------------------------
++-----------------------+-----+--------+
+|timestamp              |value|my_value|
++-----------------------+-----+--------+
+|2021-12-16 17:30:59.204|2    |not yet |
+|2021-12-16 17:31:01.204|4    |not yet |
+|2021-12-16 17:31:03.204|6    |not yet |
++-----------------------+-----+--------+
+
+out.stop()
+>>> def killAll():
+...     for active_stream in spark.streams.active:
+...         print("Stopping %s by killAll" % active_stream)
+...         active_stream.stop()
+... 
+>>> console_output(extra_rate, 5)
+<pyspark.sql.streaming.StreamingQuery object at 0x7ff7d7945d50>
+>>> -------------------------------------------
+Batch: 0
+-------------------------------------------
++---------+-----+--------+
+|timestamp|value|my_value|
++---------+-----+--------+
++---------+-----+--------+
+
+-------------------------------------------
+Batch: 1
+-------------------------------------------
++-----------------------+-----+--------+
+|timestamp              |value|my_value|
++-----------------------+-----+--------+
+|2021-12-16 17:32:23.874|0    |jubilee |
++-----------------------+-----+--------+
+
+-------------------------------------------
+Batch: 2
+-------------------------------------------
++-----------------------+-----+--------+
+|timestamp              |value|my_value|
++-----------------------+-----+--------+
+|2021-12-16 17:32:25.874|2    |not yet |
+|2021-12-16 17:32:27.874|4    |not yet |
++-----------------------+-----+--------+
+
+-------------------------------------------
+Batch: 3
+-------------------------------------------
++-----------------------+-----+--------+
+|timestamp              |value|my_value|
++-----------------------+-----+--------+
+|2021-12-16 17:32:29.874|6    |not yet |
+|2021-12-16 17:32:31.874|8    |not yet |
+|2021-12-16 17:32:33.874|10   |jubilee |
++-----------------------+-----+--------+
+
+-------------------------------------------
+Batch: 4
+-------------------------------------------
++-----------------------+-----+--------+
+|timestamp              |value|my_value|
++-----------------------+-----+--------+
+|2021-12-16 17:32:35.874|12   |not yet |
+|2021-12-16 17:32:37.874|14   |not yet |
++-----------------------+-----+--------+
+
+-------------------------------------------
+Batch: 5
+-------------------------------------------
++-----------------------+-----+--------+
+|timestamp              |value|my_value|
++-----------------------+-----+--------+
+|2021-12-16 17:32:39.874|16   |not yet |
+|2021-12-16 17:32:41.874|18   |not yet |
+|2021-12-16 17:32:43.874|20   |jubilee |
++-----------------------+-----+--------+
+
+killAll()
+Stopping <pyspark.sql.streaming.StreamingQuery object at 0x7ff7d7928f50> by killAll
+>>> killAll()
+>>> spark.streams.active
+[]
+>>> spark.streams.active
+[]
+>>> from pyspark.sql.types import StructType, StringType
+>>> df = spark.sql("select 1 as id, 'Big' as name"
+... )
+>>> df.show
+<bound method DataFrame.show of DataFrame[id: int, name: string]>
+>>> df.show()
++---+----+
+| id|name|
++---+----+
+|  1| Big|
++---+----+
+
+>>> 
+Traceback (most recent call last):
+  File "/usr/hdp/current/spark2-client/python/pyspark/context.py", line 261, in signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+>>> df.printShema()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/hdp/current/spark2-client/python/pyspark/sql/dataframe.py", line 1182, in __getattr__
+    "'%s' object has no attribute '%s'" % (self.__class__.__name__, name))
+AttributeError: 'DataFrame' object has no attribute 'printShema'
+>>> df.printSchema()
+root
+ |-- id: integer (nullable = false)
+ |-- name: string (nullable = false)
+
+>>> schema = StructType() \
+...     .add("product_category_name", StringType()) \
+... 
+>>> schema = StructType() \
+... .add("product_name", StringType()) \
+... .add("product_category", StringType())
+>>> schema.show()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'StructType' object has no attribute 'show'
+>>> def console_output(df, freq):
+...     return df.writeStream \
+...         .format("console") \
+...         .trigger(processingTime='%s seconds' % freq ) \
+...         .options(truncate=False) \
+...         .start()
+... 
+>>> raw_files = spark \
+...     .readStream \
+...     .format("csv") \
+...     .schema(schema) \
+...     .options(path="input_csv_for_stream", header=True) \
+...     .load()
+>>> out = console_output(raw_files, 15)
+[Stage 14:>                                                    [Stage 14:=============================>                       [Stage 14:=============================>                                                                                      -------------------------------------------
+Batch: 0
+-------------------------------------------
++------------+------------------+
+|product_name|product_category  |
++------------+------------------+
+|1           |'IPone 13 Pro Max'|
+|2           |'MacBook 13 Pro'  |
+|3           |'IMac 27'         |
+|6           |'Xiaome ReadMe 12'|
+|7           |'Tesla Model X'   |
++------------+------------------+
+
+>>> out.stop()
+>>> out = console_output(raw_files, 15)
+>>> -------------------------------------------
+Batch: 0
+-------------------------------------------
++------------+------------------+
+|product_name|product_category  |
++------------+------------------+
+|10          |'IPone 13 Pro Max'|
+|20          |'MacBook 13 Pro'  |
+|30          |'IMac 27'         |
+|12          |'IPone 13 Pro Max'|
+|22          |'MacBook 13 Pro'  |
+|32          |'IMac 27'         |
+|9           |'IPone 13 Pro Max'|
+|8           |'MacBook 13 Pro'  |
+|16          |'IMac 27'         |
+|1           |'IPone 13 Pro Max'|
+|2           |'MacBook 13 Pro'  |
+|3           |'IMac 27'         |
+|6           |'Xiaome ReadMe 12'|
+|7           |'Tesla Model X'   |
++------------+------------------+
+
+>>> out.stop()
+>>> aw_files = spark \
+...     .readStream \
+...     .format("csv") \
+...     .schema(schema) \
+...     .options(path="input_csv_for_stream", header=True, maxFilesPerTrigger=1) \
+...     .load()
+>>> out = console_output(raw_files, 15)
+>>> -------------------------------------------
+Batch: 0
+-------------------------------------------
++------------+------------------+
+|product_name|product_category  |
++------------+------------------+
+|10          |'IPone 13 Pro Max'|
+|20          |'MacBook 13 Pro'  |
+|30          |'IMac 27'         |
+|12          |'IPone 13 Pro Max'|
+|22          |'MacBook 13 Pro'  |
+|32          |'IMac 27'         |
+|9           |'IPone 13 Pro Max'|
+|8           |'MacBook 13 Pro'  |
+|16          |'IMac 27'         |
+|1           |'IPone 13 Pro Max'|
+|2           |'MacBook 13 Pro'  |
+|3           |'IMac 27'         |
+|6           |'Xiaome ReadMe 12'|
+|7           |'Tesla Model X'   |
++------------+------------------+
+
+out.stop()
+>>> raw_files = spark \
+...     .readStream \
+...     .format("csv") \
+...     .schema(schema) \
+...     .options(path="input_csv_for_stream", header=True, maxFilesPerTrigger=1) \
+...     .load()
+>>> out = console_output(raw_files, 15)
+>>> -------------------------------------------
+Batch: 0
+-------------------------------------------
++------------+------------------+
+|product_name|product_category  |
++------------+------------------+
+|1           |'IPone 13 Pro Max'|
+|2           |'MacBook 13 Pro'  |
+|3           |'IMac 27'         |
++------------+------------------+
+
+-------------------------------------------                                     
+Batch: 1
+-------------------------------------------
++------------+------------------+
+|product_name|product_category  |
++------------+------------------+
+|6           |'Xiaome ReadMe 12'|
+|7           |'Tesla Model X'   |
++------------+------------------+
+
+-------------------------------------------
+Batch: 2
+-------------------------------------------
++------------+------------------+
+|product_name|product_category  |
++------------+------------------+
+|9           |'IPone 13 Pro Max'|
+|8           |'MacBook 13 Pro'  |
+|16          |'IMac 27'         |
++------------+------------------+
+
+>>> -------------------------------------------
+Batch: 3
+-------------------------------------------
++------------+------------------+
+|product_name|product_category  |
++------------+------------------+
+|10          |'IPone 13 Pro Max'|
+|20          |'MacBook 13 Pro'  |
+|30          |'IMac 27'         |
++------------+------------------+
+
+>>> out.stop()-------------------------------------------
+Batch: 4
+-------------------------------------------
++------------+------------------+
+|product_name|product_category  |
++------------+------------------+
+|12          |'IPone 13 Pro Max'|
+|22          |'MacBook 13 Pro'  |
+|32          |'IMac 27'         |
++------------+------------------+
+
+out.stop()
+  File "<stdin>", line 1
+    out.stop()out.stop()
+                ^
+SyntaxError: invalid syntax
+>>> out.stop()
+>>> extra_files = raw_files \
+...     .withColumn("spanish_length", F.length(F.col("product_category_name"))) \
+...     .withColumn("english_length", F.length(F.col("product_category_name_english")))
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+  File "/usr/hdp/current/spark2-client/python/pyspark/sql/dataframe.py", line 1849, in withColumn
+    return DataFrame(self._jdf.withColumn(colName, col._jc), self.sql_ctx)
+  File "/usr/hdp/current/spark2-client/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+  File "/usr/hdp/current/spark2-client/python/pyspark/sql/utils.py", line 69, in deco
+    raise AnalysisException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.AnalysisException: u"cannot resolve '`product_category_name`' given input columns: [product_name, product_category];;\n'Project [product_name#439, product_category#440, length('product_category_name) AS spanish_length#540]\n+- StreamingRelation DataSource(org.apache.spark.sql.SparkSession@4779b69d,csv,List(),Some(StructType(StructField(product_name,StringType,true), StructField(product_category,StringType,true))),List(),None,Map(header -> true, maxFilesPerTrigger -> 1, path -> input_csv_for_stream),None), FileSource[input_csv_for_stream], [product_name#439, product_category#440]\n"
+>>> out = console_output(extra_files, 5)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'extra_files' is not defined
+>>> exit
+Use exit() or Ctrl-D (i.e. EOF) to exit
+>>> exit()
+[student898_2@bigdataanalytics-worker-3 ~]$ exit
+logout
+Connection to 37.139.41.176 closed.
+igor@igor-MS-7808:~$ apt list --upgradable >> output.txt
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+igor@igor-MS-7808:~$ command | tee -a output.txt
+
