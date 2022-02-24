@@ -1,0 +1,541 @@
+igor@igor-MS-7808:~$ ssh -i ~/.ssh/id_rsa_student898_2 student898_2@37.139.41.176
+Last login: Tue Dec 21 22:08:42 2021 from 109-252-20-121.nat.spd-mgts.ru
+[student898_2@bigdataanalytics-worker-3 ~]$ cd /usr/hdp/current/kafka-broker/bin
+[student898_2@bigdataanalytics-worker-3 bin]$ ls
+connect-distributed.sh        kafka-consumer-groups.sh             kafka-producer-perf-test.sh         kafka-verifiable-consumer.sh
+connect-standalone.sh         kafka-consumer-perf-test.sh          kafka-reassign-partitions.sh        kafka-verifiable-producer.sh
+kafka                         kafka-delegation-tokens.sh           kafka-replica-verification.sh       trogdor.sh
+kafka-acls.sh                 kafka-delete-records.sh              kafka-run-class.sh                  windows
+kafka-broker-api-versions.sh  kafka-dump-log.sh                    kafka-server-start.sh               zookeeper-security-migration.sh
+kafka-configs.sh              kafka-log-dirs.sh                    kafka-server-stop.sh                zookeeper-server-start.sh
+kafka-console-consumer.sh     kafka-mirror-maker.sh                kafka-streams-application-reset.sh  zookeeper-server-stop.sh
+kafka-console-producer.sh     kafka-preferred-replica-election.sh  kafka-topics.sh                     zookeeper-shell.sh
+[student898_2@bigdataanalytics-worker-3 bin]$ cat kafka-topics.sh
+#!/bin/bash
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+# 
+#    http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+exec $(dirname $0)/kafka-run-class.sh kafka.admin.TopicCommand "$@"
+[student898_2@bigdataanalytics-worker-3 bin]$ ./kafka-topics.sh
+Create, delete, describe, or change a topic.
+Option                                   Description                            
+------                                   -----------                            
+--alter                                  Alter the number of partitions,        
+                                           replica assignment, and/or           
+                                           configuration for the topic.         
+--config <String: name=value>            A topic configuration override for the 
+                                           topic being created or altered.The   
+                                           following is a list of valid         
+                                           configurations:                      
+                                         	cleanup.policy                        
+                                         	compression.type                      
+                                         	delete.retention.ms                   
+                                         	file.delete.delay.ms                  
+                                         	flush.messages                        
+                                         	flush.ms                              
+                                         	follower.replication.throttled.       
+                                           replicas                             
+                                         	index.interval.bytes                  
+                                         	leader.replication.throttled.replicas 
+                                         	max.message.bytes                     
+                                         	message.downconversion.enable         
+                                         	message.format.version                
+                                         	message.timestamp.difference.max.ms   
+                                         	message.timestamp.type                
+                                         	min.cleanable.dirty.ratio             
+                                         	min.compaction.lag.ms                 
+                                         	min.insync.replicas                   
+                                         	preallocate                           
+                                         	retention.bytes                       
+                                         	retention.ms                          
+                                         	segment.bytes                         
+                                         	segment.index.bytes                   
+                                         	segment.jitter.ms                     
+                                         	segment.ms                            
+                                         	unclean.leader.election.enable        
+                                         See the Kafka documentation for full   
+                                           details on the topic configs.        
+--create                                 Create a new topic.                    
+--delete                                 Delete a topic                         
+--delete-config <String: name>           A topic configuration override to be   
+                                           removed for an existing topic (see   
+                                           the list of configurations under the 
+                                           --config option).                    
+--describe                               List details for the given topics.     
+--disable-rack-aware                     Disable rack aware replica assignment  
+--force                                  Suppress console prompts               
+--help                                   Print usage information.               
+--if-exists                              if set when altering or deleting       
+                                           topics, the action will only execute 
+                                           if the topic exists                  
+--if-not-exists                          if set when creating topics, the       
+                                           action will only execute if the      
+                                           topic does not already exist         
+--list                                   List all available topics.             
+--partitions <Integer: # of partitions>  The number of partitions for the topic 
+                                           being created or altered (WARNING:   
+                                           If partitions are increased for a    
+                                           topic that has a key, the partition  
+                                           logic or ordering of the messages    
+                                           will be affected                     
+--replica-assignment <String:            A list of manual partition-to-broker   
+  broker_id_for_part1_replica1 :           assignments for the topic being      
+  broker_id_for_part1_replica2 ,           created or altered.                  
+  broker_id_for_part2_replica1 :                                                
+  broker_id_for_part2_replica2 , ...>                                           
+--replication-factor <Integer:           The replication factor for each        
+  replication factor>                      partition in the topic being created.
+--topic <String: topic>                  The topic to be create, alter or       
+                                           describe. Can also accept a regular  
+                                           expression except for --create option
+--topics-with-overrides                  if set when describing topics, only    
+                                           show topics that have overridden     
+                                           configs                              
+--unavailable-partitions                 if set when describing topics, only    
+                                           show partitions whose leader is not  
+                                           available                            
+--under-replicated-partitions            if set when describing topics, only    
+                                           show under replicated partitions     
+--zookeeper <String: hosts>              REQUIRED: The connection string for    
+                                           the zookeeper connection in the form 
+                                           host:port. Multiple hosts can be     
+                                           given to allow fail-over.            
+[student898_2@bigdataanalytics-worker-3 bin]$ cat /etc/hosts
+127.0.0.1 localhost
+10.0.0.21 bigdataanalytics-worker-0.mcs.local bigdataanalytics-worker-0
+10.0.0.29 bigdataanalytics-worker-1.mcs.local bigdataanalytics-worker-1
+10.0.0.23 bigdataanalytics-worker-2.mcs.local bigdataanalytics-worker-2
+10.0.0.6 bigdataanalytics-worker-3.mcs.local bigdataanalytics-worker-3
+10.0.0.5 bigdataanalytics-head-0.mcs.local bigdataanalytics-head-0
+[student898_2@bigdataanalytics-worker-3 bin]$ ./kafka-topics.sh --list --zookeeper bigdataanalytics-worker-3:2181
+__consumer_offsets
+incident_event_json
+orders_json
+sales_unknown
+shadrin_iris
+test
+[student898_2@bigdataanalytics-worker-3 bin]$ ./kafka-topics.sh --alter --topic test --zookeeper bigdataanalytics-worker-3:2181 --config retention.ms=6000
+WARNING: Altering topic configuration from this script has been deprecated and may be removed in future releases.
+         Going forward, please use kafka-configs.sh for this functionality
+Updated config for topic "test".
+[student898_2@bigdataanalytics-worker-3 bin]$ ./kafka-console-consumer.sh
+The console consumer is a tool that reads data from Kafka and outputs it to standard output.
+Option                                   Description                            
+------                                   -----------                            
+--bootstrap-server <String: server to    REQUIRED: The server(s) to connect to. 
+  connect to>                                                                   
+--consumer-property <String:             A mechanism to pass user-defined       
+  consumer_prop>                           properties in the form key=value to  
+                                           the consumer.                        
+--consumer.config <String: config file>  Consumer config properties file. Note  
+                                           that [consumer-property] takes       
+                                           precedence over this config.         
+--enable-systest-events                  Log lifecycle events of the consumer   
+                                           in addition to logging consumed      
+                                           messages. (This is specific for      
+                                           system tests.)                       
+--formatter <String: class>              The name of a class to use for         
+                                           formatting kafka messages for        
+                                           display. (default: kafka.tools.      
+                                           DefaultMessageFormatter)             
+--from-beginning                         If the consumer does not already have  
+                                           an established offset to consume     
+                                           from, start with the earliest        
+                                           message present in the log rather    
+                                           than the latest message.             
+--group <String: consumer group id>      The consumer group id of the consumer. 
+--isolation-level <String>               Set to read_committed in order to      
+                                           filter out transactional messages    
+                                           which are not committed. Set to      
+                                           read_uncommittedto read all          
+                                           messages. (default: read_uncommitted)
+--key-deserializer <String:                                                     
+  deserializer for key>                                                         
+--max-messages <Integer: num_messages>   The maximum number of messages to      
+                                           consume before exiting. If not set,  
+                                           consumption is continual.            
+--offset <String: consume offset>        The offset id to consume from (a non-  
+                                           negative number), or 'earliest'      
+                                           which means from beginning, or       
+                                           'latest' which means from end        
+                                           (default: latest)                    
+--partition <Integer: partition>         The partition to consume from.         
+                                           Consumption starts from the end of   
+                                           the partition unless '--offset' is   
+                                           specified.                           
+--property <String: prop>                The properties to initialize the       
+                                           message formatter. Default           
+                                           properties include:                  
+                                         	print.timestamp=true|false            
+                                         	print.key=true|false                  
+                                         	print.value=true|false                
+                                         	key.separator=<key.separator>         
+                                         	line.separator=<line.separator>       
+                                         	key.deserializer=<key.deserializer>   
+                                         	value.deserializer=<value.            
+                                           deserializer>                        
+                                         Users can also pass in customized      
+                                           properties for their formatter; more 
+                                           specifically, users can pass in      
+                                           properties keyed with 'key.          
+                                           deserializer.' and 'value.           
+                                           deserializer.' prefixes to configure 
+                                           their deserializers.                 
+--skip-message-on-error                  If there is an error when processing a 
+                                           message, skip it instead of halt.    
+--timeout-ms <Integer: timeout_ms>       If specified, exit if no message is    
+                                           available for consumption for the    
+                                           specified interval.                  
+--topic <String: topic>                  The topic id to consume on.            
+--value-deserializer <String:                                                   
+  deserializer for values>                                                      
+--whitelist <String: whitelist>          Whitelist of topics to include for     
+                                           consumption.                         
+[student898_2@bigdataanalytics-worker-3 bin]$ cat kafka-console-producer.sh
+#!/bin/bash
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+if [ "x$KAFKA_HEAP_OPTS" = "x" ]; then
+    export KAFKA_HEAP_OPTS="-Xmx512M"
+fi
+
+# check if kafka_jaas.conf in config , only enable client_kerberos_params in secure mode.
+KAFKA_HOME="$(dirname $(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ))"
+KAFKA_JAAS_CONF=$KAFKA_HOME/config/kafka_jaas.conf
+if [ -f $KAFKA_JAAS_CONF ]; then
+    export KAFKA_CLIENT_KERBEROS_PARAMS="-Djava.security.auth.login.config=$KAFKA_HOME/config/kafka_client_jaas.conf"
+fi
+
+exec $(dirname $0)/kafka-run-class.sh kafka.tools.ConsoleProducer "$@"
+[student898_2@bigdataanalytics-worker-3 bin]$ kafka-console-producer.sh --broker-list bigdataanalytics-worker-3:6667 --topic test << dataset.csv
+> classcomment
+> positifKami siap laksanakan Instruksi pak
+> positifSiap melaksanakan intruksi pak
+> positifSiap dukung dan sukseskan
+> positifLangkah 3M ini sudah sukses di Bali memutus penyebaran covid pak presiden
+> positifSiap amankan seluruh kebijakan kementerian Desa PDTT
+> positifSiap utk di sosialisasikan ke setiap TPP yg ada di wilayah kabupaten Boltim
+> positifMendukung kebijakan Gus Menteri dalam upaya pencapaian SDGs Desa 3 yaitu Desa Sehat dan Sejahtera
+> positifMari bersama cegah penyebaran covid-19
+> positifMari kita sukseskan ppkm di masyarakat
+> positifSiap kawal dan amankan kebijakan kemendes palaksanaan PPKM untuk kemajuan dan kesejahteraan masyarakat desa
+> positifSemoga pak gubernur terus diberikan kekuatan untuk lanjutkan pengabdian bagi masyarakat..... langkah yang tepat akan mendapat pahala dari Allah SWT... bila semua niat karena ibadah.…
+> positifSemoga bapak selalu diberi kesehatan amin....salam dari kota reog Ponorogo jawa timur bapak
+> positifSemangat selalu
+> positifSemoga berhasil...mikro lockdown
+> positifpatuhi prokes dan terapkan 5M
+> positifterimakasih atas layanan vaksin untuk warga lansia  yg sangat baik dan profesional semoga  layanan profesional tetap jadi standar Pemda DKI amin
+> positifSehat selalu pemimpinku
+> positifSemoga selalu diberikan kesehatan dan kesabaran 
+> positifsemoga pandemi segera berakhir. Mau ikut vaksin tapi takut di suntik. he he
+> positifMakasih bu, sukses selalu
+> positiftetap patuhi prokes , dukung penuh
+> positifBravo buat dokter seluruh dunia khususnya di Indonesia telah berdiri di garda terdepan
+> positifAduh semoga dipercepatlah vaksin masal utk seluruh rakyat itu ya..biar agak kurang was wasnya
+> positifSiap komandan
+> positifMari saling mengingatkan dilingkungan kita masing²
+> positifkami mendukung pemerintah memutuskan rantai covid 19 ditingkat keluarga untuk mendidik dan menasehati anak istri menurut prokes sebagian sop.
+> positifMari saling mengingatkan dilingkungan kita masing²
+> positifSemoga pandemi cepat hilang,,,,, perekonomian pulih
+> positifMoga cepat normal, sampai kapan kita semua seperti ini ya..?? Tetap pada protokol Covid, jaga sehat dan tetap SEMANGAT
+> positifIngat 5M ( memakai masker, mencuci tangan pakai sabun, menjaga jarak, menjauhi kerumunan dan membatasi mobilitas)."BERSAMA LAWAN COVID-19"
+> positifdoakan saja supaya sampai bulan maret 2022
+> positifKlo memang ada trend positif selama ppkm mikro kita harus bersyukur
+> positifSiap, Insya Allah tetap semangat, Pak...Terima kasih ya, Pak
+> positifSemoga covid cepat berlalu
+> positifTerimakasih dr Restuti Saragih infonya..Aduh..jgn bertambah lagi pasien covid di medan
+> positifTerima kasih info.a Bu dokter.Bravo buat dokter seluruh dunia khususnya di Indonesia telah berdiri di garda terdepan
+> positifIya, Kakak...Aamiin YRA...Dan meskipun udah vaksin, wajib tetap prokes
+> positifMasha Allah Tabarakallah keren banget dek. Sehat dan sukses selalu sayang
+> positifAlhamdulillah...yang penting sehat panjang umur....punya duit banyak ya nggak apa-apa
+> positifAlhamdulillah Brunei Darussalam sudah nol covid19,somoga saudara di Indonesia bisa
+> positifMaju pak Joko Wi jangan mundur asal mundur kasihan rakyat menangis bosku
+> positifKebijakan yg baik dan efektif gini mestinya didukung, bukan malah dinyinyirin mbak2 dan mas2. Ayo lah dukung keberlanjutan PPKM berskala mikro biar bs tekan kasus baru Covid-19
+> positifMantap pak lanjutkan Sampai 2022
+> positifTetap pada protokol Covid, jaga sehat dan tetap SEMANGAT
+> positifBersama Cegah Covid
+> positifIndonesia BEBAS COVID 19 masyarakat SEHAT
+> positifMari kita saling jaga kesehatan masing masing di manapun tempat nya
+> positifSehat-sehat dan tetap semangat
+> positifSalut tetep semangat buat kerja keras tuk menolong sesama
+> positifSetuju banget pak.. yang penting kita saling menjaga dan saling mengingatkan, jaga kebersihan dan keamanan bersama
+> positifSalut tetep semangat buat kerja keras tuk menolong sesama
+> positifPatuhi protokol kesehatan untuk mewujudkan Blitar bebas covid-19#divisihumaspolri#patuhiprokes#AyoJogoBlitar#bebasCovid19#PPKMMikro https://t.co/HZw0xfTZ8A
+> positifPatuhi protokol kesehatan untuk mewujudkan Blitar bebas covid-19#divisihumaspolri#patuhiprokes#AyoJogoBlitar#bebasCovid19#PPKMMikro https://t.co/HZw0xfTZ8A
+> positifPatuhi protokol kesehatan untuk mewujudkan Blitar bebas covid-19#divisihumaspolri#patuhiprokes#AyoJogoBlitar#bebasCovid19#PPKMMikro https://t.co/HZw0xfTZ8A
+> positifKapolsek Selorejo pimmpin pelaksanaan pengawasan PPKM dan pembagian masker kepada jamaah sholat Jum'at di Masjid Al- Munir desa Sumberagung.#divisihumaspolri#patuhiprokes#AyoJogoBlitar#bebasCovid19#PPKMMikro https://t.co/lnxiWklj7q
+> positifSURAT EDARAN BUPATI TENTANG PERPANJANGAN KEDUA PPKM MIKRO DAN PENGOPTIMALAN POSKO PENANGANAN CORONA VIRUS DISEASE 2019#MadiunInfo #InformasiMadiun #beritamadiun #MadiunNews #kabarMadiun #wisataMadiun #peristiwamadiun #ppkmmikro #prokes #operasiyustisi https://t.co/AMtVMfHKTl https://t.co/F4kYA0daff
+> positifpencegahan penularan Covid-19 harus dilaksanakan dr lingkungan terkecil.Realisasikan posko tanggap corona di setiap desa/kelurahan.#LawanCovid19 #PPKMMikro#1JutaVaksinasiAman https://t.co/wVsTsg4Lsx
+> positifPPKM Mikro Efektif Berhasil Menekan Kasus Baru Covid-19#indonesia #COVID19 #ppkmmikro #protokolkesehatan#janganlupakan5m https://t.co/1KIIwqU6cD
+> positif#Masker_KU_melindungi_MU#Masker_MU_melindungi_KU    Polsek Ngunut melaksanakan Penerapan PPKM MIKRO guna menumbuhkan kesadaran masyarakat tentang ProKes 5M#saluspopulisupremalexesto#polrestulungagung#pidpolsekngunut#ppkmmikro#jatimbermasker#guyubrukun https://t.co/FYvbrbQvVY
+> positifBhabinkamtibmas Polsek Sumbang Desa Kedungmalang Aiptu Diya N sambangi bidan desa untuk berkoordinasi kegiatan bersama 3 pilar  observasi convid 19 di desa binaan.#Jatenglawancorona #Ikutiaturancegahcorona #ppkmmikro#Amandirumah #Dirumahaja #Adaptasikebiasaambaru https://t.co/cvxi2Udqpe
+> positifBhabinkambmas Desa Ngasinan Aiptu Bambang ADT bersama Babinsa Serma Lusyono, Bidan Desa dan Perdes Ngasinan mengantarkan warga untuk Swab di Puskesmas Weru Kabupaten Sukoharjo.Jumat, 12/3/21#humas_poldajateng #infopolisisukoharjo#polisisukoharjo#ppkmmikro. https://t.co/vU5ABZbuMH
+> positifFor your information!PPKM Mikro Efektif Berhasil Menekan Kasus Baru Covid-19#indonesia #COVID19 #ppkmmikro #protokolkesehatan https://t.co/3JTlPo1pWo
+> positifPatuhi protokol kesehatan untuk mewujudkan Blitar bebas covid-19#divisihumaspolri#patuhiprokes#AyoJogoBlitar#bebasCovid19#PPKMMikro https://t.co/L8dTHeGOZH
+> positifPam Prokes PPKM Mikro #Madiun Siapkan 14 Titik Pemeriksaan - #MadiunInfo #InformasiMadiun #beritamadiun #MadiunNews #kabarMadiun #peristiwamadiun #ppkmmikro #prokes #operasiyustisi #covid19#sarscov2 #satgas #posko #forkopimda #bupati #kabupatenmadiunhttps://t.co/FliofUyFti https://t.co/3x72ATVmYa
+> positifTim Satgas Covid-19 Desa Ngasinan Kecamatan Bulu melaksanakan Tracking kepada warga masyarakat dalam rangka Penerapan Kebijakan PPKM Mikro untuk Mencegah Penularan Covid 19.Kamis, 11/3/21@yugo_bambang #humas_poldajateng #infopolisisukoharjo#polisisukoharjo#ppkmmikro https://t.co/sTaOCjnHOJ
+> positifKlo memang ada trend positif selama ppkm mikro kita harus bersyukur
+> positifPPKM Mikro Kota Malang Perpanjangan, Razia Masker Makin Rajin, Perpanjangan PPKM mikro Kota Malang tidak menurunkan semangat aparat. Sebaliknya, petugas gabungan semakin getol menggelar operasi yustisi #PPKMmikro #kotamalanghttps://t.co/2bBwgUhrnG
+> positifhttps://t.co/sLbZJ0n3EW, #Kediri – Pemerintah Kabupaten #Kediri resmi memperpanjang kebijakan Pemberlakuan Pengetatan Kegiatan Masyarakat...#BeritaKediri #Covid19 #KabupatenKediri #PpkmMikro #SatgasCovid19KabupatenKedirihttps://t.co/vUyd4NA5R0
+> positifMulai Malam Ini! Ada 35 Jalan di Kota Bandung Ditutup Selama Long Weekend, Ini Daftar Lengkapnya#bandung #ppkmmikro #longweekend https://t.co/wKuwOOpiXF
+> positifRT @diskominfo_grob: Perpanjangan Pemberlakuan Pembatasan Kegiatan Masyarakat mulai 9 s/d 22 Maret 2021#ppkmmikro#ppkm2021 #BersatuMelawanCovid19 https://t.co/1bpC6eIBfC
+> positifPemerintah menetapkan beberapa wilayah prioritas penerapan PPKM mikro di tujuh provinsi #Ppkmmikro https://t.co/0YFWkqKHus
+> positifPerpanjangan Pemberlakuan Pembatasan Kegiatan Masyarakat mulai 9 s/d 22 Maret 2021#ppkmmikro#ppkm2021 #BersatuMelawanCovid19 https://t.co/1bpC6eIBfC
+> positifRT @arjuna16sp: Sebagai Mitra, #PendampingDesa mendampingi Tim Posko Desa Aman Covid19𝗣𝗼𝘀𝗸𝗼 𝗡𝗮𝗴𝗼𝗿𝗶 𝗔𝗺𝗮𝗻 𝗖𝗼𝘃𝗶𝗱𝟭𝟵 𝗡𝗮𝗴𝗼𝗿𝗶 𝗣𝗲𝗺𝗮𝘁𝗮𝗻𝗴 𝗔𝘀𝗶𝗹𝘂𝗺 𝟮𝟬𝟮𝟭@halimiskandarnu @taufikmadjid71@yusradaridesa @tppkemendes#𝑃𝑃𝐾𝑀𝑀𝑖𝑘𝑟𝑜 https://t.co/cuA4CRHmp
+> positifPPKM mikro diperluas hingga luar kota #PPKM #ppkmmikro https://t.co/zsbonITaRl
+> positifSebagai Mitra, #PendampingDesa mendampingi Tim Posko Desa Aman Covid19𝗣𝗼𝘀𝗸𝗼 𝗡𝗮𝗴𝗼𝗿𝗶 𝗔𝗺𝗮𝗻 𝗖𝗼𝘃𝗶𝗱𝟭𝟵 𝗡𝗮𝗴𝗼𝗿𝗶 𝗣𝗲𝗺𝗮𝘁𝗮𝗻𝗴 𝗔𝘀𝗶𝗹𝘂𝗺 𝟮𝟬𝟮𝟭@halimiskandarnu @taufikmadjid71@yusradaridesa @tppkemendes#𝑃𝑃𝐾𝑀𝑀𝑖𝑘𝑟𝑜 https://t.co/cuA4CRHmpJ
+> positifpencegahan penularan Covid-19 harus dilaksanakan dr lingkungan terkecil.Realisasikan posko tanggap corona di setiap desa/kelurahan.#LawanCovid19 #PPKMMikro#1JutaVaksinasiAman https://t.co/iOn35iGQzq
+> positifJam Operasional Usaha Perdagangan Diperpanjang https://t.co/6kt1D3bizb #PPKMMikro #berita #nusabali
+> positif#Masker_KU_melindungi_MU#Masker_MU_melindungi_KU    PPKM MIKRO dan Pembentukan Posko penanganan Covid_19 mulai tingkat Desa, Kelurahan, RT/RW dalam rangka upaya memutus penyebaran Covid_19#polrestulungagung #pidpolsekngunut #polripresisi #ppkmmikro #guyubrukun https://t.co/WuRldTUZi3
+> positif6 Daerah di Sumut Terapkan PPKM Mikro, Termasuk Pematangsiantar dan Simalungun#PPKM #PPKMMikro #Sumut https://t.co/4wvzLJ8p4I
+> positif@restulungagung Himbauan Tokoh Agama tentang PPKM Mikro dan Prokes 5M kepada Masyarakat. . #ppkmmikro #protokolkesehatan #polrestulungagung #guyubrukun #akbphandonosubiakto01
+> positif@restulungagung Himbauan Tokoh Agama tentang PPKM Mikro dan Prokes 5M kepada Masyarakat. . #ppkmmikro #protokolkesehatan #polrestulungagung #guyubrukun #akbphandonosubiakto01 https://t.co/mStQaWsIuf
+> positifHimbauan Tokoh Agama tentang PPKM Mikro dan Prokes 5M kepada Masyarakat. . #ppkmmikro #protokolkesehatan #polrestulungagung #guyubrukun #akbphandonosubiakto01 https://t.co/pAh0sASP9W
+> positifHimbauan Tokoh Agama tentang PPKM Mikro dan Prokes 5M kepada Masyarakat. . #ppkmmikro #protokolkesehatan #polrestulungagung #guyubrukun #akbphandonosubiakto01 https://t.co/M020NdO6r6
+> positifRT @humas_jogja: Berdasarkan Instruksi Gubernur Daerah Istimewa Yogyakarta Nomor: 7/INSTR/2021, diberlakukan perpanjangan PPKM Mikro DIY mulai 9 Maret hingga 22 Maret 2021.  #PPKMMikro #PTKM #JogjaIstimewa #InstruksiGubernur https://t.co/saiXMHz1S9
+> positifHimbauan Tokoh Agama tentang PPKM Mikro dan Prokes 5M kepada Masyarakat. . #ppkmmikro #protokolkesehatan #polrestulungagung #guyubrukun #akbphandonosubiakto01 https://t.co/LcG8qek9Uu
+> positifPemerintah Kembali Perpanjang PPKM Mikro
+> positifGubernur WH: PPKM Mikro Diperpanjang Sampai Covid-19 Terbirit-Birit - https://t.co/4VMTkKm0tR #ppkmmikro #banten @PemprovBanten @DPRDBANTEN https://t.co/6Uawtg6pg0
+> positifRT @humas_jogja: Berdasarkan Instruksi Gubernur Daerah Istimewa Yogyakarta Nomor: 7/INSTR/2021, diberlakukan perpanjangan PPKM Mikro DIY mulai 9 Maret hingga 22 Maret 2021.  #PPKMMikro #PTKM #JogjaIstimewa #InstruksiGubernur https://t.co/saiXMHz1S9
+> positifPPKM Mikro Di Jawa Timur Diperpanjang, Wakapolda Jatim : Masyarakat Harus Tetap Patuhi Prokes | https://t.co/KpsyUtNpIS  #poldajatim #ppkm #ppkmmikro #jawatimur #prokes https://t.co/8tqgIC7FsN
+> positifPantau Posko PPKM Mikro di Purwakarta, Begini Kata Kapolda Jabar 👇 https://t.co/VtTb5FKvEP  #jabarnews #beritalokal #beritahiperlokal #harianjabar #jabartoday beritajabar #beritajawabara #jawabarat #jabar #patauposko #ppkmmikro #purwakarta #kapoldajabar #polisi https://t.co/AxKVvzF18g
+> positifKlo memang ada trend positif selama ppkm mikro kita harus bersyukur
+> positifBupati #Madiun Belum Izinkan Warga Gelar Kegiatan Sosial Budaya – #MadiunInfo #InformasiMadiun #beritamadiun #MadiunNews #kabarMadiun #peristiwamadiun #ppkmmikro #prokes #operasiyustisi #covid19 #sarscov2 #bupati #pemkab #kabupatenmadiun #madiunkab https://t.co/ag0OZfgokk https://t.co/vlTMzJ1gUY
+> positifPPKM Mikro jadi Fokus Pemkab Bulungan Atasi Covid-19, Syarwani: Pemanfaatan Refocusing Anggaran  https://t.co/kwXfqVXSsQ via @Tribun_Kaltara #PPKMMikro #fokus #Pemkab #Bulungan #atasi #Covid19 #Syarwani #Refocusing #Anggaran
+> positifRT @humas_jogja: Berdasarkan Instruksi Gubernur Daerah Istimewa Yogyakarta Nomor: 7/INSTR/2021, diberlakukan perpanjangan PPKM Mikro DIY mulai 9 Maret hingga 22 Maret 2021.  #PPKMMikro #PTKM #JogjaIstimewa #InstruksiGubernur https://t.co/saiXMHz1S9
+> positifPatuhi protokol kesehatan untuk mewujudkan Blitar bebas covid-19 #divisihumaspolri #patuhiprokes #AyoJogoBlitar #bebasCovid19 #PPKMMikro https://t.co/YM3sB4c68t
+> positifBupati Jombang Tandatangani Perpanjangan PPKM Mikro Tahap Tiga https://t.co/1BaDIH8rDL  #ppkmmikro #Jombang #JawaTimur #Jurnaljatim #Beritaonline #COVID19 #mundjidahwahab
+> positifRT @arjuna16sp: Pemaparan #GusMenteri tentang #PPKMMikro di Desa pada Rakornas PB 2021. @jokowi @halimiskandarnu @imansyukri @malik_haramain @taufikmadjid71 @yusradaridesa @fachrilabalado @SukoyoKasekpro @Brigade01Arwan1 @Erwin3977 https://t.co/z8WArW8DSM
+> positif"Kami memperpanjang pembatasan sosial berskala besar melalui PPKM berbasis mikro," uckap Bupati Bogor Ade Yasin di Bogor, Selasa (09/03/2021). #Ppkmmikro #PemkabBogor  https://t.co/pxXYICt2H4
+> positifRT @riduwandaddu: Sukseskan PPKM Mikro diperpanjang hingga 22 Maret 2021 #ppkmmikro https://t.co/hAMUn5P96h
+> positifRT @humas_jogja: Berdasarkan Instruksi Gubernur Daerah Istimewa Yogyakarta Nomor: 7/INSTR/2021, diberlakukan perpanjangan PPKM Mikro DIY mulai 9 Maret hingga 22 Maret 2021.  #PPKMMikro #PTKM #JogjaIstimewa #InstruksiGubernur https://t.co/saiXMHz1S9
+> negatifAyo mana suar buzzer dan orang dekat dg Jokowi, petinggi negeri ini tentang kerumunan dan melanggar protokol kesehatan yg dilakukan oleh jokowi, ayo mana nyinyirnya
+> negatifBansos Februari blom cair Gimana nih sistemnya
+> negatifduit bansos abis bos??!! blm ditransfer juga udah lewat 1 bulan.PEMERINTAH TUKANG BERAK..!!!!!
+> negatifNeken terus, klo gak neken mana enak sampe mentok
+> negatifBencana dimana-mana, bansos salah sasaran , masyarakat kecil nggak dapat bantuan, makin murka tuhanku
+> negatifAturan ini lah itu lah. Repot bener. Dia bilang kecewa sm ppkm tapi mobilitas tetap meningkat. Simple sebetulnya. Pake otak yg jernih. Stop atau tutup spbu. Jngn keluarkan atau jual bbm. Sudah. Tamat
+> negatifTinggal bilang PSBB 1 tahun penuh aja gimana? Daripada diberi kepastian g jelas kapan berakhir PSBBnya
+> negatifSetahun lalu yg terkena covid19 cuma 3 orang...pake psbb..sekarang jadi 1 juta...piye jal
+> negatifDahulu Jakarta dan sekitarnya mau lockdown .. eh dilarang2 ..Padahal cuman modal 10 triliun buat 2 bulan ..Malah sekarang anggaran covid ratusan triliun ..Dana bansos dikorupsi ..Weleh2
+> negatifD Bali rakyat menangis ppkm bukan solusi pak,malah menambah beban masyarakat terutama pedagang.. ekonomi sulit malah d batasi untuk mencari uang coba mikir dengan jernih lihat fakta d lapangan jngan lihat data palsu,kasian masyarakat selalu d jadikan korban,klw terus seperti ini nanti bnyak yg berontak jngan salahkan masyarkat nya mereka semua sdah capek ngomong baik" gak pernah d tanggapi
+> negatifMasjid  juga jangan disekat pakai jaga jarak lagi. Lah ! wong pertunjukan musik dan kebudayaan saja boleh
+> negatifDuh...gimana sih, orang pesta perkawinan aja dibubarin, ini kok diizinkan
+> negatifZona hijau kakak..yg merah, oranye,kuning tetep gigit jari.. ahh sudahlah.. capek di bohongi
+> negatifUdh babas om kemaren KLB  demokrat berjalan lancar walaupun Tanpa izin. Banyak lo pesertanya Dan ada yg bekerumun
+> negatifGimana mau percaya, orang kerumunan dilarang eh malah ada kaisar yang spontanitas mengundang kerumunan Dahlah.… Politik itu kejam, kekuasaan adalah hal paling keji untuk merusak harkat keadilan
+> negatifAhirnya Adanya Hanya Pembodohan Generasi Bangsa,,, kalau Sekolahan, Tdk Di Buka
+> negatifImbas dr pemerintah yg gagap dlm penanganan awal pandemi
+> negatifapa bedanya seberangnya masih bisa dilalui, kebijakan yg absurd dan merugikan banyak pihak terutama pemakai jalan dan warga sekitar yg harus memutar lbh jauh
+> negatifParahnya yg jadi warga pendatang yg bekerja dilapis bawah dengar sdh kesampaian makan bubur supaya berasnya bisa di gunakan berhari hari mau pulang kedaerahnya dk punya ongkos bertahan di Bali tetpakasa
+> negatifYg miskin makin miskin, yg kaya makin semena. Bikin kebijakan setengah dan penyampaian nya kaya edukasi anak paud
+> negatifAlangkah baik nya pemangku kepentingan pejabat memikirkan supaya rakyat kecil bisa makan gk resa karena ketakutan gk bisa makan kebijakan yang slalu rakyat mengelu tolong pak pikirkan rakyat
+> negatifSampai PPKM berlanjut terus dan semakin menyusahkan masyarakat sendiri
+> negatifCoba aja liat sepanjang jalan dari mampang ke arah pasr minggu .. Trotoar yg di bangun pake uang pajak rakyat yg jumlahnya milyaran .. Hanya jd tmp yg nyaman ..buat .tukang nasi goreng . pecel lele dan parkir liar
+> negatifKerjanya ninjau terus, giliran ada yg bermasalah seperti rumah DP 0% bilangnya gak tau??
+> negatifKo itu ada pengamen ondel2 didiemin, ngamen pake atribut Betawi tuh, dan gaa sedikit byk di lapangan
+> negatifYang melapangkan trotoar demi kenyamanan sepihak tapi pihak lain dibuat tak nyaman
+> negatifPak gubernur ga ada kah ide lain selain pembatasan pembatasan dan pembatasan??? Udh 1 tahun lo ini, katanya dpet uang bantuan dari pusat nyatanya sampe sini yg muncul aturan pembatasan trus
+> negatifHahaha......sakit hati kok bertahun-tahun yak....hahaha.... awas setruk.....haha
+> negatifPak Anies, yg miskin yg pnghasilannya UMP apa yg 14jt? Janjinya dulu yg miskin bisa punya rmh. Kok yg UMP yg miskin ttep ngontrak? Tapi anda msih boleh bangga. Tuh wkt bpk antusias boongin warga miskin, Bpk masih mndpt Applaus hebih dr jkt58
+> negatifSaya mohon dengan hormat bapak petugah yang sangat bijaksana ,,,, tolong pabrik garmen itu banyak kerumunan di tutup to pak jangan pilih,, itu orang dari mana,, kumpul jadi satu kok di biarkan ,,,,, jangan yang kecil,, kasihan pak trimakasih
+> negatifLanjutkan pak sampai rakyatmu mati kelaparan
+> negatifSIAPA YANG PALING BERWENANG DGN MASALAH PEMBODOHAN INI TOLONG JELASKAN BAGI YG MENGERTI
+> negatifMereka bilang covid itu konspirasi pemerintah. Mereka ga pake masker katanya aturan Allah aja ga diikutin, ngapain ikutin aturan pemerintah
+> negatifSudah satu tahun muter2 dengan covid hasilnya bertambah saja berarti covid tidak perlu ditakuti klu sakit berobat sama dokter,tetap patuhi porkes,kegitan masyarakat tetap dibuka seluas2nya
+> negatifYg terjadi sekarang itu kejangkitan massal bukan kematian massal.. bkn seperti yg di gembar gemborkan seperti di China orang tiba ambruk dan mati di jalanan
+> negatifNamanya ppkm mikro, mikro : kecil. Berarti yg kena sasaran rakyat kecil
+> negatifJualan dibatasi sampai jam 9 malam.Kenapa garment kalau lembur sampai tengah malam tetep boleh????padahal berkurumun
+> negatifpemerintah terlalu berlebihan dalam menangani covid. beritanya lebih berbahaya dan kejam dari virusnya
+> negatifAku lihat di lapangan protokol kesehatan kira patuh cuma 75 persen masih banyak yg abaikan protokol kesehatan
+> negatifKalau garmen di buka tolong anak,, kita yang sekolah di masukan lagi kasihan generasi penerus bangsa lo pak anak,, kita itu
+> negatifKerjanya emang malam kok di razia, dasar koplak sudah gak punya hati nurani
+> negatifIni udah diganti berapa kali dari mulai psbb, pkpm trus sekarang ganti lagi ppkm mikro trus dari ke 2 hasilnya apa malah bikin rakyat menderita aja boro turun angka positif yg ada malah meningkat
+> negatifujung-ujungnya dana bansos diberitakan dikorupsi bahkan dirancang sejak awal pandemi
+> negatifTerlalu di besar-besarkan, pandemi covid-19 ini… Tidak mikir, orang yang penghasilannya dapat hari ini, untuk di makan besok
+> negatifSetiap yg sakit.di bilang corona .fimana ga banyak yg d bilang kena.. Pengalaman sendiri
+> negatifbenar banget tuh.… pemerintah jadikan covid ladang usaha.... yng bikin rakyat kecil mati kelaparan
+> negatifSudah tau gagal, malah diterusin :) mau marah tp takut diserang pendukungnya, pasrah aja udah
+> negatifKasihan masyarakat kecil pak, mareka susah buat makan saja masih sangat bingung, kerjaan nggak ada, semua tutup, kemana mana serba dibatasi, diam dirumah,...terus kami makan apa bapak Presiden
+> negatifAktivitas masyarakat jangan lah di batasi ....yg kena covid saja di kurung ....biar ekonomi tumbuh kembali berikan kebijakan yg bijaksana biar masyarakat tidak kelaparan Hilangkan ppkm tu
+> negatifSemakin ppkm semakin meningkat angka covid, berarti nggak ada guna ni ppkm
+> negatifRT @jpnncom: Tiga provinsi yang tak menjalankan kebijakan PPKM dan PPKM skala mikro menunjukan peningkatan kasus aktif Covid-19. #Ppkmmikro https://t.co/sOhi56lRZA
+> negatifTiga provinsi yang tak menjalankan kebijakan PPKM dan PPKM skala mikro menunjukan peningkatan kasus aktif Covid-19. #Ppkmmikro https://t.co/sOhi56lRZA
+> negatifJam Tutup Usaha Dilonggarkan Jadi Pukul 22.00 Wita https://t.co/HwFdBrSvVI #berita #nusabali #JamMalam #PPKMMikro #pandemi
+> negatifRT @IndonesiaBaikId: Hai SohIB! Kebijakan #PPKMMikro akan diperpanjang lho. Cakupannya pun akan diperluas. Mengapa?#IndonesiaBaik #YangMudaSukaData #DailyIssue #Infografis #PPKM #PSBB #COVID19 #KominfoNewsroom @BNPB_Indonesia https://t.co/110aezdisX
+l
+> negatifBegini Pesta Ultah Pedangdut Lara Silvi yang Digelar tanpa Pakai Masker dan Berkerumun#protokolkesehatan #melanggarprokes #wajibmasker #tanpamasker #kerumunan #ppkm #ppkmmikro #cafedefins #larasilvi #dangdut #psbb #viruscorona #viruscovid19 #covid19 #coronahttps://t.co/UqwLrJu8oN
+> negatifRembang, https://t.co/F73HKt1Ygv – Pemerintah Kabupaten Rembang memberikan izin kepada pelaku wisata untuk beroperasi selama empat hari dalam satu minggu di masa pemberlakuan pembatasankegiatan masyarakat (PPKM) skala mikro. #KabupatenRembang #ppkmmikrohttps://t.co/9NvWMcXO3m https://t.co/YM2qsgyyzz
+> negatifRestoran-Mall Bisa Buka hingga Pukul 22.00 Wita https://t.co/UdYIp6OBdu #PPKMMikro #berita #nusabali #pandemi #COVID19 #JamMalam
+ > negatifHahaha......sakit hati kok bertahun-tahun yak....hahaha.... awas setruk.....haha
+> negatifMasih banyak aja orang2 yang berkeliaran #tanpamasker... Wajar kalau #personilmedis sampai #mogokkerja... #INDONESIATERSERAH
+> negatifHahaha......sakit hati kok bertahun-tahun yak....hahaha.... awas setruk.....haha
+> negatifDia sering muncul di media dalam berbagai kegiatan kenegaraan #tanpamasker. Mengapa tak pakai masker, Pak? "Pilihan pribadi". Tak ada sangsi, tak ada denda. Siapa sih bapak itu? Dia presiden! Hari ini ada liputan yang memberitakan bahwa ini kali pertama Trump mengenakan masker.
+> negatifRibuan warga demonstrasi menolak kebijakan lockdown dan protokol kesehatan termasuk menentang pemakaian masker. #TanpaMasker
+> negatifLanggar Aturan, Tasyakuran Kelahiran Anak Dibubarkan. #wartajateng #langgarppkm #langgarpsbb
+> negatifJualan dibatasi sampai jam 9 malam.Kenapa garment kalau lembur sampai tengah malam tetep boleh????padahal berkurumun
+> negatifKerjanya ninjau terus, giliran ada yg bermasalah seperti rumah DP 0% bilangnya gak tau??
+> negatifKerjanya ninjau terus, giliran ada yg bermasalah seperti rumah DP 0% bilangnya gak tau??
+> negatifKafe RM Langgar PSBB, Bambang Ismadi Sebut Ketiga Kalinya https://fajar.co.id/2021/02/26/kafe-rm-langgar-psbb-bambang-ismadi-sebut-ketiga-kalinya/… #BambangIsmadi #KafeRM #LanggarPSBB
+> negatifDua kafe di Dago, Kota Bandung disegel tim gugus tugas covid-19 karena melanggar dengan melebihi batas waktu operasional di saat pemberlakuan PSBB untuk memutus mata rantai penularan covid-19. Baca selengkapnya klik https://bit.ly/3cTwaqc #NewsOne #vivanews #LanggarPSBB
+> negatifLanggar PSBB, 101 Perusahaan Ditutup Sementara Ahttp://arahkita.com/news/read/22027/langgar_psbb__101_perusahaan_ditutup_sementara… #BeritaTerkini #BeritaJakarta #Jakarta #PSBB #PSBBJakarta #Perusahaan #LanggarPSBB #Nasional #NewsUpdate #news #Berita #COVID19 #Corona
+> negatifIni Sanksi bagi Pelanggar PSBB DKI Jakarta Menurut Pergub 41/2020 https://arahkita.com/news/read/22453/ini_sanksi_bagi_pelanggar_psbb_dki_jakarta_menurut_pergub_41_2020_… #BeritaTerkini #BeritaJakarta #Jakarta #PSBB #PSBBJakarta #PelanggarPSBB #Sanksi #Pergub #GubernurDKI #AniesBaswedan #Nasional #NewsUpdate #news #Berita
+> negatifDepok Siapkan Sanksi Pidana bagi Pelanggar PSBB https://arahkita.com/news/read/22277/depok_siapkan_sanksi_pidana_bagi_pelanggar_psbb… #BeritaTerkini #Depok #JawaBarat #PemkotDepok #SanksiPidana #PelanggarPSBB #PSBB #PSBBdepok #COVID19 #CegahCOVID19 #Nasional #NewsUpdate #news #Berita
+> negatif"Obat nganggur adalah berkumpul dan mengobrol, setelah dari itu......nganggur lagi" #PelanggarPSBB #astagfiraullah #pemudabiasaaja
+> negatifBagi masyarakat melanggar PSBB di Jakarta akan dimasukan ke dalam peti jenazah. #PelanggarPSBB
+> negatifsusah emang kalo pas kecil kerjaannya ngomong "peraturan tuh dibikin buat dilanggar...*sambil petantang-petenteng cengar-cengir merasa paling kece* " #pelanggarpsbb #prihatin
+> negatifTempat hiburan karaoke dan bar milik Ahmad Dhani di kawasan Mangga Besar tepergok melakukan pelanggaran PSBB. #karaokemasterpiece
+I
+> negatifWarga Masih Cuek Tak Pakai Masker, Polisi Gencarkan Patroli di Pasar #IniKebumen #WargaCuek #TanpaMasker #COVID19
+> negatifBACOT!!! Tolak PSBB!! Tolak PPKM!!. Tolak Lockdown!! Kagak ngaruh ya pantek!
+> negatifPKL Hingga Pedagang Kecil di Malioboro Kompak Tol
+> negatifYang punya warung makan ngomong ke Pol PePe: "Kalian enak dapat gaji, kami dapat apa? " Tolak PPKM dan PSBB, orang yang nurut dari PSBB awal sudah lelah.
+> negatifTanpa Kompensasi Dan Solusi, Pelaku Usaha Di Jateng Tolak Perpanjangan PPKM
+> negatifPHRI Demak Tolak Perpanjangan PPKM
+> negatifGanjar Pranowo Soroti Keinginan Bupati Karanganyar Tolak Perpanjangan PPKM Jilid II
+> negatifTolak Kebijakan Pusat, Kota Surabaya Minta Dikecualikan dari PPKM
+> negatifDrpd diketatkan, baiknya dihentikan PPKM. Blm prnah ada PPKM/PSBB memiliki dampak trhadap kasus. Tp lindungi nakes. Tolak pasien yg abai 5M. RS hanya menerima mrk yg patuh 5M
+> negatifGara gara PPKM, weekendku suram.! Weekend hanya goleran saja. Dah bingung mau nonton apa  rumah.!
+> negatifGajian tetep penuh, ga kepotong gara-gara omset sepi mergo PPKM Mikro kontolamoh
+> negatifgara gara ppkm, nyari comfort food jam segini emang susah, pada tutup semua
+> negatifAkhirnya pegang hp setelah 2 hari ga pegang gara gara ppkm menyiksa
+> negatifAiihh gara gara ppkm aku buang penawaran2 baik untuk besok *padahal kan hrs nya bsk jd hari menyenangkan
+> negatifgara gara ppkm atau apalah w belom keluar rumah yang bener2 pergi hangout samsek padahal kan aku sudah mencapai semua goalsku
+> negatifIni gara gara ppkm tutup jam 7 dibekasi jdi ngamuk? Hahaha
+> negatifPPKM tidak efektif. Tidak EFEKTIF. Tau ga kita dirumahkan lagi gara-gara PPKM? Dan ternyata PPKM TIDAK EFEKTIF. Implementasi tidak sesuai dengan harapan, angka covid tetep naik. Ya Allah, dipikir nafkah orang nih mainan apa ya?
+> negatifBesok kemana ? Niat pengen main udah cerah, cuma tujuannya masih gelap -_- Gara-gara PSBB, PPKM, terus ada PPKM mikro. nanti ubah lagi jadi PPKM mikro revisi, PPKM mikro fiks ya Allah
+> negatif2 Pekan PPKM Kota Bandung, Kasus Covid-19 Masih Naik
+> negatiftolonglah pejabat2 pembuat keputusan PPKM di baca ini komentar dari rekan2 disini, ga efektif sama sekali, mending sudahi saja biarkan normal
+> negatifGubernur Jawa Tengah Ganjar Pranowo menanggapi kabar yang menyebut ada denda tilang untuk masyarakat tanpa denda masker. #TanpaMasker
+> negatifMasih banyak aja orang2 yang berkeliaran #tanpamasker... Wajar kalau #personilmedis sampai #mogokkerja... #INDONESIATERSERAH
+> negatifRT @jpnncom: Tiga provinsi yang tak menjalankan kebijakan PPKM dan PPKM skala mikro menunjukan peningkatan kasus aktif Covid-19. #Ppkmmikro https://t.co/sOhi56lRZA
+> negatifbenar banget tuh.… pemerintah jadikan covid ladang usaha.... yng bikin rakyat kecil mati kelaparan
+a
+> negatifAiihh gara gara ppkm aku buang penawaran2 baik untuk besok *padahal kan hrs nya bsk jd hari menyenangkan
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralProyek dlm penanganan covid yg pasti laris manis
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralBukannya yg dibatasi untuk yg zona merah saja. Bukan semua pak
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaI
+> netralTerus, kalo angkringan pinggir jalan.. maksimal sampai jam berapa bukanya
+> netralNtar kalo kasus nya Naik lagi turunin lagi tutup jam 5 sore.
+> netralPemberlakuan Pembatasan Kegiatan Masyarakat atau PPKM Berbasis Mikro kembali diperpanjang yakni mulai tgl 9-22 Maret 2021. Mari dukung PPKM Mikro guna mencegah penyebaran Covid-19 dan menerapkan 3M (Mencuci tangan, Memakai Masker dan Menjaga jarak)
+> netralPemberlakuan Pembatasan Kegiatan Masyarakat atau PPKM Berbasis Mikro kembali diperpanjang yakni mulai tgl 9-22 Maret 2021. Mari dukung PPKM Mikro guna mencegah penyebaran Covid-19 dan menerapkan 3M (Mencuci tangan, Memakai Masker dan Menjaga jarak)
+> netralPemberlakuan Pembatasan Kegiatan Masyarakat atau PPKM Berbasis Mikro kembali diperpanjang yakni mulai tgl 9-22 Maret 2021. Mari dukung PPKM Mikro guna mencegah penyebaran Covid-19 dan menerapkan 3M (Mencuci tangan, Memakai Masker dan Menjaga jarak)
+> netralPemberlakuan Pembatasan Kegiatan Masyarakat atau PPKM Berbasis Mikro kembali diperpanjang yakni mulai tgl 9-22 Maret 2021. Mari dukung PPKM Mikro guna mencegah penyebaran Covid-19 dan menerapkan 3M (Mencuci tangan, Memakai Masker dan Menjaga jarak)
+> netralPemberlakuan Pembatasan Kegiatan Masyarakat atau PPKM Berbasis Mikro kembali diperpanjang yakni mulai tgl 9-22 Maret 2021. Mari dukung PPKM Mikro guna mencegah penyebaran Covid-19 dan menerapkan 3M (Mencuci tangan, Memakai Masker dan Menjaga jarak)
+> netralPemberlakuan Pembatasan Kegiatan Masyarakat atau PPKM Berbasis Mikro kembali diperpanjang yakni mulai tgl 9-22 Maret 2021. Mari dukung PPKM Mikro guna mencegah penyebaran Covid-19 dan menerapkan 3M (Mencuci tangan, Memakai Masker dan Menjaga jarak)
+> netralPemberlakuan Pembatasan Kegiatan Masyarakat atau PPKM Berbasis Mikro kembali diperpanjang yakni mulai tgl 9-22 Maret 2021. Mari dukung PPKM Mikro guna mencegah penyebaran Covid-19 dan menerapkan 3M (Mencuci tangan, Memakai Masker dan Menjaga jarak)
+> netralPemberlakuan Pembatasan Kegiatan Masyarakat atau PPKM Berbasis Mikro kembali diperpanjang yakni mulai tgl 9-22 Maret 2021. Mari dukung PPKM Mikro guna mencegah penyebaran Covid-19 dan menerapkan 3M (Mencuci tangan, Memakai Masker dan Menjaga jarak)
+> netraltapi untuk operasional dan teknis di lapangan apakah ada caranya. Kasi arahan pedagang kecil atau contoh ijinkan mereka buka tp tidak boleh makan di tempat atau wajib bawa pulang, mereka tetap buka orang kumpul2 juga tidak ada
+> netralya terserah saja mau diperpanjang sampai kapan lo bos
+> netralanda pernah bilang kalau bali penerapan protokol yg terbaik dari semua provinsi.. apa gunanya protokol itu klo tidak ada orang yg datang ke bali. Percuma saja
+> netralApa pemerintah lupa dengan ucapan bapak jokowi selaku presiden.bahwa.jangan membuat banyak aturan.nega
+> netralPPKM kok justru kasus positif terus meningkat dimana salahnya ?
+> netralmasyarakat meminta jangan mengeluarkan himbauan yang merugikan masyarakat kecil tanpa solusi.
+> netralSekedar usul saja pak jika media wartawan menanggapi kasus-kasus covid yg beredar di redam,,munkin gk terjadi berita yg signifikan,apa Indonesia mau berlarut2 dalam wabah penyakit,jika penyakit nafsu di kurangi itu bisa jika nefsu di hilangkan gk bakalan bisa setidaknya ada respon dalam kegiatan yg sudah ada protokol nya.namun jika banyak berita yg beredar dg covid munkin TDK akan selesai.sebelumnya minta maaf,hanya sekedar himbuan saja
+> netralMenurut saya semua benar. Pak petugas benar, karena menjalankan tugas. Pengusaha juga benar, karena dia butuh uang untuk gaji karyawan
+> netralKalau lagi diperpanjang maka bisa terjadi orang meninggal kena covid makin dikit tapi orang meninggal karena kelaparan lebih banyak
+> netralYa sama seperti dikampung saya dan di lingkungan hidup saya
+> netralHeran ya bang, masih ada aja orang yg kaga percaya corona
+> netralBerarti semua pasien yg ada di ruangan tersebut terpapar covid dong bu
+> netralAku bukan gak menghargai maksud baik dari langkah yg di upayakn oleh pemerintah,akan tetapi tidakkah bisa sedikit mengevaluasi,sudah satu tahun menerapkan ini toh tidak ada hasil yg memadai justru cenderung meningkat,itu artinya upaya itu tidak tepat dan pas
+> netralSekalipun inter dibuka belum tentu juga tamu datang ke bali karena negaranya juga melarang mereka berwisata
+> netralKalo di satu rumah ada yg kena pasti rumah yg lain juga ada..masa orang itu cuma berinteraksi dg keluarganya saja
+> netralBener. Yang terinfeksi oleh Covid itu paru-paru. Kenapa seluruh badan harus diisolasi
+> netralYa udah telat pun sekarang pake lockdown... waktu awal itu lockdown y masih oke... sekarang aktivitas normal baru aja
+> netralAnda itu belajar sama siapa? Kota Perth Australia ada kasus covid 1 orang langsung lockdown kok satu kota
+> netralTes per harinya memang disetting menurun ya min? Atau kenapa cenderung menurun
+> netralKenapa cuma jawa bali yg diperketat sementara propinsi lain mah bebas wae
+> netralDari pada ribet ngumumin perpanjang mulu, langsung aja PPKM sampai 0 kasus
+> netralBpk.gubernur.... apakah tidak ada patroli gugus tugas covid 19 dki yg bisa tertibkan pedagang dan kerumunan orang ditrotoar depan RSCM dan kampus pasca sarjana uki.....tiap hari jadi tempat kerumunan
+> netralassalamu’alaikum pak ini pak banyak trotoar yang sudah di renovasi dan luas buat pejalan kaki dan pesepeda, tetapi malah di gunakan oleh pemotor dan ojol, jadi trotoar pada rusak
+> netralApapun keputusan pemerintah entah dilockdown sebulan atau 2 bulan rakyat gk khawatir kalau tagihan listrik,air, cicilan sepeda motor, belanja harian ditanggung pemerintah
+> netralterserah udah gk punya uang buat ke mall juga,,, muak
+> netralDiperpanjang boleh tapi Kasikan masyarakat yg kurang mampu bantuan pangan
+> netralBST FEBRUARI MANA NIH...MASA PSBB TERUS TAPI BST GA TURUN TURUN 
+> netralDi stop anggaran covidnya , tim medis & media di bungkam pasti covid ilang dengan sendiri nya percaya deh
+> netralhmm...  kira2 apa sekarang bisa seperti ini lagi komunikasi juga solusi langsung dan dekat dengan warga
+> netralKalau Rakyat Malam Kelaparan mau cari makan Kemana lagi?
+> netralmending satu kota yang kena corona karena lokdown dari pada menyebar ke kota lain, jadi bisa di tangani dengan cepat, kalo udah nyebar ke kota lain gimana mau idenfikasinya
+> netralMaaf nih kalo mau ninjau jangan yg sudah rapih aja dong
+> netralPPKM SKALA MIKRO POLRES PASURUAN KOTA
+> netralPengecekan Posko PPKM mikro dan Kampung Tangguh
+> netralForkopimda Jatim meninjau pelaksanaan TMMD dan PPKM Mikro di Desa Ngrancang Kec. Tambakrejo, Kab. Bojonegoro.
+> netralOperasi Yustisi Protokol Kesehatan dan pengawasan PPKM Mikro
+> netralPemberlakuan Pembatasan Kegiatan Masyarakat atau PPKM Berbasis Mikro kembali diperpanjang yakni mulai tgl 9-22 Maret 2021. Mari dukung PPKM Mikro guna mencegah penyebaran Covid-19 dan menerapkan 3M (Mencuci tangan, Memakai Masker dan Menjaga jarak)
+> netralPolres Magetan Kegiatan Polsek Sukomoro Bersama Jajaran Forkopimca Kecamatan Sukomoro Laksanakan Pengecekan Posko PPKM Mikro Desa Bogem.
+> netralOperasi Yustisi Prokes dan Pengawasan PPKM Mikro
+> netralPolsek Selorejo Polres Blitar laksanakan pengawalan dan pengamanan pemakaman jenazah pasien Covid-19
+> netralPPKM mikro diperluas hingga luar kota 
+> netral6 Daerah di Sumut Terapkan PPKM Mikro, Termasuk Pematangsiantar dan Simalungun
+> netralKabupaten Bogor Perpanjang PPKM Mikro Hingga 22 Maret 2021
+> netralPemerintah memutuskan untuk kembali memperpanjang pelaksanaan PPKM Mikro dari 9-22 Maret 2021 di sejumlah provinsi.
+> netralPemerintah Provinsi DKI Jakarta memperpanjang masa pemberlakuan pembatasan kegiatan masyarakat (PPKM) mikro hingga 22 Maret 2021. 
+> netralPPKM Mikro Surabaya Diperpanjang
+> netralPemerintah memutuskan untuk memperpanjang kebijakan Pemberlakuan Pembatasan Kegiatan Masyarakat (PPKM) Mikro.
+> netralPPKM Mikro Turunkan Kasus COVID-19, Satgas: Kalau Ragu Silakan Amati Sampai Akhir
+> netralDiklaim Turunkan Kasus Aktif, PPKM Mikro Diperpanjang dan Diperluas
+> netralRidwan Kamil menerbitkan surat edaran terkait perpanjangan PPKM hingga 22 Maret.
+> netralPerpanjangan PPKM Mikro Targetkan Kasus Aktif Terus Menurun: Jumlah kasus aktif dalam angka, menunjukkan seberapa besar masalah yang ada.
+> netralSejumlah destinasi wisata di Jakarta, seperti Ragunan dan museum mulai dibuka pada perpanjangan PPKM skala mikro. Namun jumlah pengunjung dibatas 50%.
+> netralPPKM mikro jilid dua akan berakhir 8 Maret 2021.
+> netralMenurut Khofifah, PPKM atau PPKM Mikro memang menunjukkan beberapa hasil yang signifikan, namun masih diperlukan upaya yang lebih besar lagi untuk dapat menurunkan penyebaran Covid-19 di Jatim melalui perpanjangan PPKM Mikro
+> netralPemkab Ponorogo akan melakukan penguatan Satgas Penanggulangan Covid-19 tingkat RT. Hal ini menyusul perpanjangan Pemberlakuan Pembatasan Kegiatan Masyarakat (PPKM) Mikro mulai 8 Maret kemarin hingga 22 Maret 2021 mendatang.
+> netralMenurut Khofifah, perpanjangan PPKM Mikro tersebut berdasarkan Instruksi Menteri Dalam Negeri.
+> netralPerpanjangan pemberlakuan pembatasan kegiatan masyarakat atau PPKM di Jawa Timur dilakukan dengan harapan dapat menurunkan mobilitas warga agar penularan Covid-19 bisa terkendali.
+> netralKata Gubernur Jatim, masih diperlukan upaya yang lebih besar lagi untuk dapat menurunkan penyebaran Covid-19 di Jawa Timur melalui perpanjangan PPKM Mikro
+> netralMenurut Khofifah, baik PPKM maupun PPKM Mikro memang sudah menunjukkan beberapa hasil yang signifikan, namun msh diperlukan upaya yang lbih besar lagi utk dpt menurunkan penyebaran Covid - 19 di Jawa Timur melalui perpanjangan PPKM Mikro
+> netralMau komen tentang ppkm, tapi takut di dm
+> netralPendisiplinan Oleh Polres Tulungagung Kota dan Tim Gugus Tugas Covid-19 Melaksanakan Sosialisasi Kepada Masyarakat Tentang PPKM Guna Menekan Penyebaran Covid-19 di Kab. Tulungagung
+> netralDalam Rangka Pemberlakuan Pembatasan Kegiatan Masyarakat (PPKM) , Satlantas polres Ngawi Melaksanakan giat Sosialisasi dan pembagian Masker tentang Pemberlakuan Pembatasan Kegiatan Masyarakat (PPKM)
+> netralPPKM Mandiri Efektif tekan Penyebaran Covid-19
+> netralPPKM Mikro solusi tekan Covid-19 selain vaksin
+> netralPPKM Mikro Selalu Disiplin 5M
+> netralkadang pengin komentar mengenai psbb atau ppkm tp, kayanya lebih penting vaccine deh…. atau jangan2... ah sudahlah...
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralSelalu disiplin Prokes #PPKMMikro https://t.co/uaDK8CAZIZ
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> netralRT @humas_jogja: Pengumuman perpanjangan Pemberlakukan Pembatasan Kegiatan Masyarakat Berbasis Mikro.  #PPKMMikro #JogjaIstimewa #COVID-19 #JogjaElingLanWaspada https://t.co/ROoMoqoBGC
+> 
+
