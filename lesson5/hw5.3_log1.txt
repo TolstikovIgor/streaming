@@ -1,0 +1,789 @@
+22/01/23 21:38:21 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:21 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 123:==========================>                           (97 + 4) / 200]22/01/23 21:38:21 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 123:===========================>                         (104 + 4) / 200]22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 123:==============================>                      (115 + 4) / 200]22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 123:==================================>                  (131 + 4) / 200]22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 123:======================================>              (145 + 4) / 200]22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 123:==========================================>          (160 + 4) / 200]22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:22 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 123:==============================================>      (176 + 4) / 200]22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 123:==================================================>  (191 + 4) / 200]22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/23 21:38:23 WARN state.HDFSBackedStateStoreProvider: The state for version 13 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+-------------------------------------------                                     
+Batch: 13
+-------------------------------------------
++-----------+-----+
+|window_time|count|
++-----------+-----+
++-----------+-----+
+
+-------------------------------------------                                     
+Batch: 14
+-------------------------------------------
++-----------+-----+
+|window_time|count|
++-----------+-----+
++-----------+-----+
+
+-------------------------------------------                                     
+Batch: 15
+-------------------------------------------
++-----------+-----+
+|window_time|count|
++-----------+-----+
++-----------+-----+
+
+stream.stop()
+>>> stream.stop()
+>>> static_df_schema = StructType() \
+...     .add("species", StringType()) \
+...     .add("description", StringType())
+>>> static_df_data = (
+...     ("setosa", "Iris setosa has a deep violet blue flower. The sepals are deeply-veined dark purple with a yellow-white signal."),
+...     ("versicolor", "Iris versicolor is a flowering herbaceous perennial plant, growing 10-80 cm high. The well developed blue flower has 6 petals and sepals spread out nearly flat and have two forms."),
+...     ("virginica", "Iris virginica is a perennial plant. The plant has 2 to 4 erect or arching, bright green, lance-shaped leaves that are flattened into one plane at the base.")
+... )
+>>> static_df = spark.createDataFrame(static_df_data, static_df_schema)
+>>> static_joined = waterwarked_iris.join(static_df, "species", "left")
+>>> static_joined.isStreaming
+True
+>>> static_joined.printSchema()
+root
+ |-- species: string (nullable = true)
+ |-- sepalLength: float (nullable = true)
+ |-- sepalWidth: float (nullable = true)
+ |-- petalLength: float (nullable = true)
+ |-- petalWidth: float (nullable = true)
+ |-- offset: long (nullable = true)
+ |-- receive_time: timestamp (nullable = false)
+ |-- description: string (nullable = true)
+
+>>> stream = console_output(static_joined , 10, "update")
+-------------------------------------------                                     
+Batch: 0
+-------------------------------------------
++-------+-----------+----------+-----------+----------+------+----------------------+---------------------------------------------------------------------------------------------------------------+
+|species|sepalLength|sepalWidth|petalLength|petalWidth|offset|receive_time          |description                                                                                                    |
++-------+-----------+----------+-----------+----------+------+----------------------+---------------------------------------------------------------------------------------------------------------+
+|null   |null       |null      |null       |null      |0     |2022-01-23 22:02:34.65|null                                                                                                           |
+|setosa |5.1        |3.5       |1.4        |0.2       |1     |2022-01-23 22:02:34.65|Iris setosa has a deep violet blue flower. The sepals are deeply-veined dark purple with a yellow-white signal.|
+|setosa |4.9        |3.0       |1.4        |0.2       |2     |2022-01-23 22:02:34.65|Iris setosa has a deep violet blue flower. The sepals are deeply-veined dark purple with a yellow-white signal.|
+|setosa |4.7        |3.2       |1.3        |0.2       |3     |2022-01-23 22:02:34.65|Iris setosa has a deep violet blue flower. The sepals are deeply-veined dark purple with a yellow-white signal.|
+|setosa |4.6        |3.1       |1.5        |0.2       |4     |2022-01-23 22:02:34.65|Iris setosa has a deep violet blue flower. The sepals are deeply-veined dark purple with a yellow-white signal.|
+|setosa |5.0        |3.6       |1.4        |0.2       |5     |2022-01-23 22:02:34.65|Iris setosa has a deep violet blue flower. The sepals are deeply-veined dark purple with a yellow-white signal.|
++-------+-----------+----------+-----------+----------+------+----------------------+---------------------------------------------------------------------------------------------------------------+
+
+-------------------------------------------
+Batch: 1
+-------------------------------------------
++-------+-----------+----------+-----------+----------+------+-----------------------+---------------------------------------------------------------------------------------------------------------+
+|species|sepalLength|sepalWidth|petalLength|petalWidth|offset|receive_time           |description                                                                                                    |
++-------+-----------+----------+-----------+----------+------+-----------------------+---------------------------------------------------------------------------------------------------------------+
+|setosa |5.4        |3.9       |1.7        |0.4       |6     |2022-01-23 22:02:40.003|Iris setosa has a deep violet blue flower. The sepals are deeply-veined dark purple with a yellow-white signal.|
+|setosa |4.6        |3.4       |1.4        |0.3       |7     |2022-01-23 22:02:40.003|Iris setosa has a deep violet blue flower. The sepals are deeply-veined dark purple with a yellow-white signal.|
+|setosa |5.0        |3.4       |1.5        |0.2       |8     |2022-01-23 22:02:40.003|Iris setosa has a deep violet blue flower. The sepals are deeply-veined dark purple with a yellow-white signal.|
+|setosa |4.4        |2.9       |1.4        |0.2       |9     |2022-01-23 22:02:40.003|Iris setosa has a deep violet blue flower. The sepals are deeply-veined dark purple with a yellow-white signal.|
+|setosa |4.9        |3.1       |1.5        |0.1       |10    |2022-01-23 22:02:40.003|Iris setosa has a deep violet blue flower. The sepals are deeply-veined dark purple with a yellow-white signal.|
+|setosa |5.4        |3.7       |1.5        |0.2       |11    |2022-01-23 22:02:40.003|Iris setosa has a deep violet blue flower. The sepals are deeply-veined dark purple with a yellow-white signal.|
++-------+-----------+----------+-----------+----------+------+-----------------------+---------------------------------------------------------------------------------------------------------------+
+
+stream.stop()
+>>> stream.stop()
+>>> raw_orders_items = spark.readStream. \
+...     format("kafka"). \
+...     option("kafka.bootstrap.servers", kafka_brokers). \
+...     option("subscribe", "order_items"). \
+...     option("startingOffsets", "earliest"). \
+...     load()
+>>> schema_orders_items = StructType() \
+...     .add("order_id", StringType()) \
+...     .add("order_item_id", StringType()) \
+...     .add("product_id", StringType()) \
+...     .add("seller_id", StringType()) \
+...     .add("shipping_limit_date", StringType()) \
+...     .add("price", StringType()) \
+...     .add("freight_value", StringType())
+>>> extended_orders_items = raw_orders_items \
+...     .select(F.from_json(F.col("value").cast("String"), schema_orders_items).alias("value")) \
+...     .select("value.*") \
+...     .withColumn("order_items_receive_time", F.current_timestamp()) \
+...     .withColumn("window_time",F.window(F.col("order_items_receive_time"),"2 minutes"))
+>>> extended_orders_items.printSchema()
+root
+ |-- order_id: string (nullable = true)
+ |-- order_item_id: string (nullable = true)
+ |-- product_id: string (nullable = true)
+ |-- seller_id: string (nullable = true)
+ |-- shipping_limit_date: string (nullable = true)
+ |-- price: string (nullable = true)
+ |-- freight_value: string (nullable = true)
+ |-- order_items_receive_time: timestamp (nullable = false)
+ |-- window_time: struct (nullable = false)
+ |    |-- start: timestamp (nullable = true)
+ |    |-- end: timestamp (nullable = true)
+
+>>> raw_orders = spark.readStream. \
+...     format("kafka"). \
+...     option("kafka.bootstrap.servers", kafka_brokers). \
+...     option("subscribe", "orders_json"). \
+...     option("maxOffsetsPerTrigger", "5"). \
+...     option("startingOffsets", "earliest"). \
+...     load()
+>>> schema = StructType() \
+...     .add("order_id", StringType()) \
+...     .add("customer_id", StringType()) \
+...     .add("order_status", StringType()) \
+...     .add("order_purchase_timestamp", StringType()) \
+...     .add("order_approved_at", StringType()) \
+...     .add("order_delivered_carrier_date", StringType()) \
+...     .add("order_delivered_customer_date", StringType()) \
+...     .add("order_estimated_delivery_date", StringType())
+>>> waterwarked_windowed_orders = raw_orders \
+...     .select(F.from_json(F.col("value").cast("String"), schema).alias("value"), "offset") \
+...     .select("value.order_id", "value.order_status", "value.order_purchase_timestamp") \
+...     .withColumn("order_receive_time", F.current_timestamp()) \
+...     .withColumn("window_time",F.window(F.col("order_receive_time"),"2 minutes")) \
+...     .withWatermark("window_time", "2 minutes")
+>>> waterwarked_windowed_orders.printSchema()
+root
+ |-- order_id: string (nullable = true)
+ |-- order_status: string (nullable = true)
+ |-- order_purchase_timestamp: string (nullable = true)
+ |-- order_receive_time: timestamp (nullable = false)
+ |-- window_time: struct (nullable = false)
+ |    |-- start: timestamp (nullable = true)
+ |    |-- end: timestamp (nullable = true)
+
+>>> streams_joined = waterwarked_windowed_orders \
+...     .join(extended_orders_items, ["order_id", "window_time"] , "inner") \
+...     .select("order_id", "order_item_id", "product_id", "window_time")
+>>> stream = console_output(streams_joined , 10, "append"
+... 
+Traceback (most recent call last):
+  File "/opt/spark-2.4.8/python/pyspark/context.py", line 270, in signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+>>> stream = console_output(streams_joined , 10, "append")
+>>> 22/01/23 22:10:32 ERROR streaming.MicroBatchExecution: Query [id = 8a52145c-2f25-4653-9862-63f8d33b9f71, runId = 9344e9bc-f55b-4b9e-9b21-7919adccb817] terminated with error
+java.lang.AssertionError: assertion failed: There are [1] sources in the checkpoint offsets and now there are [2] sources requested by the query. Cannot continue.
+	at scala.Predef$.assert(Predef.scala:170)
+	at org.apache.spark.sql.execution.streaming.OffsetSeq.toStreamProgress(OffsetSeq.scala:43)
+	at org.apache.spark.sql.execution.streaming.MicroBatchExecution.org$apache$spark$sql$execution$streaming$MicroBatchExecution$$populateStartOffsets(MicroBatchExecution.scala:251)
+	at org.apache.spark.sql.execution.streaming.MicroBatchExecution$$anonfun$runActivatedStream$1$$anonfun$apply$mcZ$sp$1.apply$mcV$sp(MicroBatchExecution.scala:169)
+	at org.apache.spark.sql.execution.streaming.MicroBatchExecution$$anonfun$runActivatedStream$1$$anonfun$apply$mcZ$sp$1.apply(MicroBatchExecution.scala:166)
+	at org.apache.spark.sql.execution.streaming.MicroBatchExecution$$anonfun$runActivatedStream$1$$anonfun$apply$mcZ$sp$1.apply(MicroBatchExecution.scala:166)
+	at org.apache.spark.sql.execution.streaming.ProgressReporter$class.reportTimeTaken(ProgressReporter.scala:351)
+	at org.apache.spark.sql.execution.streaming.StreamExecution.reportTimeTaken(StreamExecution.scala:58)
+	at org.apache.spark.sql.execution.streaming.MicroBatchExecution$$anonfun$runActivatedStream$1.apply$mcZ$sp(MicroBatchExecution.scala:166)
+	at org.apache.spark.sql.execution.streaming.ProcessingTimeExecutor.execute(TriggerExecutor.scala:56)
+	at org.apache.spark.sql.execution.streaming.MicroBatchExecution.runActivatedStream(MicroBatchExecution.scala:160)
+	at org.apache.spark.sql.execution.streaming.StreamExecution.org$apache$spark$sql$execution$streaming$StreamExecution$$runStream(StreamExecution.scala:281)
+	at org.apache.spark.sql.execution.streaming.StreamExecution$$anon$1.run(StreamExecution.scala:193)
+
+Traceback (most recent call last):
+  File "/opt/spark-2.4.8/python/pyspark/context.py", line 270, in signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+>>> stream = console_output(streams_joined , 10, "append")
+-------------------------------------------                                     
+Batch: 0
+-------------------------------------------
++--------------------------------+-------------+--------------------------------+------------------------------------------+
+|order_id                        |order_item_id|product_id                      |window_time                               |
++--------------------------------+-------------+--------------------------------+------------------------------------------+
+|53cdb2fc8bc7dce0b6741e2150273451|1            |595fac2a385ac33a80bd5114aec74eb8|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
+|order_id                        |order_item_id|product_id                      |[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
+|949d5b44dbf5de918fe9c16f97b45f8a|1            |d0b61bfb1de832b15ba9d266ca96e5b0|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
+|47770eb9100c2d0c44946d9cf07ec65d|1            |aa4383b373c6aca5d8797843e5594415|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
+|e481f51cbdc54678b7cc49136f2d6af7|1            |87285b34884572647811a353c7ac498a|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
++--------------------------------+-------------+--------------------------------+------------------------------------------+
+
+22/01/23 22:11:31 WARN streaming.ProcessingTimeExecutor: Current batch is falling behind. The trigger interval is 10000 milliseconds, but spent 14327 milliseconds
+-------------------------------------------                                     
+Batch: 1
+-------------------------------------------
++--------------------------------+-------------+--------------------------------+------------------------------------------+
+|order_id                        |order_item_id|product_id                      |window_time                               |
++--------------------------------+-------------+--------------------------------+------------------------------------------+
+|76c6e866289321a7c93b82b54852dc33|1            |ac1789e492dcd698c5c10b97a671243a|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
+|6514b8ad8028c9f2cc2374ded245783f|1            |4520766ec412348b8d4caa5e8a18c464|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
+|a4591c265e18cb1dcee52889e2d8acc3|1            |060cb19345d90064d1015407193c233d|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
+|136cce7faa42fdb2cefd53fdc79a6098|1            |a1804276d9941ac0733cfd409f5206eb|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
+|ad21c59c0840e6cb83a9ceb5573f8159|1            |65266b2da20d04dbe00c5c2d3bb7859e|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
++--------------------------------+-------------+--------------------------------+------------------------------------------+
+
+-------------------------------------------                                     
+Batch: 2
+-------------------------------------------
++--------------------------------+-------------+--------------------------------+------------------------------------------+
+|order_id                        |order_item_id|product_id                      |window_time                               |
++--------------------------------+-------------+--------------------------------+------------------------------------------+
+|e6ce16cb79ec1d90b1da9085a6118aeb|1            |08574b074924071f4e201e151b152b4e|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
+|e6ce16cb79ec1d90b1da9085a6118aeb|2            |08574b074924071f4e201e151b152b4e|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
+|82566a660a982b15fb86e904c8d32918|1            |72a97c271b2e429974398f46b93ae530|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
+|34513ce0c4fab462a55830c0989c7edb|1            |f7e0fa615b386bc9a8b9eb52bc1fff76|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
+|e69bfb5eb88e0ed6a785585b27e16dbf|1            |9a78fb9862b10749a117f7fc3c31f051|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
+|5ff96c15d0b717ac6ad1f3d77225a350|1            |10adb53d8faa890ca7c2f0cbcb68d777|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
++--------------------------------+-------------+--------------------------------+------------------------------------------+
+
+-------------------------------------------                                     
+Batch: 3
+-------------------------------------------
++--------------------------------+-------------+--------------------------------+------------------------------------------+
+|order_id                        |order_item_id|product_id                      |window_time                               |
++--------------------------------+-------------+--------------------------------+------------------------------------------+
+|116f0b09343b49556bbad5f35bee0cdf|1            |a47295965bd091207681b541b26e40a5|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
+|85ce859fd6dc634de8d2f1e290444043|1            |cce679660c66e6fbd5c8091dfd29e9cd|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
+|dcb36b511fcac050b97cd5c05de84dc3|1            |009c09f439988bc06a93d6b8186dce73|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
+|403b97836b0c04a622354cf531062e5f|1            |638bbb2a5e4f360b71f332ddfebfd672|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
+|432aaf21d85167c2c86ec9448c4e42cc|1            |72d3bf1d3a790f8874096fcf860e3eff|[2022-01-23 22:10:00, 2022-01-23 22:12:00]|
++--------------------------------+-------------+--------------------------------+------------------------------------------+
+
+-------------------------------------------                                     
+Batch: 4
+-------------------------------------------
++--------+-------------+----------+-----------+
+|order_id|order_item_id|product_id|window_time|
++--------+-------------+----------+-----------+
++--------+-------------+----------+-----------+
+
+-------------------------------------------                                     
+Batch: 5
+-------------------------------------------
++--------+-------------+----------+-----------+
+|order_id|order_item_id|product_id|window_time|
++--------+-------------+----------+-----------+
++--------+-------------+----------+-----------+
+
+[Stage 154:==========>                                           (39 + 4) / 200]stream.stop()
+22/01/23 22:12:21 ERROR v2.WriteToDataSourceV2Exec: Data source writer org.apache.spark.sql.execution.streaming.sources.MicroBatchWriter@1809d08d is aborting.
+22/01/23 22:12:21 ERROR v2.WriteToDataSourceV2Exec: Data source writer org.apache.spark.sql.execution.streaming.sources.MicroBatchWriter@1809d08d aborted.
+22/01/23 22:12:21 WARN hdfs.DFSClient: Caught exception 
+java.lang.InterruptedException: sleep interrupted
+	at java.lang.Thread.sleep(Native Method)
+	at org.apache.hadoop.hdfs.DFSOutputStream.completeFile(DFSOutputStream.java:2310)
+	at org.apache.hadoop.hdfs.DFSOutputStream.closeImpl(DFSOutputStream.java:2267)
+	at org.apache.hadoop.hdfs.DFSOutputStream.close(DFSOutputStream.java:2232)
+	at org.apache.hadoop.fs.FSDataOutputStream$PositionCache.close(FSDataOutputStream.java:72)
+	at org.apache.hadoop.fs.FSDataOutputStream.close(FSDataOutputStream.java:106)
+	at org.apache.spark.sql.execution.streaming.CheckpointFileManager$RenameBasedFSDataOutputStream.close(CheckpointFileManager.scala:145)
+	at net.jpountz.lz4.LZ4BlockOutputStream.close(LZ4BlockOutputStream.java:193)
+	at java.io.FilterOutputStream.close(FilterOutputStream.java:159)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider.finalizeDeltaFile(HDFSBackedStateStoreProvider.scala:417)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider.org$apache$spark$sql$execution$streaming$state$HDFSBackedStateStoreProvider$$commitUpdates(HDFSBackedStateStoreProvider.scala:287)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.commit(HDFSBackedStateStoreProvider.scala:132)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager$StateStoreHandler.commit(SymmetricHashJoinStateManager.scala:307)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager.commit(SymmetricHashJoinStateManager.scala:253)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$OneSideHashJoiner.commitStateAndGetMetrics(StreamingSymmetricHashJoinExec.scala:501)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1$2.apply$mcV$sp(StreamingSymmetricHashJoinExec.scala:345)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1$2.apply(StreamingSymmetricHashJoinExec.scala:344)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1$2.apply(StreamingSymmetricHashJoinExec.scala:344)
+	at org.apache.spark.util.Utils$.timeTakenMs(Utils.scala:535)
+	at org.apache.spark.sql.execution.streaming.StateStoreWriter$class.timeTakenMs(statefulOperators.scala:108)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec.timeTakenMs(StreamingSymmetricHashJoinExec.scala:126)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec.org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1(StreamingSymmetricHashJoinExec.scala:344)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$processPartitions$1.apply$mcV$sp(StreamingSymmetricHashJoinExec.scala:361)
+	at org.apache.spark.util.CompletionIterator$$anon$1.completion(CompletionIterator.scala:47)
+	at org.apache.spark.util.CompletionIterator.hasNext(CompletionIterator.scala:36)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage3.processNext(Unknown Source)
+	at org.apache.spark.sql.execution.BufferedRowIterator.hasNext(BufferedRowIterator.java:43)
+	at org.apache.spark.sql.execution.WholeStageCodegenExec$$anonfun$13$$anon$1.hasNext(WholeStageCodegenExec.scala:636)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:117)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:116)
+	at org.apache.spark.util.Utils$.tryWithSafeFinallyAndFailureCallbacks(Utils.scala:1394)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$.run(WriteToDataSourceV2Exec.scala:146)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:67)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:66)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+	at org.apache.spark.scheduler.Task.run(Task.scala:123)
+	at org.apache.spark.executor.Executor$TaskRunner$$anonfun$10.apply(Executor.scala:411)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1360)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:417)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+22/01/23 22:12:21 WARN hdfs.DFSClient: Caught exception 
+java.lang.InterruptedException
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Thread.join(Thread.java:1252)
+	at java.lang.Thread.join(Thread.java:1326)
+	at org.apache.hadoop.hdfs.DFSOutputStream$DataStreamer.closeResponder(DFSOutputStream.java:609)
+	at org.apache.hadoop.hdfs.DFSOutputStream$DataStreamer.closeInternal(DFSOutputStream.java:577)
+	at org.apache.hadoop.hdfs.DFSOutputStream$DataStreamer.run(DFSOutputStream.java:573)
+22/01/23 22:12:21 WARN hdfs.DFSClient: Caught exception 
+java.lang.InterruptedException: sleep interrupted
+	at java.lang.Thread.sleep(Native Method)
+	at org.apache.hadoop.hdfs.DFSOutputStream.completeFile(DFSOutputStream.java:2310)
+	at org.apache.hadoop.hdfs.DFSOutputStream.closeImpl(DFSOutputStream.java:2267)
+	at org.apache.hadoop.hdfs.DFSOutputStream.close(DFSOutputStream.java:2232)
+	at org.apache.hadoop.fs.FSDataOutputStream$PositionCache.close(FSDataOutputStream.java:72)
+	at org.apache.hadoop.fs.FSDataOutputStream.close(FSDataOutputStream.java:106)
+	at org.apache.spark.sql.execution.streaming.CheckpointFileManager$RenameBasedFSDataOutputStream.close(CheckpointFileManager.scala:145)
+	at net.jpountz.lz4.LZ4BlockOutputStream.close(LZ4BlockOutputStream.java:193)
+	at java.io.FilterOutputStream.close(FilterOutputStream.java:159)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider.finalizeDeltaFile(HDFSBackedStateStoreProvider.scala:417)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider.org$apache$spark$sql$execution$streaming$state$HDFSBackedStateStoreProvider$$commitUpdates(HDFSBackedStateStoreProvider.scala:287)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.commit(HDFSBackedStateStoreProvider.scala:132)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager$StateStoreHandler.commit(SymmetricHashJoinStateManager.scala:307)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager.commit(SymmetricHashJoinStateManager.scala:253)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$OneSideHashJoiner.commitStateAndGetMetrics(StreamingSymmetricHashJoinExec.scala:501)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1$2.apply$mcV$sp(StreamingSymmetricHashJoinExec.scala:345)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1$2.apply(StreamingSymmetricHashJoinExec.scala:344)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1$2.apply(StreamingSymmetricHashJoinExec.scala:344)
+	at org.apache.spark.util.Utils$.timeTakenMs(Utils.scala:535)
+	at org.apache.spark.sql.execution.streaming.StateStoreWriter$class.timeTakenMs(statefulOperators.scala:108)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec.timeTakenMs(StreamingSymmetricHashJoinExec.scala:126)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec.org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1(StreamingSymmetricHashJoinExec.scala:344)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$processPartitions$1.apply$mcV$sp(StreamingSymmetricHashJoinExec.scala:361)
+	at org.apache.spark.util.CompletionIterator$$anon$1.completion(CompletionIterator.scala:47)
+	at org.apache.spark.util.CompletionIterator.hasNext(CompletionIterator.scala:36)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage3.processNext(Unknown Source)
+	at org.apache.spark.sql.execution.BufferedRowIterator.hasNext(BufferedRowIterator.java:43)
+	at org.apache.spark.sql.execution.WholeStageCodegenExec$$anonfun$13$$anon$1.hasNext(WholeStageCodegenExec.scala:636)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:117)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:116)
+	at org.apache.spark.util.Utils$.tryWithSafeFinallyAndFailureCallbacks(Utils.scala:1394)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$.run(WriteToDataSourceV2Exec.scala:146)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:67)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:66)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+	at org.apache.spark.scheduler.Task.run(Task.scala:123)
+	at org.apache.spark.executor.Executor$TaskRunner$$anonfun$10.apply(Executor.scala:411)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1360)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:417)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+22/01/23 22:12:21 WARN ipc.Client: interrupted waiting to send rpc request to server
+java.lang.InterruptedException
+	at java.util.concurrent.FutureTask.awaitDone(FutureTask.java:404)
+	at java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.hadoop.ipc.Client$Connection.sendRpcRequest(Client.java:1059)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1454)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1412)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:229)
+	at com.sun.proxy.$Proxy20.create(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.create(ClientNamenodeProtocolTranslatorPB.java:296)
+	at sun.reflect.GeneratedMethodAccessor18.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:191)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:102)
+	at com.sun.proxy.$Proxy21.create(Unknown Source)
+	at org.apache.hadoop.hdfs.DFSOutputStream.newStreamForCreate(DFSOutputStream.java:1648)
+	at org.apache.hadoop.hdfs.DFSClient.primitiveCreate(DFSClient.java:1750)
+	at org.apache.hadoop.fs.Hdfs.createInternal(Hdfs.java:102)
+	at org.apache.hadoop.fs.Hdfs.createInternal(Hdfs.java:58)
+	at org.apache.hadoop.fs.AbstractFileSystem.create(AbstractFileSystem.java:584)
+	at org.apache.hadoop.fs.FileContext$3.next(FileContext.java:686)
+	at org.apache.hadoop.fs.FileContext$3.next(FileContext.java:682)
+	at org.apache.hadoop.fs.FSLinkResolver.resolve(FSLinkResolver.java:90)
+	at org.apache.hadoop.fs.FileContext.create(FileContext.java:688)
+	at org.apache.spark.sql.execution.streaming.FileContextBasedCheckpointFileManager.createTempFile(CheckpointFileManager.scala:311)
+	at org.apache.spark.sql.execution.streaming.CheckpointFileManager$RenameBasedFSDataOutputStream.<init>(CheckpointFileManager.scala:133)
+	at org.apache.spark.sql.execution.streaming.CheckpointFileManager$RenameBasedFSDataOutputStream.<init>(CheckpointFileManager.scala:136)
+	at org.apache.spark.sql.execution.streaming.FileContextBasedCheckpointFileManager.createAtomic(CheckpointFileManager.scala:318)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.deltaFileStream$lzycompute(HDFSBackedStateStoreProvider.scala:95)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.deltaFileStream(HDFSBackedStateStoreProvider.scala:95)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.compressedStream$lzycompute(HDFSBackedStateStoreProvider.scala:96)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.compressedStream(HDFSBackedStateStoreProvider.scala:96)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.commit(HDFSBackedStateStoreProvider.scala:132)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager$StateStoreHandler.commit(SymmetricHashJoinStateManager.scala:307)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager.commit(SymmetricHashJoinStateManager.scala:252)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$OneSideHashJoiner.commitStateAndGetMetrics(StreamingSymmetricHashJoinExec.scala:501)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1$2.apply$mcV$sp(StreamingSymmetricHashJoinExec.scala:346)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1$2.apply(StreamingSymmetricHashJoinExec.scala:344)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1$2.apply(StreamingSymmetricHashJoinExec.scala:344)
+	at org.apache.spark.util.Utils$.timeTakenMs(Utils.scala:535)
+	at org.apache.spark.sql.execution.streaming.StateStoreWriter$class.timeTakenMs(statefulOperators.scala:108)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec.timeTakenMs(StreamingSymmetricHashJoinExec.scala:126)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec.org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1(StreamingSymmetricHashJoinExec.scala:344)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$processPartitions$1.apply$mcV$sp(StreamingSymmetricHashJoinExec.scala:361)
+	at org.apache.spark.util.CompletionIterator$$anon$1.completion(CompletionIterator.scala:47)
+	at org.apache.spark.util.CompletionIterator.hasNext(CompletionIterator.scala:36)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage3.processNext(Unknown Source)
+	at org.apache.spark.sql.execution.BufferedRowIterator.hasNext(BufferedRowIterator.java:43)
+	at org.apache.spark.sql.execution.WholeStageCodegenExec$$anonfun$13$$anon$1.hasNext(WholeStageCodegenExec.scala:636)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:117)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:116)
+	at org.apache.spark.util.Utils$.tryWithSafeFinallyAndFailureCallbacks(Utils.scala:1394)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$.run(WriteToDataSourceV2Exec.scala:146)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:67)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:66)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+	at org.apache.spark.scheduler.Task.run(Task.scala:123)
+	at org.apache.spark.executor.Executor$TaskRunner$$anonfun$10.apply(Executor.scala:411)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1360)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:417)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+22/01/23 22:12:21 ERROR util.Utils: Aborting task
+java.lang.IllegalStateException: Error committing version 7 into HDFSStateStore[id=(op=0,part=44),dir=hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/checkpoints/watermark_console_chk2/state/0/44/left-keyWithIndexToValue]
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.commit(HDFSBackedStateStoreProvider.scala:138)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager$StateStoreHandler.commit(SymmetricHashJoinStateManager.scala:307)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager.commit(SymmetricHashJoinStateManager.scala:253)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$OneSideHashJoiner.commitStateAndGetMetrics(StreamingSymmetricHashJoinExec.scala:501)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1$2.apply$mcV$sp(StreamingSymmetricHashJoinExec.scala:345)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1$2.apply(StreamingSymmetricHashJoinExec.scala:344)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1$2.apply(StreamingSymmetricHashJoinExec.scala:344)
+	at org.apache.spark.util.Utils$.timeTakenMs(Utils.scala:535)
+	at org.apache.spark.sql.execution.streaming.StateStoreWriter$class.timeTakenMs(statefulOperators.scala:108)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec.timeTakenMs(StreamingSymmetricHashJoinExec.scala:126)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec.org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1(StreamingSymmetricHashJoinExec.scala:344)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$processPartitions$1.apply$mcV$sp(StreamingSymmetricHashJoinExec.scala:361)
+	at org.apache.spark.util.CompletionIterator$$anon$1.completion(CompletionIterator.scala:47)
+	at org.apache.spark.util.CompletionIterator.hasNext(CompletionIterator.scala:36)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage3.processNext(Unknown Source)
+	at org.apache.spark.sql.execution.BufferedRowIterator.hasNext(BufferedRowIterator.java:43)
+	at org.apache.spark.sql.execution.WholeStageCodegenExec$$anonfun$13$$anon$1.hasNext(WholeStageCodegenExec.scala:636)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:117)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:116)
+	at org.apache.spark.util.Utils$.tryWithSafeFinallyAndFailureCallbacks(Utils.scala:1394)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$.run(WriteToDataSourceV2Exec.scala:146)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:67)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:66)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+	at org.apache.spark.scheduler.Task.run(Task.scala:123)
+	at org.apache.spark.executor.Executor$TaskRunner$$anonfun$10.apply(Executor.scala:411)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1360)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:417)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.InterruptedIOException: Interrupted while waiting for data to be acknowledged by pipeline
+	at org.apache.hadoop.hdfs.DFSOutputStream.waitForAckedSeqno(DFSOutputStream.java:2147)
+	at org.apache.hadoop.hdfs.DFSOutputStream.flushInternal(DFSOutputStream.java:2126)
+	at org.apache.hadoop.hdfs.DFSOutputStream.closeImpl(DFSOutputStream.java:2262)
+	at org.apache.hadoop.hdfs.DFSOutputStream.close(DFSOutputStream.java:2232)
+	at org.apache.hadoop.fs.FSDataOutputStream$PositionCache.close(FSDataOutputStream.java:72)
+	at org.apache.hadoop.fs.FSDataOutputStream.close(FSDataOutputStream.java:106)
+	at org.apache.spark.sql.execution.streaming.CheckpointFileManager$RenameBasedFSDataOutputStream.close(CheckpointFileManager.scala:145)
+	at net.jpountz.lz4.LZ4BlockOutputStream.close(LZ4BlockOutputStream.java:193)
+	at java.io.FilterOutputStream.close(FilterOutputStream.java:159)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider.finalizeDeltaFile(HDFSBackedStateStoreProvider.scala:417)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider.org$apache$spark$sql$execution$streaming$state$HDFSBackedStateStoreProvider$$commitUpdates(HDFSBackedStateStoreProvider.scala:287)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.commit(HDFSBackedStateStoreProvider.scala:132)
+	... 30 more
+22/01/23 22:12:21 ERROR v2.DataWritingSparkTask: Aborting commit for partition 44 (task 12474, attempt 0, stage 154.0)
+22/01/23 22:12:21 ERROR v2.DataWritingSparkTask: Aborted commit for partition 44 (task 12474, attempt 0, stage 154.0)
+22/01/23 22:12:21 ERROR util.Utils: Aborting task
+java.lang.IllegalStateException: Error committing version 7 into HDFSStateStore[id=(op=0,part=43),dir=hdfs://bigdataanalytics-head-0.mcs.local:8020/user/student898_2/checkpoints/watermark_console_chk2/state/0/43/right-keyToNumValues]
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.commit(HDFSBackedStateStoreProvider.scala:138)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager$StateStoreHandler.commit(SymmetricHashJoinStateManager.scala:307)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager.commit(SymmetricHashJoinStateManager.scala:252)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$OneSideHashJoiner.commitStateAndGetMetrics(StreamingSymmetricHashJoinExec.scala:501)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1$2.apply$mcV$sp(StreamingSymmetricHashJoinExec.scala:346)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1$2.apply(StreamingSymmetricHashJoinExec.scala:344)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1$2.apply(StreamingSymmetricHashJoinExec.scala:344)
+	at org.apache.spark.util.Utils$.timeTakenMs(Utils.scala:535)
+	at org.apache.spark.sql.execution.streaming.StateStoreWriter$class.timeTakenMs(statefulOperators.scala:108)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec.timeTakenMs(StreamingSymmetricHashJoinExec.scala:126)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec.org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$onOutputCompletion$1(StreamingSymmetricHashJoinExec.scala:344)
+	at org.apache.spark.sql.execution.streaming.StreamingSymmetricHashJoinExec$$anonfun$org$apache$spark$sql$execution$streaming$StreamingSymmetricHashJoinExec$$processPartitions$1.apply$mcV$sp(StreamingSymmetricHashJoinExec.scala:361)
+	at org.apache.spark.util.CompletionIterator$$anon$1.completion(CompletionIterator.scala:47)
+	at org.apache.spark.util.CompletionIterator.hasNext(CompletionIterator.scala:36)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage3.processNext(Unknown Source)
+	at org.apache.spark.sql.execution.BufferedRowIterator.hasNext(BufferedRowIterator.java:43)
+	at org.apache.spark.sql.execution.WholeStageCodegenExec$$anonfun$13$$anon$1.hasNext(WholeStageCodegenExec.scala:636)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:117)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:116)
+	at org.apache.spark.util.Utils$.tryWithSafeFinallyAndFailureCallbacks(Utils.scala:1394)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$.run(WriteToDataSourceV2Exec.scala:146)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:67)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:66)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+	at org.apache.spark.scheduler.Task.run(Task.scala:123)
+	at org.apache.spark.executor.Executor$TaskRunner$$anonfun$10.apply(Executor.scala:411)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1360)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:417)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: java.lang.InterruptedException
+	at org.apache.hadoop.ipc.Client.call(Client.java:1460)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1412)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:229)
+	at com.sun.proxy.$Proxy20.create(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.create(ClientNamenodeProtocolTranslatorPB.java:296)
+	at sun.reflect.GeneratedMethodAccessor18.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:191)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:102)
+	at com.sun.proxy.$Proxy21.create(Unknown Source)
+	at org.apache.hadoop.hdfs.DFSOutputStream.newStreamForCreate(DFSOutputStream.java:1648)
+	at org.apache.hadoop.hdfs.DFSClient.primitiveCreate(DFSClient.java:1750)
+	at org.apache.hadoop.fs.Hdfs.createInternal(Hdfs.java:102)
+	at org.apache.hadoop.fs.Hdfs.createInternal(Hdfs.java:58)
+	at org.apache.hadoop.fs.AbstractFileSystem.create(AbstractFileSystem.java:584)
+	at org.apache.hadoop.fs.FileContext$3.next(FileContext.java:686)
+	at org.apache.hadoop.fs.FileContext$3.next(FileContext.java:682)
+	at org.apache.hadoop.fs.FSLinkResolver.resolve(FSLinkResolver.java:90)
+	at org.apache.hadoop.fs.FileContext.create(FileContext.java:688)
+	at org.apache.spark.sql.execution.streaming.FileContextBasedCheckpointFileManager.createTempFile(CheckpointFileManager.scala:311)
+	at org.apache.spark.sql.execution.streaming.CheckpointFileManager$RenameBasedFSDataOutputStream.<init>(CheckpointFileManager.scala:133)
+	at org.apache.spark.sql.execution.streaming.CheckpointFileManager$RenameBasedFSDataOutputStream.<init>(CheckpointFileManager.scala:136)
+	at org.apache.spark.sql.execution.streaming.FileContextBasedCheckpointFileManager.createAtomic(CheckpointFileManager.scala:318)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.deltaFileStream$lzycompute(HDFSBackedStateStoreProvider.scala:95)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.deltaFileStream(HDFSBackedStateStoreProvider.scala:95)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.compressedStream$lzycompute(HDFSBackedStateStoreProvider.scala:96)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.compressedStream(HDFSBackedStateStoreProvider.scala:96)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.commit(HDFSBackedStateStoreProvider.scala:132)
+	... 30 more
+Caused by: java.lang.InterruptedException
+	at java.util.concurrent.FutureTask.awaitDone(FutureTask.java:404)
+	at java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.hadoop.ipc.Client$Connection.sendRpcRequest(Client.java:1059)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1454)
+	... 58 more
+22/01/23 22:12:21 ERROR v2.DataWritingSparkTask: Aborting commit for partition 43 (task 12473, attempt 0, stage 154.0)
+22/01/23 22:12:21 ERROR v2.DataWritingSparkTask: Aborted commit for partition 43 (task 12473, attempt 0, stage 154.0)
+22/01/23 22:12:21 WARN ipc.Client: interrupted waiting to send rpc request to server
+java.lang.InterruptedException
+	at java.util.concurrent.FutureTask.awaitDone(FutureTask.java:404)
+	at java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.hadoop.ipc.Client$Connection.sendRpcRequest(Client.java:1059)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1454)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1412)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:229)
+	at com.sun.proxy.$Proxy20.create(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.create(ClientNamenodeProtocolTranslatorPB.java:296)
+	at sun.reflect.GeneratedMethodAccessor18.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:191)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:102)
+	at com.sun.proxy.$Proxy21.create(Unknown Source)
+	at org.apache.hadoop.hdfs.DFSOutputStream.newStreamForCreate(DFSOutputStream.java:1648)
+	at org.apache.hadoop.hdfs.DFSClient.primitiveCreate(DFSClient.java:1750)
+	at org.apache.hadoop.fs.Hdfs.createInternal(Hdfs.java:102)
+	at org.apache.hadoop.fs.Hdfs.createInternal(Hdfs.java:58)
+	at org.apache.hadoop.fs.AbstractFileSystem.create(AbstractFileSystem.java:584)
+	at org.apache.hadoop.fs.FileContext$3.next(FileContext.java:686)
+	at org.apache.hadoop.fs.FileContext$3.next(FileContext.java:682)
+	at org.apache.hadoop.fs.FSLinkResolver.resolve(FSLinkResolver.java:90)
+	at org.apache.hadoop.fs.FileContext.create(FileContext.java:688)
+	at org.apache.spark.sql.execution.streaming.FileContextBasedCheckpointFileManager.createTempFile(CheckpointFileManager.scala:311)
+	at org.apache.spark.sql.execution.streaming.CheckpointFileManager$RenameBasedFSDataOutputStream.<init>(CheckpointFileManager.scala:133)
+	at org.apache.spark.sql.execution.streaming.CheckpointFileManager$RenameBasedFSDataOutputStream.<init>(CheckpointFileManager.scala:136)
+	at org.apache.spark.sql.execution.streaming.FileContextBasedCheckpointFileManager.createAtomic(CheckpointFileManager.scala:318)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.deltaFileStream$lzycompute(HDFSBackedStateStoreProvider.scala:95)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.deltaFileStream(HDFSBackedStateStoreProvider.scala:95)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.compressedStream$lzycompute(HDFSBackedStateStoreProvider.scala:96)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.compressedStream(HDFSBackedStateStoreProvider.scala:96)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.abort(HDFSBackedStateStoreProvider.scala:150)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager$StateStoreHandler.abortIfNeeded(SymmetricHashJoinStateManager.scala:314)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager.abortIfNeeded(SymmetricHashJoinStateManager.scala:258)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager$$anonfun$2$$anonfun$apply$1.apply(SymmetricHashJoinStateManager.scala:298)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager$$anonfun$2$$anonfun$apply$1.apply(SymmetricHashJoinStateManager.scala:298)
+	at org.apache.spark.TaskContext$$anon$1.onTaskCompletion(TaskContext.scala:131)
+	at org.apache.spark.TaskContextImpl$$anonfun$markTaskCompleted$1.apply(TaskContextImpl.scala:117)
+	at org.apache.spark.TaskContextImpl$$anonfun$markTaskCompleted$1.apply(TaskContextImpl.scala:117)
+	at org.apache.spark.TaskContextImpl$$anonfun$invokeListeners$1.apply(TaskContextImpl.scala:130)
+	at org.apache.spark.TaskContextImpl$$anonfun$invokeListeners$1.apply(TaskContextImpl.scala:128)
+	at scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:59)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:48)
+	at org.apache.spark.TaskContextImpl.invokeListeners(TaskContextImpl.scala:128)
+	at org.apache.spark.TaskContextImpl.markTaskCompleted(TaskContextImpl.scala:116)
+	at org.apache.spark.scheduler.Task.run(Task.scala:133)
+	at org.apache.spark.executor.Executor$TaskRunner$$anonfun$10.apply(Executor.scala:411)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1360)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:417)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+>>> 22/01/23 22:12:21 ERROR spark.TaskContextImpl: Error in TaskCompletionListener
+java.io.IOException: java.lang.InterruptedException
+	at org.apache.hadoop.ipc.Client.call(Client.java:1460)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1412)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:229)
+	at com.sun.proxy.$Proxy20.create(Unknown Source)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.create(ClientNamenodeProtocolTranslatorPB.java:296)
+	at sun.reflect.GeneratedMethodAccessor18.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:191)
+	at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:102)
+	at com.sun.proxy.$Proxy21.create(Unknown Source)
+	at org.apache.hadoop.hdfs.DFSOutputStream.newStreamForCreate(DFSOutputStream.java:1648)
+	at org.apache.hadoop.hdfs.DFSClient.primitiveCreate(DFSClient.java:1750)
+	at org.apache.hadoop.fs.Hdfs.createInternal(Hdfs.java:102)
+	at org.apache.hadoop.fs.Hdfs.createInternal(Hdfs.java:58)
+	at org.apache.hadoop.fs.AbstractFileSystem.create(AbstractFileSystem.java:584)
+	at org.apache.hadoop.fs.FileContext$3.next(FileContext.java:686)
+	at org.apache.hadoop.fs.FileContext$3.next(FileContext.java:682)
+	at org.apache.hadoop.fs.FSLinkResolver.resolve(FSLinkResolver.java:90)
+	at org.apache.hadoop.fs.FileContext.create(FileContext.java:688)
+	at org.apache.spark.sql.execution.streaming.FileContextBasedCheckpointFileManager.createTempFile(CheckpointFileManager.scala:311)
+	at org.apache.spark.sql.execution.streaming.CheckpointFileManager$RenameBasedFSDataOutputStream.<init>(CheckpointFileManager.scala:133)
+	at org.apache.spark.sql.execution.streaming.CheckpointFileManager$RenameBasedFSDataOutputStream.<init>(CheckpointFileManager.scala:136)
+	at org.apache.spark.sql.execution.streaming.FileContextBasedCheckpointFileManager.createAtomic(CheckpointFileManager.scala:318)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.deltaFileStream$lzycompute(HDFSBackedStateStoreProvider.scala:95)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.deltaFileStream(HDFSBackedStateStoreProvider.scala:95)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.compressedStream$lzycompute(HDFSBackedStateStoreProvider.scala:96)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.compressedStream(HDFSBackedStateStoreProvider.scala:96)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.abort(HDFSBackedStateStoreProvider.scala:150)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager$StateStoreHandler.abortIfNeeded(SymmetricHashJoinStateManager.scala:314)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager.abortIfNeeded(SymmetricHashJoinStateManager.scala:258)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager$$anonfun$2$$anonfun$apply$1.apply(SymmetricHashJoinStateManager.scala:298)
+	at org.apache.spark.sql.execution.streaming.state.SymmetricHashJoinStateManager$$anonfun$2$$anonfun$apply$1.apply(SymmetricHashJoinStateManager.scala:298)
+	at org.apache.spark.TaskContext$$anon$1.onTaskCompletion(TaskContext.scala:131)
+	at org.apache.spark.TaskContextImpl$$anonfun$markTaskCompleted$1.apply(TaskContextImpl.scala:117)
+	at org.apache.spark.TaskContextImpl$$anonfun$markTaskCompleted$1.apply(TaskContextImpl.scala:117)
+	at org.apache.spark.TaskContextImpl$$anonfun$invokeListeners$1.apply(TaskContextImpl.scala:130)
+	at org.apache.spark.TaskContextImpl$$anonfun$invokeListeners$1.apply(TaskContextImpl.scala:128)
+	at scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:59)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:48)
+	at org.apache.spark.TaskContextImpl.invokeListeners(TaskContextImpl.scala:128)
+	at org.apache.spark.TaskContextImpl.markTaskCompleted(TaskContextImpl.scala:116)
+	at org.apache.spark.scheduler.Task.run(Task.scala:133)
+	at org.apache.spark.executor.Executor$TaskRunner$$anonfun$10.apply(Executor.scala:411)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1360)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:417)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.InterruptedException
+	at java.util.concurrent.FutureTask.awaitDone(FutureTask.java:404)
+	at java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.hadoop.ipc.Client$Connection.sendRpcRequest(Client.java:1059)
+	at org.apache.hadoop.ipc.Client.call(Client.java:1454)
+	... 48 more
+22/01/23 22:12:21 WARN scheduler.TaskSetManager: Lost task 43.0 in stage 154.0 (TID 12473, localhost, executor driver): TaskKilled (Stage cancelled)
+22/01/23 22:12:21 WARN scheduler.TaskSetManager: Lost task 44.0 in stage 154.0 (TID 12474, localhost, executor driver): TaskKilled (Stage cancelled)
+22/01/23 22:12:21 ERROR util.Utils: Aborting task
+org.apache.spark.executor.CommitDeniedException: Commit denied for partition 34 (task 12464, attempt 0, stage 154.0)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:133)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:116)
+	at org.apache.spark.util.Utils$.tryWithSafeFinallyAndFailureCallbacks(Utils.scala:1394)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$.run(WriteToDataSourceV2Exec.scala:146)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:67)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:66)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+	at org.apache.spark.scheduler.Task.run(Task.scala:123)
+	at org.apache.spark.executor.Executor$TaskRunner$$anonfun$10.apply(Executor.scala:411)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1360)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:417)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+22/01/23 22:12:21 ERROR v2.DataWritingSparkTask: Aborting commit for partition 34 (task 12464, attempt 0, stage 154.0)
+22/01/23 22:12:21 ERROR v2.DataWritingSparkTask: Aborted commit for partition 34 (task 12464, attempt 0, stage 154.0)
+22/01/23 22:12:21 WARN scheduler.TaskSetManager: Lost task 34.0 in stage 154.0 (TID 12464, localhost, executor driver): TaskKilled (Stage cancelled)
+22/01/23 22:12:21 ERROR util.Utils: Aborting task
+org.apache.spark.executor.CommitDeniedException: Commit denied for partition 33 (task 12463, attempt 0, stage 154.0)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:133)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:116)
+	at org.apache.spark.util.Utils$.tryWithSafeFinallyAndFailureCallbacks(Utils.scala:1394)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$.run(WriteToDataSourceV2Exec.scala:146)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:67)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:66)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+	at org.apache.spark.scheduler.Task.run(Task.scala:123)
+	at org.apache.spark.executor.Executor$TaskRunner$$anonfun$10.apply(Executor.scala:411)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1360)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:417)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+22/01/23 22:12:21 ERROR v2.DataWritingSparkTask: Aborting commit for partition 33 (task 12463, attempt 0, stage 154.0)
+22/01/23 22:12:21 ERROR v2.DataWritingSparkTask: Aborted commit for partition 33 (task 12463, attempt 0, stage 154.0)
+22/01/23 22:12:21 WARN scheduler.TaskSetManager: Lost task 33.0 in stage 154.0 (TID 12463, localhost, executor driver): TaskKilled (Stage cancelled)
+stream.stop()
+>>> stream.stop()
+>>> exit()
+[student898_2@bigdataanalytics-worker-3 ~]$ logout
+Connection to 37.139.41.176 closed.
+igor@igor-MS-7808:~$ 
+

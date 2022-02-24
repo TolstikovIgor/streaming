@@ -1,0 +1,752 @@
+
+stream.stop()
+>>> stream.stop()
+>>> stream = console_output(extended_data , 5)
+>>> -------------------------------------------
+Batch: 3
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |18    |2022-01-24 18:38:56.803|
+|null   |null   |null         |null      |19    |2022-01-24 18:38:56.803|
+|null   |null   |null         |null      |20    |2022-01-24 18:38:56.803|
+|null   |null   |null         |null      |21    |2022-01-24 18:38:56.803|
+|null   |null   |null         |null      |22    |2022-01-24 18:38:56.803|
+|null   |null   |null         |null      |23    |2022-01-24 18:38:56.803|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------
+Batch: 4
+-------------------------------------------
++-------+-------+-------------+----------+------+----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time          |
++-------+-------+-------------+----------+------+----------------------+
+|null   |null   |null         |null      |24    |2022-01-24 18:38:57.08|
+|null   |null   |null         |null      |25    |2022-01-24 18:38:57.08|
+|null   |null   |null         |null      |26    |2022-01-24 18:38:57.08|
+|null   |null   |null         |null      |27    |2022-01-24 18:38:57.08|
+|null   |null   |null         |null      |28    |2022-01-24 18:38:57.08|
+|null   |null   |null         |null      |29    |2022-01-24 18:38:57.08|
++-------+-------+-------------+----------+------+----------------------+
+
+-------------------------------------------
+Batch: 5
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |30    |2022-01-24 18:39:00.005|
+|null   |null   |null         |null      |31    |2022-01-24 18:39:00.005|
+|null   |null   |null         |null      |32    |2022-01-24 18:39:00.005|
+|null   |null   |null         |null      |33    |2022-01-24 18:39:00.005|
+|null   |null   |null         |null      |34    |2022-01-24 18:39:00.005|
+|null   |null   |null         |null      |35    |2022-01-24 18:39:00.005|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------
+Batch: 6
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |36    |2022-01-24 18:39:05.005|
+|null   |null   |null         |null      |37    |2022-01-24 18:39:05.005|
+|null   |null   |null         |null      |38    |2022-01-24 18:39:05.005|
+|null   |null   |null         |null      |39    |2022-01-24 18:39:05.005|
+|null   |null   |null         |null      |40    |2022-01-24 18:39:05.005|
+|null   |null   |null         |null      |41    |2022-01-24 18:39:05.005|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------
+Batch: 7
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |42    |2022-01-24 18:39:10.004|
+|null   |null   |null         |null      |43    |2022-01-24 18:39:10.004|
+|null   |null   |null         |null      |44    |2022-01-24 18:39:10.004|
+|null   |null   |null         |null      |45    |2022-01-24 18:39:10.004|
+|null   |null   |null         |null      |46    |2022-01-24 18:39:10.004|
+|null   |null   |null         |null      |47    |2022-01-24 18:39:10.004|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------
+Batch: 8
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |48    |2022-01-24 18:39:15.004|
+|null   |null   |null         |null      |49    |2022-01-24 18:39:15.004|
+|null   |null   |null         |null      |50    |2022-01-24 18:39:15.004|
+|null   |null   |null         |null      |51    |2022-01-24 18:39:15.004|
+|null   |null   |null         |null      |52    |2022-01-24 18:39:15.004|
+|null   |null   |null         |null      |53    |2022-01-24 18:39:15.004|
++-------+-------+-------------+----------+------+-----------------------+
+
+stream = c.stop()
+>>> stream.stop()
+>>> waterwarked_data = extended_data.withWatermark("receive_time", "30 seconds")
+>>> waterwarked_data.printSchema()
+root
+ |-- time_id: string (nullable = true)
+ |-- ping_ms: string (nullable = true)
+ |-- temperature_c: string (nullable = true)
+ |-- humidity_p: string (nullable = true)
+ |-- offset: long (nullable = true)
+ |-- receive_time: timestamp (nullable = false)
+
+>>> extended_data.printSchema()
+root
+ |-- time_id: string (nullable = true)
+ |-- ping_ms: string (nullable = true)
+ |-- temperature_c: string (nullable = true)
+ |-- humidity_p: string (nullable = true)
+ |-- offset: long (nullable = true)
+ |-- receive_time: timestamp (nullable = false)
+
+>>> deduplicated_data = waterwarked_data.drop_duplicates(["humidity_p", "receive_time"])
+>>> stream = console_output(deduplicated_data , 10)
+-------------------------------------------                                     
+Batch: 0
+-------------------------------------------
+>>> +-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |0     |2022-01-24 19:16:08.083|
++-------+-------+-------------+----------+------+-----------------------+
+
+>>> 22/01/24 19:16:15 WARN streaming.ProcessingTimeExecutor: Current batch is falling behind. The trigger interval is 10000 milliseconds, but spent 10422 milliseconds
+-------------------------------------------                                     
+Batch: 1
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |6     |2022-01-24 19:16:15.442|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------                                     
+Batch: 2
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |12    |2022-01-24 19:16:23.171|
++-------+-------+-------------+----------+------+-----------------------+
+
+-------------------------------------------                                     
+Batch: 3
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |
++-------+-------+-------------+----------+------+-----------------------+
+|null   |null   |null         |null      |18    |2022-01-24 19:16:30.004|
++-------+-------+-------------+----------+------+-----------------------+
+
+stream.stop()
+>>> stream.stop()
+>>> windowed_data = extended_data.withColumn("window_time", F.window(F.col("receive_time"), "2 minutes"))
+>>> windowed_data.printSchema()
+root
+ |-- time_id: string (nullable = true)
+ |-- ping_ms: string (nullable = true)
+ |-- temperature_c: string (nullable = true)
+ |-- humidity_p: string (nullable = true)
+ |-- offset: long (nullable = true)
+ |-- receive_time: timestamp (nullable = false)
+ |-- window_time: struct (nullable = false)
+ |    |-- start: timestamp (nullable = true)
+ |    |-- end: timestamp (nullable = true)
+
+>>> waterwarked_windowed_data = windowed_data.withWatermark("window_time", "2 minutes")
+>>> deduplicated_windowed_data = waterwarked_windowed_data \
+...     .drop_duplicates(["humidity_p", "window_time"])
+>>> stream = console_output(deduplicated_windowed_data , 20)
+>>> stream.stop()22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:====>                                                  (15 + 1) / 200]22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:51 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:=====>                                                 (21 + 1) / 200]22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:=======>                                               (27 + 1) / 200]22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:=========>                                             (34 + 1) / 200]22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:===========>                                           (40 + 1) / 200]22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:============>                                          (45 + 1) / 200]22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:52 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:==============>                                        (51 + 1) / 200]22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:===============>                                       (56 + 1) / 200]22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:=================>                                     (62 + 1) / 200]22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:53 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:==================>                                    (68 + 1) / 200]22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:====================>                                  (75 + 1) / 200]22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:======================>                                (80 + 1) / 200]22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:=======================>                               (86 + 1) / 200]22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:=========================>                             (92 + 1) / 200]22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:54 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:==========================>                            (98 + 1) / 200]22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:============================>                         (104 + 1) / 200]22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:=============================>                        (110 + 1) / 200]22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:===============================>                      (117 + 1) / 200]22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:=================================>                    (124 + 1) / 200]22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:55 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:===================================>                  (130 + 1) / 200]22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:====================================>                 (136 + 1) / 200]22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:======================================>               (142 + 1) / 200]22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:========================================>             (149 + 1) / 200]22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:==========================================>           (156 + 1) / 200]22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:56 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:============================================>         (163 + 1) / 200]22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:=============================================>        (170 + 1) / 200]22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:===============================================>      (176 + 1) / 200]22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:=================================================>    (182 + 1) / 200]22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:==================================================>   (188 + 1) / 200]22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:57 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:58 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:58 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:58 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+[Stage 20:====================================================> (194 + 1) / 200]22/01/24 19:22:58 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:58 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:58 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:58 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+22/01/24 19:22:58 WARN state.HDFSBackedStateStoreProvider: The state for version 4 doesn't exist in loadedMaps. Reading snapshot file and delta files if needed...Note that this is normal for the first batch of starting query.
+-------------------------------------------                                     
+Batch: 4
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+------------------------------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |window_time                               |
++-------+-------+-------------+----------+------+-----------------------+------------------------------------------+
+|null   |null   |null         |null      |24    |2022-01-24 19:22:50.922|[2022-01-24 19:22:00, 2022-01-24 19:24:00]|
++-------+-------+-------------+----------+------+-----------------------+------------------------------------------+
+
+-------------------------------------------                                     
+Batch: 5
+-------------------------------------------
++-------+-------+-------------+----------+------+------------+-----------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time|window_time|
++-------+-------+-------------+----------+------+------------+-----------+
++-------+-------+-------------+----------+------+------------+-----------+
+
+-------------------------------------------                                     
+Batch: 6
+-------------------------------------------
++-------+-------+-------------+----------+------+------------+-----------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time|window_time|
++-------+-------+-------------+----------+------+------------+-----------+
++-------+-------+-------------+----------+------+------------+-----------+
+
+-------------------------------------------                                     
+Batch: 7
+-------------------------------------------
++-------+-------+-------------+----------+------+------------+-----------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time|window_time|
++-------+-------+-------------+----------+------+------------+-----------+
++-------+-------+-------------+----------+------+------------+-----------+
+
+
+Traceback (most recent call last):
+  File "/opt/spark-2.4.8/python/pyspark/context.py", line 270, in signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+>>> stream.stop()
+>>> sliding_data = extended_data.withColumn("sliding_time", F.window(F.col("receive_time"), "1 minute", "30 seconds"))
+>>> waterwarked_sliding_data = sliding_data .withWatermark("sliding_time", "2 minutes")
+>>> deduplicated_sliding_data = waterwarked_sliding_data .drop_duplicates(["humidity_p", "sliding_time"])
+>>> deduplicated_sliding_data.printSchema()
+root
+ |-- time_id: string (nullable = true)
+ |-- ping_ms: string (nullable = true)
+ |-- temperature_c: string (nullable = true)
+ |-- humidity_p: string (nullable = true)
+ |-- offset: long (nullable = true)
+ |-- receive_time: timestamp (nullable = false)
+ |-- sliding_time: struct (nullable = true)
+ |    |-- start: timestamp (nullable = true)
+ |    |-- end: timestamp (nullable = true)
+
+>>> sliding_data = extended_data.withColumn("sliding_time", F.window(F.col("receive_time"), "1 minute", "30 seconds"))
+>>> waterwarked_sliding_data = sliding_data.withWatermark("sliding_time", "2 minutes")
+>>> deduplicated_sliding_data = waterwarked_sliding_data.drop_duplicates(["humidity_p", "sliding_time"])
+>>> deduplicated_sliding_data.printSchema()
+root
+ |-- time_id: string (nullable = true)
+ |-- ping_ms: string (nullable = true)
+ |-- temperature_c: string (nullable = true)
+ |-- humidity_p: string (nullable = true)
+ |-- offset: long (nullable = true)
+ |-- receive_time: timestamp (nullable = false)
+ |-- sliding_time: struct (nullable = true)
+ |    |-- start: timestamp (nullable = true)
+ |    |-- end: timestamp (nullable = true)
+
+>>> stream = console_output(deduplicated_sliding_data, 5)
+-------------------------------------------                                     
+Batch: 0
+-------------------------------------------
++-------+-------+-------------+----------+------+-----------------------+------------------------------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time           |sliding_time                              |
++-------+-------+-------------+----------+------+-----------------------+------------------------------------------+
+|null   |null   |null         |null      |0     |2022-01-24 19:29:48.317|[2022-01-24 19:29:00, 2022-01-24 19:30:00]|
+|null   |null   |null         |null      |0     |2022-01-24 19:29:48.317|[2022-01-24 19:29:30, 2022-01-24 19:30:30]|
++-------+-------+-------------+----------+------+-----------------------+------------------------------------------+
+
+22/01/24 19:29:54 WARN streaming.ProcessingTimeExecutor: Current batch is falling behind. The trigger interval is 5000 milliseconds, but spent 9133 milliseconds
+-------------------------------------------                                     
+Batch: 1
+-------------------------------------------
++-------+-------+-------------+----------+------+------------+------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time|sliding_time|
++-------+-------+-------------+----------+------+------------+------------+
++-------+-------+-------------+----------+------+------------+------------+
+
+-------------------------------------------                                     
+Batch: 2
+-------------------------------------------
++-------+-------+-------------+----------+------+------------+------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time|sliding_time|
++-------+-------+-------------+----------+------+------------+------------+
++-------+-------+-------------+----------+------+------------+------------+
+
+-------------------------------------------                                     
+Batch: 3
+-------------------------------------------
++-------+-------+-------------+----------+------+----------------------+------------------------------------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time          |sliding_time                              |
++-------+-------+-------------+----------+------+----------------------+------------------------------------------+
+|null   |null   |null         |null      |18    |2022-01-24 19:30:02.86|[2022-01-24 19:30:00, 2022-01-24 19:31:00]|
++-------+-------+-------------+----------+------+----------------------+------------------------------------------+
+
+-------------------------------------------                                     stream.stop()
+Batch: 4
+-------------------------------------------
++-------+-------+-------------+----------+------+------------+------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time|sliding_time|
++-------+-------+-------------+----------+------+------------+------------+
++-------+-------+-------------+----------+------+------------+------------+
+
+[Stage 38:=========================>                             (94 + 1) / 200]stream.stop()
+  File "<stdin>", line 1
+    stream.stop()stream.stop()
+                      ^
+SyntaxError: invalid syntax
+-------------------------------------------                                     
+Batch: 5
+-------------------------------------------
++-------+-------+-------------+----------+------+------------+------------+
+|time_id|ping_ms|temperature_c|humidity_p|offset|receive_time|sliding_time|
++-------+-------+-------------+----------+------+------------+------------+
++-------+-------+-------------+----------+------+------------+------------+
+
+[Stage 40:===>                                                   (14 + 1) / 200]
+22/01/24 19:30:16 ERROR v2.WriteToDataSourceV2Exec: Data source writer org.apache.spark.sql.execution.streaming.sources.MicroBatchWriter@4349de is aborting.
+22/01/24 19:30:16 ERROR v2.WriteToDataSourceV2Exec: Data source writer org.apache.spark.sql.execution.streaming.sources.MicroBatchWriter@4349de aborted.
+>>> 22/01/24 19:30:16 WARN hdfs.DFSClient: Caught exception 
+java.lang.InterruptedException: sleep interrupted
+	at java.lang.Thread.sleep(Native Method)
+	at org.apache.hadoop.hdfs.DFSOutputStream.completeFile(DFSOutputStream.java:2310)
+	at org.apache.hadoop.hdfs.DFSOutputStream.closeImpl(DFSOutputStream.java:2267)
+	at org.apache.hadoop.hdfs.DFSOutputStream.close(DFSOutputStream.java:2232)
+	at org.apache.hadoop.fs.FSDataOutputStream$PositionCache.close(FSDataOutputStream.java:72)
+	at org.apache.hadoop.fs.FSDataOutputStream.close(FSDataOutputStream.java:106)
+	at org.apache.spark.sql.execution.streaming.CheckpointFileManager$RenameBasedFSDataOutputStream.close(CheckpointFileManager.scala:145)
+	at net.jpountz.lz4.LZ4BlockOutputStream.close(LZ4BlockOutputStream.java:193)
+	at java.io.FilterOutputStream.close(FilterOutputStream.java:159)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider.finalizeDeltaFile(HDFSBackedStateStoreProvider.scala:417)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider.org$apache$spark$sql$execution$streaming$state$HDFSBackedStateStoreProvider$$commitUpdates(HDFSBackedStateStoreProvider.scala:287)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.commit(HDFSBackedStateStoreProvider.scala:132)
+	at org.apache.spark.sql.execution.streaming.StreamingDeduplicateExec$$anonfun$doExecute$4$$anonfun$apply$4$$anonfun$apply$mcV$sp$2.apply$mcV$sp(statefulOperators.scala:483)
+	at org.apache.spark.sql.execution.streaming.StreamingDeduplicateExec$$anonfun$doExecute$4$$anonfun$apply$4$$anonfun$apply$mcV$sp$2.apply(statefulOperators.scala:483)
+	at org.apache.spark.sql.execution.streaming.StreamingDeduplicateExec$$anonfun$doExecute$4$$anonfun$apply$4$$anonfun$apply$mcV$sp$2.apply(statefulOperators.scala:483)
+	at org.apache.spark.util.Utils$.timeTakenMs(Utils.scala:535)
+	at org.apache.spark.sql.execution.streaming.StateStoreWriter$class.timeTakenMs(statefulOperators.scala:108)
+	at org.apache.spark.sql.execution.streaming.StreamingDeduplicateExec.timeTakenMs(statefulOperators.scala:429)
+	at org.apache.spark.sql.execution.streaming.StreamingDeduplicateExec$$anonfun$doExecute$4$$anonfun$apply$4.apply$mcV$sp(statefulOperators.scala:483)
+	at org.apache.spark.util.CompletionIterator$$anon$1.completion(CompletionIterator.scala:47)
+	at org.apache.spark.util.CompletionIterator.hasNext(CompletionIterator.scala:36)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:117)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:116)
+	at org.apache.spark.util.Utils$.tryWithSafeFinallyAndFailureCallbacks(Utils.scala:1394)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$.run(WriteToDataSourceV2Exec.scala:146)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:67)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:66)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+	at org.apache.spark.scheduler.Task.run(Task.scala:123)
+	at org.apache.spark.executor.Executor$TaskRunner$$anonfun$10.apply(Executor.scala:411)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1360)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:417)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+22/01/24 19:30:16 ERROR util.Utils: Aborting task
+org.apache.spark.executor.CommitDeniedException: Commit denied for partition 14 (task 2840, attempt 0, stage 40.0)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:133)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:116)
+	at org.apache.spark.util.Utils$.tryWithSafeFinallyAndFailureCallbacks(Utils.scala:1394)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$.run(WriteToDataSourceV2Exec.scala:146)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:67)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:66)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+	at org.apache.spark.scheduler.Task.run(Task.scala:123)
+	at org.apache.spark.executor.Executor$TaskRunner$$anonfun$10.apply(Executor.scala:411)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1360)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:417)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+22/01/24 19:30:16 ERROR v2.DataWritingSparkTask: Aborting commit for partition 14 (task 2840, attempt 0, stage 40.0)
+22/01/24 19:30:16 ERROR v2.DataWritingSparkTask: Aborted commit for partition 14 (task 2840, attempt 0, stage 40.0)
+22/01/24 19:30:16 WARN scheduler.TaskSetManager: Lost task 14.0 in stage 40.0 (TID 2840, localhost, executor driver): TaskKilled (Stage cancelled)
+stream.stop()
+>>> def console_output(df, freq, out_mode):
+...     return df.writeStream.format("console") \
+...         .trigger(processingTime='%s seconds' % freq ) \
+...         .options(truncate=False) \
+...         .option("checkpointLocation", "checkpoints/watermark_console_chk2") \
+...         .outputMode(out_mode) \
+...         .start()
+... 
+>>> waterwarked_windowed_data.printSchema()
+root
+ |-- time_id: string (nullable = true)
+ |-- ping_ms: string (nullable = true)
+ |-- temperature_c: string (nullable = true)
+ |-- humidity_p: string (nullable = true)
+ |-- offset: long (nullable = true)
+ |-- receive_time: timestamp (nullable = false)
+ |-- window_time: struct (nullable = false)
+ |    |-- start: timestamp (nullable = true)
+ |    |-- end: timestamp (nullable = true)
+
+>>> count_data = waterwarked_windowed_data.groupBy("window_time").count()
+>>> stream = console_output(count_data, 10, "update")
+-------------------------------------------                                     
+Batch: 0
+-------------------------------------------
++------------------------------------------+-----+
+|window_time                               |count|
++------------------------------------------+-----+
+|[2022-01-24 19:34:00, 2022-01-24 19:36:00]|6    |
++------------------------------------------+-----+
+
+22/01/24 19:35:10 WARN streaming.ProcessingTimeExecutor: Current batch is falling behind. The trigger interval is 10000 milliseconds, but spent 10897 milliseconds
+-------------------------------------------                                     
+Batch: 1
+-------------------------------------------
++------------------------------------------+-----+
+|window_time                               |count|
++------------------------------------------+-----+
+|[2022-01-24 19:34:00, 2022-01-24 19:36:00]|12   |
++------------------------------------------+-----+
+
+-------------------------------------------                                     
+Batch: 2
+-------------------------------------------
++------------------------------------------+-----+
+|window_time                               |count|
++------------------------------------------+-----+
+|[2022-01-24 19:34:00, 2022-01-24 19:36:00]|18   |
++------------------------------------------+-----+
+
+-------------------------------------------                                     
+Batch: 3
+-------------------------------------------
++------------------------------------------+-----+
+|window_time                               |count|
++------------------------------------------+-----+
+|[2022-01-24 19:34:00, 2022-01-24 19:36:00]|24   |
++------------------------------------------+-----+
+
+stream.stop()
+>>> stream.stop()
+>>> stream = console_output(count_data, 10, "complete")
+-------------------------------------------                                     
+Batch: 0
+-------------------------------------------
++------------------------------------------+-----+
+|window_time                               |count|
++------------------------------------------+-----+
+|[2022-01-24 19:36:00, 2022-01-24 19:38:00]|6    |
++------------------------------------------+-----+
+
+-------------------------------------------                                     
+Batch: 1
+-------------------------------------------
++------------------------------------------+-----+
+|window_time                               |count|
++------------------------------------------+-----+
+|[2022-01-24 19:36:00, 2022-01-24 19:38:00]|12   |
++------------------------------------------+-----+
+
+-------------------------------------------                                     
+Batch: 2
+-------------------------------------------
++------------------------------------------+-----+
+|window_time                               |count|
++------------------------------------------+-----+
+|[2022-01-24 19:36:00, 2022-01-24 19:38:00]|18   |
++------------------------------------------+-----+
+
+-------------------------------------------                                     
+Batch: 3
+-------------------------------------------
++------------------------------------------+-----+
+|window_time                               |count|
++------------------------------------------+-----+
+|[2022-01-24 19:36:00, 2022-01-24 19:38:00]|24   |
++------------------------------------------+-----+
+
+stream.stop()
+>>> stream.stop()
+>>> stream = console_output(count_data, 10, "append")
+-------------------------------------------                                     
+Batch: 0
+-------------------------------------------
++-----------+-----+
+|window_time|count|
++-----------+-----+
++-----------+-----+
+
+22/01/24 19:39:35 WARN streaming.ProcessingTimeExecutor: Current batch is falling behind. The trigger interval is 10000 milliseconds, but spent 16158 milliseconds
+-------------------------------------------                                     
+Batch: 1
+-------------------------------------------
++-----------+-----+
+|window_time|count|
++-----------+-----+
++-----------+-----+
+
+-------------------------------------------                                     
+Batch: 2
+-------------------------------------------
++-----------+-----+
+|window_time|count|
++-----------+-----+
++-----------+-----+
+
+[Stage 64:=======>                                               (26 + 1) / 200]stream.stop()
+22/01/24 19:39:51 ERROR v2.WriteToDataSourceV2Exec: Data source writer org.apache.spark.sql.execution.streaming.sources.MicroBatchWriter@66d7d6f6 is aborting.
+22/01/24 19:39:51 ERROR v2.WriteToDataSourceV2Exec: Data source writer org.apache.spark.sql.execution.streaming.sources.MicroBatchWriter@66d7d6f6 aborted.
+22/01/24 19:39:51 WARN hdfs.DFSClient: Caught exception 
+java.lang.InterruptedException: sleep interrupted
+	at java.lang.Thread.sleep(Native Method)
+	at org.apache.hadoop.hdfs.DFSOutputStream.completeFile(DFSOutputStream.java:2310)
+	at org.apache.hadoop.hdfs.DFSOutputStream.closeImpl(DFSOutputStream.java:2267)
+	at org.apache.hadoop.hdfs.DFSOutputStream.close(DFSOutputStream.java:2232)
+	at org.apache.hadoop.fs.FSDataOutputStream$PositionCache.close(FSDataOutputStream.java:72)
+	at org.apache.hadoop.fs.FSDataOutputStream.close(FSDataOutputStream.java:106)
+	at org.apache.spark.sql.execution.streaming.CheckpointFileManager$RenameBasedFSDataOutputStream.close(CheckpointFileManager.scala:145)
+	at net.jpountz.lz4.LZ4BlockOutputStream.close(LZ4BlockOutputStream.java:193)
+	at java.io.FilterOutputStream.close(FilterOutputStream.java:159)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider.finalizeDeltaFile(HDFSBackedStateStoreProvider.scala:417)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider.org$apache$spark$sql$execution$streaming$state$HDFSBackedStateStoreProvider$$commitUpdates(HDFSBackedStateStoreProvider.scala:287)
+	at org.apache.spark.sql.execution.streaming.state.HDFSBackedStateStoreProvider$HDFSBackedStateStore.commit(HDFSBackedStateStoreProvider.scala:132)
+	at org.apache.spark.sql.execution.streaming.state.StreamingAggregationStateManagerBaseImpl.commit(StreamingAggregationStateManager.scala:89)
+	at org.apache.spark.sql.execution.streaming.StateStoreSaveExec$$anonfun$doExecute$3$$anon$1$$anonfun$close$1.apply$mcV$sp(statefulOperators.scala:363)
+	at org.apache.spark.sql.execution.streaming.StateStoreSaveExec$$anonfun$doExecute$3$$anon$1$$anonfun$close$1.apply(statefulOperators.scala:363)
+	at org.apache.spark.sql.execution.streaming.StateStoreSaveExec$$anonfun$doExecute$3$$anon$1$$anonfun$close$1.apply(statefulOperators.scala:363)
+	at org.apache.spark.util.Utils$.timeTakenMs(Utils.scala:535)
+	at org.apache.spark.sql.execution.streaming.StateStoreWriter$class.timeTakenMs(statefulOperators.scala:108)
+	at org.apache.spark.sql.execution.streaming.StateStoreSaveExec.timeTakenMs(statefulOperators.scala:277)
+	at org.apache.spark.sql.execution.streaming.StateStoreSaveExec$$anonfun$doExecute$3$$anon$1.close(statefulOperators.scala:363)
+	at org.apache.spark.util.NextIterator.closeIfNeeded(NextIterator.scala:66)
+	at org.apache.spark.util.NextIterator.hasNext(NextIterator.scala:75)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage5.agg_doAggregateWithKeys_0$(Unknown Source)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage5.processNext(Unknown Source)
+	at org.apache.spark.sql.execution.BufferedRowIterator.hasNext(BufferedRowIterator.java:43)
+	at org.apache.spark.sql.execution.WholeStageCodegenExec$$anonfun$13$$anon$1.hasNext(WholeStageCodegenExec.scala:636)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:117)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:116)
+	at org.apache.spark.util.Utils$.tryWithSafeFinallyAndFailureCallbacks(Utils.scala:1394)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$.run(WriteToDataSourceV2Exec.scala:146)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:67)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:66)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+	at org.apache.spark.scheduler.Task.run(Task.scala:123)
+	at org.apache.spark.executor.Executor$TaskRunner$$anonfun$10.apply(Executor.scala:411)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1360)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:417)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+>>> 22/01/24 19:39:51 ERROR util.Utils: Aborting task
+org.apache.spark.executor.CommitDeniedException: Commit denied for partition 26 (task 5079, attempt 0, stage 64.0)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:133)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$$anonfun$run$3.apply(WriteToDataSourceV2Exec.scala:116)
+	at org.apache.spark.util.Utils$.tryWithSafeFinallyAndFailureCallbacks(Utils.scala:1394)
+	at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$.run(WriteToDataSourceV2Exec.scala:146)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:67)
+	at org.apache.spark.sql.execution.datasources.v2.WriteToDataSourceV2Exec$$anonfun$doExecute$2.apply(WriteToDataSourceV2Exec.scala:66)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+	at org.apache.spark.scheduler.Task.run(Task.scala:123)
+	at org.apache.spark.executor.Executor$TaskRunner$$anonfun$10.apply(Executor.scala:411)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1360)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:417)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+22/01/24 19:39:51 ERROR v2.DataWritingSparkTask: Aborting commit for partition 26 (task 5079, attempt 0, stage 64.0)
+22/01/24 19:39:51 ERROR v2.DataWritingSparkTask: Aborted commit for partition 26 (task 5079, attempt 0, stage 64.0)
+22/01/24 19:39:51 WARN scheduler.TaskSetManager: Lost task 26.0 in stage 64.0 (TID 5079, localhost, executor driver): TaskKilled (Stage cancelled)
+stream.stop()
+>>> stream.stop()
+>>> static_df_schema = StructType() \
+...     .add("humidity_p", StringType()) \
+...     .add("temperature_c", StringType())
+>>> client_loop: send disconnect: Broken pipe
+igor@igor-MS-7808:~$ 
+
