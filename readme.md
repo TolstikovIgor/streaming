@@ -2,6 +2,8 @@
 ![](logo.png)
 #### Факультет Data Engineering
 ____
+#### [Курсовой проект](https://github.com/TolstikovIgor/streaming/commit/254b391d830e5901e13870e92893e9c4bc4a5e67)
+___
 #### [Урок 1. Spark Streaming. Тестовые стримы, чтение файлов в реальном времени](https://github.com/TolstikovIgor/streaming/tree/main/lesson1)
 * Экосистема Hadoop
 * Spark
